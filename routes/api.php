@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\visitasController;
+use App\Http\Controllers\VisitasController;
+use App\Http\Controllers\InfoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,11 @@ use App\Http\Controllers\visitasController;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "api" middleware group. Make something great!
 |
-*/
+*/ 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/new-visita', [visitasController::class, 'insert']); 
+Route::post('/new-visita', [VisitasController::class, 'insert']); 
+Route::get('/get-user/{documento?}', [InfoController::class, 'getUser']); 

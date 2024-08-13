@@ -19,11 +19,10 @@ return new class extends Migration
             $table->foreignId('pdv_id');
             $table->string('foto_pdv');
             $table->string('segmento');
-            $table->string('registro_punto')->nullable();
+            $table->string('punto_inscrito')->nullable();
             $table->string('terpel')->nullable();
             $table->string('mobil')->nullable();
             $table->string('foto_fatura')->nullable();
-
             $table->foreign('estado_id')->references('id')->on('estados');
             $table->foreignId('estado_id');
             $table->timestamps();
