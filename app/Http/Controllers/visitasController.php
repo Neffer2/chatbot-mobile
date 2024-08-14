@@ -10,8 +10,8 @@ class VisitasController extends Controller
     public function insert(Request $request){
         $visita = new Visita;
 
-        $visita->user_id = 1;
-        $visita->pdv_id = 1;
+        $visita->user_id = $request->user_id;
+        $visita->pdv_id = $request->pdv_id;
         $visita->foto_pdv = $request->foto_pdv;
         $visita->segmento = $request->segmento;
         $visita->punto_inscrito = $request->confirma_inscrito;
