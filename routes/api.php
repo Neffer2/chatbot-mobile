@@ -21,5 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/new-visita', [VisitasController::class, 'insert']); 
+
 Route::get('/get-user/{documento?}', [InfoController::class, 'getUser']); 
 Route::get('/get-pdv/{num_pdv?}', [InfoController::class, 'getPdv']); 
