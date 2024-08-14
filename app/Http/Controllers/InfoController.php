@@ -9,7 +9,6 @@ use App\Models\PuntoVenta;
 class InfoController extends Controller
 {
     public function getUser($documento){
-        
         $user = User::select('id', 'name')->where('documento', $documento)->first();
         return response()->json(['id' => $user->id, 'name' => $user->name]);
     }
