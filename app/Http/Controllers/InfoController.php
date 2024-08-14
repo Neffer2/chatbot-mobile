@@ -16,7 +16,7 @@ class InfoController extends Controller
 
     public function getPdv($num_pdv){
         $pdv = PuntoVenta::select('id', 'descripcion')->where('num_pdv', $num_pdv)->first();
-        $punto_inscrito = ($pdv->visitas->where('punto_inscrito', "Si.")->first()) ? true : false;
+        $punto_inscrito = ($pdv->visitas->where('punto_inscrito', "Si.")->first()) ? true : null;
         return response()->json(['id' => $pdv->id, 'descripcion' => $pdv->descripcion, 'punto_inscrito' => $punto_inscrito]);   
     }
 }
