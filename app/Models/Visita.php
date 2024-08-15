@@ -13,4 +13,8 @@ class Visita extends Model
     public function user(){
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function puntoVenta(){
+        return $this->belongsTo(PuntoVenta::class, 'pdv_id', 'id');
+    }
 }

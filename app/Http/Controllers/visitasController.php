@@ -7,13 +7,10 @@ use App\Models\Visita;
 use App\Models\ItemMeta;
 use App\Models\RegistroVisita;
 
-use function PHPUnit\Framework\isNull;
-
 class VisitasController extends Controller
 {
     public function insert(Request $request){
         $visita = new Visita;
-
         $visita->user_id = $request->user_id;
         $visita->pdv_id = $request->pdv_id;
         $visita->foto_pdv = $request->foto_pdv;
@@ -22,22 +19,23 @@ class VisitasController extends Controller
         $visita->terpel = $request->confirma_terpel;
         $visita->mobil = $request->confirma_mobil;
         $visita->foto_fatura = $request->foto_factura;
-        $visita->estado_id = 1;
         
-        if ($visita->save()){
-            $this->sumarPuntos($visita);
+        /** INSCRITO SIN VENTAS **/
+        if (is_null($request->confirma_inscrito) && ($request->confirma_terpel != "Si." && $request->confirma_mobil != "Si.")){
+            $visita->estado_id = 1;
+            $visita->save();
+            // Frecuencia, Visibilidad
+            $this->sumPuntos($visita, 1); $this->sumPuntos($visita, 2);
+
+            return response()->json(['status' => 'success']);
         }
+
+        $visita->estado_id = 2;
+        $visita->save();
+        return response()->json(['status' => 'success']);
     }
 
     public function sumarPuntos($visita){
-        /** INSCRITOS **/
-        if (is_null($visita->punto_inscrito) && ($visita->terpel != "Si." && $visita->mobil != "Si.")){
-            // Frecuencia
-            $this->sumPuntos($visita, 1);
-            // Visibilidad
-            $this->sumPuntos($visita, 2);
-        }
-
         if (is_null($visita->punto_inscrito) && ($visita->terpel == "Si." || $visita->mobil == "Si.")){
             // Frecuencia
             $this->sumPuntos($visita, 1);

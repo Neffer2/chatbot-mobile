@@ -19,4 +19,3 @@ class InfoController extends Controller
         return response()->json(['id' => $pdv->id, 'descripcion' => $pdv->descripcion, 'punto_inscrito' => $punto_inscrito]);   
     }
 }
- 
