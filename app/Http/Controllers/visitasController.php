@@ -27,20 +27,18 @@ class VisitasController extends Controller
         if ($visita->save()){
             $this->sumarPuntos($visita);
         }
-
-        // return response()->json($request->all());
     }
 
     public function sumarPuntos($visita){
         /** INSCRITOS **/
-        if (isNull($visita->punto_inscrito) && ($visita->terpel != "Si." && $visita->mobil != "Si.")){
+        if (is_null($visita->punto_inscrito) && ($visita->terpel != "Si." && $visita->mobil != "Si.")){
             // Frecuencia
             $this->sumPuntos($visita, 1);
             // Visibilidad
             $this->sumPuntos($visita, 2);
         }
 
-        if (isNull($visita->punto_inscrito) && ($visita->terpel == "Si." || $visita->mobil == "Si.")){
+        if (is_null($visita->punto_inscrito) && ($visita->terpel == "Si." || $visita->mobil == "Si.")){
             // Frecuencia
             $this->sumPuntos($visita, 1);
             // Visibilidad
