@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('items_metas', function (Blueprint $table) {
             $table->id();
             $table->string('descripcion');
-            $table->string('puntos');
-            $table->string('extra');
+            $table->integer('puntos');
+            $table->integer('extra');
             $table->timestamps();
         });
     }

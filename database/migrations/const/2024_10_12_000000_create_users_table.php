@@ -23,8 +23,8 @@ return new class extends Migration
             $table->foreignId('empresa_id');
             $table->foreign('rol_id')->references('id')->on('roles');
             $table->foreignId('rol_id');
-            $table->string('puntos');
-            $table->string('meta_pdv');
+            $table->integer('puntos')->default(0);
+            $table->integer('meta_pdv');
             $table->rememberToken();
             $table->timestamps();
         });
