@@ -6,7 +6,7 @@
                 <th>Usuario</th>
                 <th>Punto</th>
                 <th>Fecha</th>
-                <th>Acciones</th>
+                <th>Acciones</th> 
             </tr>
         </thead>
         <tbody>
@@ -25,8 +25,8 @@
                     </td>
                     <td>{{ $visita->created_at }}</td>
                     <td>
-                        <button wire:click="">Aprobar</button>
-                        <button wire:click="">rechazar</button>
+                        <button wire:click="cambioEstado({{ $visita->id }}, 1)" wire:confirm="¿Estás seguro de APROBAR esta visita?">Aprobar</button>
+                        <button wire:click="cambioEstado({{ $visita->id }}, 3)" wire:confirm="¿Estás seguro de RECHAZAR esta visita?">rechazar</button>
                     </td>
                 </tr>
             @endforeach
@@ -37,6 +37,31 @@
     <input type="text" wire:model.lazy="documento">
     <button wire:click="buscar">Buscar</button>
 
-    
+    <table>
+        <thead>
+            <tr>
+                <th>Visita</th>
+                <th>Punto de venta</th>
+                <th>Foto punto de venta</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($visitas_user as $visita_user)
+                <tr>
+                    <td>{{ $visita_user->id}}</td>
+                    <td>{{ $visita_user->puntoVenta->descripcion }}</td>
+                    <td>
+                        <a href="{{ $visita_user->foto_pdv }}" target="_blank">
+                            <img src="{{ $visita_user->foto_pdv }}" alt="" height="100">
+                        </a>
+                    </td>
+                    <td>{{ $visita_user->created_at }}</td>
+                    <td>{{ $visita_user->estado->descripcion }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
  

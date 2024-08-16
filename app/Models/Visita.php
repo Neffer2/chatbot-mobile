@@ -17,4 +17,8 @@ class Visita extends Model
     public function puntoVenta(){
         return $this->belongsTo(PuntoVenta::class, 'pdv_id', 'id');
     }
+
+    public function estado(){
+        return $this->belongsTo(Estado::class, 'estado_id', 'id');
+    }
 }

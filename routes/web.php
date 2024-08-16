@@ -17,7 +17,7 @@ use App\Http\Controllers\InfoController;
 
 Route::get('/', function () {
     return view('asesor.index');
-});
+}); 
 
 Route::get('/dashboard', function () {
     return view('dashboard');
