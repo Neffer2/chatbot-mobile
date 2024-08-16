@@ -18,6 +18,7 @@ class VisitasController extends Controller
         $visita->mobil = $request->confirma_mobil;
         $visita->foto_fatura = $request->foto_factura;
         $visita->estado_id = 2;
+        $visita->estado_id_agente = 2;
         $visita->save();
         return response()->json(['status' => 'success']);
     }

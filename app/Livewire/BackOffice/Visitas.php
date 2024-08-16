@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Asesor;
+namespace App\Livewire\BackOffice;
 
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -8,7 +8,7 @@ use App\Models\Visita;
 use App\Models\User;
 use App\Models\ItemMeta;
 use App\Models\RegistroVisita;
- 
+
 class Visitas extends Component
 { 
     use WithPagination; 
@@ -22,7 +22,7 @@ class Visitas extends Component
     public function render()
     {   
         $visitas = Visita::where('estado_id', 2)->paginate(15);
-        return view('livewire.asesor.visitas', ['visitas' => $visitas]);
+        return view('livewire.backoffice.visitas', ['visitas' => $visitas]);
     } 
 
     public function cambioEstado($visita_id, $estado){
@@ -30,7 +30,6 @@ class Visitas extends Component
         $visita->estado_id = $estado;
         $visita->update();
 
-        
         if ($visita->estado_id == 1){
             $this->establecerPuntos($visita);
             return redirect()->back()->with('success', 'Visita aprobada correctamente.');
@@ -43,11 +42,11 @@ class Visitas extends Component
         $this->validate([
             'documento' => 'required'
         ]);
-         
+        
         $this->visitas_user = User::where('documento', $this->documento)->first()->visitas->where('estado_id', 1);
     }
 
-    // PUNTOS
+    // PUNTOS 
     public function establecerPuntos($visita){
         /** INSCRITOS **/
         if (is_null($visita->punto_inscrito) && ($visita->terpel != "Si." && $visita->mobil != "Si.")){
@@ -55,33 +54,19 @@ class Visitas extends Component
             $this->sumPuntos($visita, 1);
             //Visibilidad
             $this->sumPuntos($visita, 2);
-        }
-
-        if (is_null($visita->punto_inscrito) && ($visita->terpel == "Si." || $visita->mobil == "Si.")){
-            // Frecuencia
-            $this->sumPuntos($visita, 1);
-            // Visibilidad
-            $this->sumPuntos($visita, 2);
-            // Volumen
-            $this->sumPuntos($visita, 3);  
+            
+            $visita->estado_id_agente = 1;
+            $visita->update();
         }
 
         /** NO INSCRITOS **/
         if ($visita->punto_inscrito == "No."){
             // Cobertura
             $this->sumPuntos($visita, 4);
-        }
 
-        if ($visita->punto_inscrito == "Si." && ($visita->terpel == "Si." || $visita->mobil == "Si.")){
-            // Frecuencia
-            $this->sumPuntos($visita, 1);
-            // Visibilidad
-            $this->sumPuntos($visita, 2);
-            // Volumen
-            $this->sumPuntos($visita, 3);
-            // Cobertura
-            $this->sumPuntos($visita, 4);
-        }   
+            $visita->estado_id_agente = 1;
+            $visita->update();
+        }  
     }
 
     public function registroVisita($user_id, $visita_id, $item_meta_id, $puntos){

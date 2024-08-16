@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\InfoController;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Hash;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,7 @@ use App\Http\Controllers\InfoController;
 |
 */
 
-Route::get('/', function () {
-    return view('asesor.index');
-}); 
+Route::get('/', [HomeController::class, 'index'])->middleware('auth'); 
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -25,6 +25,9 @@ return new class extends Migration
             $table->string('foto_fatura')->nullable();
             $table->foreign('estado_id')->references('id')->on('estados');
             $table->foreignId('estado_id');
+
+            $table->foreign('estado_id_agente')->references('id')->on('estados');
+            $table->foreignId('estado_id_agente');
             $table->timestamps();
         });
     }

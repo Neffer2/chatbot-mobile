@@ -16,6 +16,27 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        <!-- Documento -->
+        <div class="mt-4">
+            <x-input-label for="documento" :value="__('Documento')" />
+            <x-text-input id="documento" class="block mt-1 w-full" type="text" name="documento" :value="old('documento')" required autocomplete="documento" />
+            <x-input-error :messages="$errors->get('documento')" class="mt-2" />
+        </div>
+
+        <!-- Documento -->
+        <div class="mt-4">
+            <x-input-label for="telefono" :value="__('Telefono')" />
+            <x-text-input id="telefono" class="block mt-1 w-full" type="text" name="telefono" :value="old('telefono')" required autocomplete="telefono" />
+            <x-input-error :messages="$errors->get('telefono')" class="mt-2" />
+        </div>
+
+        <!-- Empresa Id -->
+        <div class="mt-4">
+            <x-input-label for="empresa" :value="__('Empresa')" />
+            <x-text-input id="empresa" class="block mt-1 w-full" type="text" name="empresa" :value="old('empresa')" required autocomplete="empresa" />
+            <x-input-error :messages="$errors->get('empresa')" class="mt-2" />
+        </div>
+
         <!-- Password --> 
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />

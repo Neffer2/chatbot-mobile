@@ -1,10 +1,13 @@
 <div>
+    <h2>AGENTE</h2>
     <table>
         <thead>
             <tr>
                 <th>#</th>
                 <th>Usuario</th>
                 <th>Punto</th>
+                <th>Foto Punto</th>
+                <th>Foto Factura</th>
                 <th>Fecha</th>
                 <th>Acciones</th> 
             </tr>
@@ -21,6 +24,11 @@
                     <td>
                         <a href="{{ $visita->foto_pdv }}" target="_blank">
                             <img src="{{ $visita->foto_pdv }}" alt="" height="100">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ $visita->foto_fatura }}" target="_blank">
+                            <img src="{{ $visita->foto_fatura }}" alt="" height="100">
                         </a>
                     </td>
                     <td>{{ $visita->created_at }}</td>
