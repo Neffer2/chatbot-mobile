@@ -7,9 +7,9 @@ use Livewire\WithPagination;
 use App\Models\Visita;
 use App\Models\User;
 use App\Models\ItemMeta;
-use App\Models\RegistroVisita;
+use App\Models\RegistroVisita; 
 
-class VisitasAgente extends Component
+class VisitasAgente extends Component 
 {
     use WithPagination; 
 

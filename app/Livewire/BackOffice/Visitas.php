@@ -7,9 +7,9 @@ use Livewire\WithPagination;
 use App\Models\Visita;
 use App\Models\User;
 use App\Models\ItemMeta;
-use App\Models\RegistroVisita;
+use App\Models\RegistroVisita; 
 
-class Visitas extends Component
+class Visitas extends Component 
 { 
     use WithPagination; 
     
@@ -18,6 +18,10 @@ class Visitas extends Component
 
     // Useful vars
     public $visitas_user = [];
+
+    public function mount(){
+        dd("EAAA");
+    }
 
     public function render()
     {   
