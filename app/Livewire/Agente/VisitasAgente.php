@@ -8,7 +8,7 @@ use App\Models\Visita;
 use App\Models\User;
 use App\Models\ItemMeta;
 use App\Models\RegistroVisita; 
-
+ 
 class VisitasAgente extends Component 
 {
     use WithPagination; 

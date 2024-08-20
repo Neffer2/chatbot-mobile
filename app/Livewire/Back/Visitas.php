@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\BackOffice;
+namespace App\Livewire\Back;
 
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -11,22 +11,18 @@ use App\Models\RegistroVisita;
 
 class Visitas extends Component 
 { 
-    use WithPagination; 
+    use WithPagination;  
     
     // Models
     public $documento;
 
     // Useful vars
     public $visitas_user = [];
-
-    public function mount(){
-        dd("EAAA");
-    }
-
+    
     public function render()
     {   
         $visitas = Visita::where('estado_id', 2)->paginate(15);
-        return view('livewire.backoffice.visitas', ['visitas' => $visitas]);
+        return view('livewire.back.visitas', ['visitas' => $visitas]);
     } 
 
     public function cambioEstado($visita_id, $estado){
@@ -73,13 +69,13 @@ class Visitas extends Component
         }  
     }
 
-    public function registroVisita($user_id, $visita_id, $item_meta_id, $puntos){
+    public function registroVisita($user_id, $visiata_id, $item_meta_id, $puntos){
         $registro_visita = new RegistroVisita;
         $registro_visita->user_id = $user_id;
         $registro_visita->visita_id = $visita_id;
         $registro_visita->item_meta_id = $item_meta_id;
         $registro_visita->puntos = $puntos;
-        $registro_visita->save();
+        $registro_visita->save(); 
     }
 
     public function sumPuntos($visita, $item){
