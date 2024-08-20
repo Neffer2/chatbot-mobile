@@ -7,7 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    {{-- <livewire:backoffice.visitas>  --}}
-    @livewire('backoffice.visitas')
+    <livewire:backoffice.visitas>
 </body>
 </html>
