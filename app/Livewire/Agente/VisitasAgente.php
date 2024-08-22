@@ -56,8 +56,6 @@ class VisitasAgente extends Component
             $this->sumPuntos($visita, 1);
             // Visibilidad
             $this->sumPuntos($visita, 2);
-            // Volumen
-            $this->sumPuntos($visita, 3);  
         }
 
         /** NO INSCRITOS **/
@@ -66,8 +64,6 @@ class VisitasAgente extends Component
             $this->sumPuntos($visita, 1);
             // Visibilidad
             $this->sumPuntos($visita, 2);
-            // Volumen
-            $this->sumPuntos($visita, 3);
             // Cobertura
             $this->sumPuntos($visita, 4);
         }   
