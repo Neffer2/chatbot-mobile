@@ -69,7 +69,7 @@ class Visitas extends Component
         }  
     }
 
-    public function registroVisita($user_id, $visiata_id, $item_meta_id, $puntos){
+    public function registroVisita($user_id, $visita_id, $item_meta_id, $puntos){
         $registro_visita = new RegistroVisita;
         $registro_visita->user_id = $user_id;
         $registro_visita->visita_id = $visita_id;
