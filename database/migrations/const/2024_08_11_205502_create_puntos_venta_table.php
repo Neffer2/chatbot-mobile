@@ -14,7 +14,14 @@ return new class extends Migration
         Schema::create('puntos_venta', function (Blueprint $table) {
             $table->id();
             $table->string('num_pdv')->unique();
+            $table->string('agente');
             $table->string('descripcion');
+            $table->string('nit');
+            $table->string('direccion');
+            $table->string('barrio');
+            $table->string('localidad');
+            $table->string('segmento_pdv');
+            $table->float('vol_prom_mes')->nullable();
             $table->timestamps();
         });
     }
