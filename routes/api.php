@@ -24,3 +24,5 @@ Route::post('/new-visita', [VisitasController::class, 'insert']);
 
 Route::get('/get-user/{documento?}', [InfoController::class, 'getUser']); 
 Route::get('/get-pdv/{num_pdv?}', [InfoController::class, 'getPdv']);  
+Route::get('/get-premios-by-marca/{marca_id?}', [InfoController::class, 'getPremiosByMarca']);
+Route::get('/get-user-puntos/{id?}', [InfoController::class, 'getUserPuntos']);
