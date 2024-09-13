@@ -12,13 +12,13 @@ class InfoController extends Controller
 {
     public function getUser($documento)
     {
-        $user = User::select('id', 'name')->where('documento', $documento)->first();
+        $user = User::select('id', 'name', 'puntos')->where('documento', $documento)->first();
 
         if (!$user) {
             return response()->json(['error' => 'Usuario no encontrado'], 404);
         }
 
-        return response()->json(['id' => $user->id, 'name' => $user->name]);
+        return response()->json(['id' => $user->id, 'name' => $user->name, 'puntos' => $user->puntos]);
     }
 
     public function getUserPuntos($id)
