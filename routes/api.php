@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/new-visita', [VisitasController::class, 'insert']); 
+// Route::post('/new-visita', [VisitasController::class, 'insert']); 
 
 Route::get('/get-user/{documento?}', [InfoController::class, 'getUser']); 
 Route::get('/get-user-puntos/{id?}', [InfoController::class, 'getUserPuntos']);
