@@ -64,15 +64,15 @@ class InfoController extends Controller
         $premio = Premio::find($premio_id);
 
         if (!$user || !$premio) {
-            return response()->json(['error' => 'Usuario o premio no encontrado'], 404);
+            return response()->json(['Usuario o premio no encontrado'], 404);
         }
 
         if ($user->puntos < $premio->puntos) {
-            return response()->json(['error' => 'Puntos insuficientes'], 400);
+            return response()->json(['Puntos insuficientes'], 400);
         }
 
         if ($premio->stock <= 0) {
-            return response()->json(['error' => 'Stock insuficiente'], 400);
+            return response()->json(['Stock insuficiente'], 400);
         }
 
         // Restar puntos del usuario y stock del premio
