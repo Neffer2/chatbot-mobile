@@ -15,7 +15,7 @@ class InfoController extends Controller
         $user = User::select('id', 'name', 'puntos')->where('documento', $documento)->first();
 
         if (!$user) {
-            return response()->json(['error' => 'Usuario no encontrado'], 404);
+            return response()->json(['Usuario no encontrado'], 404);
         }
 
         return response()->json(['id' => $user->id, 'name' => $user->name,]);
@@ -26,7 +26,7 @@ class InfoController extends Controller
         $user = User::find($id);
 
         if (!$user) {
-            return response()->json(['error' => 'Usuario no encontrado'], 404);
+            return response()->json(['Usuario no encontrado'], 404);
         }
 
         return response()->json(['puntos' => $user->puntos]);
@@ -37,7 +37,7 @@ class InfoController extends Controller
         $pdv = PuntoVenta::select('id', 'descripcion')->where('num_pdv', $num_pdv)->first();
 
         if (!$pdv) {
-            return response()->json(['error' => 'Punto de venta no encontrado'], 404);
+            return response()->json(['Punto de venta no encontrado'], 404);
         }
 
         $punto_inscrito = ($pdv->visitas->where('punto_inscrito', "Si.")->first()) ? 1 : 0;
@@ -52,7 +52,7 @@ class InfoController extends Controller
             ->get();
 
         if ($premios->isEmpty()) {
-            return response()->json(['error' => 'No hay premios disponibles con stock'], 400);
+            return response()->json(['No hay premios disponibles con stock'], 400);
         }
 
         return response()->json($premios);
@@ -89,6 +89,6 @@ class InfoController extends Controller
             'premio_id' => $premio_id,
         ]);
 
-        return response()->json(['message' => 'Redención exitosa'], 200);
+        return response()->json(['Redención exitosa'], 200);
     }
 }
