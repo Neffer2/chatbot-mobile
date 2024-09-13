@@ -18,7 +18,7 @@ class InfoController extends Controller
             return response()->json(['error' => 'Usuario no encontrado'], 404);
         }
 
-        return response()->json(['id' => $user->id, 'name' => $user->name, 'puntos' => $user->puntos]);
+        return response()->json(['id' => $user->id, 'name' => $user->name,]);
     }
 
     public function getUserPuntos($id)
@@ -50,6 +50,11 @@ class InfoController extends Controller
             ->where('marca_id', $marca_id)
             ->where('stock', '>', 0)
             ->get();
+
+        if ($premios->isEmpty()) {
+            return response()->json(['error' => 'No hay premios disponibles con stock'], 400);
+        }
+
         return response()->json($premios);
     }
 
