@@ -13,18 +13,33 @@ class InfoController extends Controller
     public function getUser($documento)
     {
         $user = User::select('id', 'name')->where('documento', $documento)->first();
+
+        if (!$user) {
+            return response()->json(['error' => 'Usuario no encontrado'], 404);
+        }
+
         return response()->json(['id' => $user->id, 'name' => $user->name]);
     }
 
     public function getUserPuntos($id)
     {
         $user = User::find($id);
+
+        if (!$user) {
+            return response()->json(['error' => 'Usuario no encontrado'], 404);
+        }
+
         return response()->json(['puntos' => $user->puntos]);
     }
 
     public function getPdv($num_pdv)
     {
         $pdv = PuntoVenta::select('id', 'descripcion')->where('num_pdv', $num_pdv)->first();
+
+        if (!$pdv) {
+            return response()->json(['error' => 'Punto de venta no encontrado'], 404);
+        }
+
         $punto_inscrito = ($pdv->visitas->where('punto_inscrito', "Si.")->first()) ? 1 : 0;
         return response()->json(['id' => $pdv->id, 'descripcion' => $pdv->descripcion, 'punto_inscrito' => $punto_inscrito]);
     }
