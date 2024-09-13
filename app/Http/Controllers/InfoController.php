@@ -14,6 +14,11 @@ class InfoController extends Controller
         return response()->json(['id' => $user->id, 'name' => $user->name]);
     }
 
+    public function getUserPuntos($id){
+        $user = User::find($id);
+        return response()->json(['puntos' => $user->puntos]);
+    }
+
     public function getPdv($num_pdv){
         $pdv = PuntoVenta::select('id', 'descripcion')->where('num_pdv', $num_pdv)->first();
         $punto_inscrito = ($pdv->visitas->where('punto_inscrito', "Si.")->first()) ? 1 : 0;
@@ -27,9 +32,5 @@ class InfoController extends Controller
             ->get();
         return response()->json($premios);
     }
-
-    public function getUserPuntos($id){
-        $user = User::find($id);
-        return response()->json(['puntos' => $user->puntos]);
-    }
+    
 }
