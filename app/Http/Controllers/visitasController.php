@@ -16,8 +16,8 @@ class VisitasController extends Controller
         $visita->punto_inscrito = $request->confirma_inscrito;
         $visita->terpel = $request->confirma_terpel;
         $visita->mobil = $request->confirma_mobil;
-        $visita->valor_fatura = $request->valor_fatura;
-        $visita->foto_fatura = $request->foto_factura;
+        $visita->valor_factura = $request->valor_factura;
+        $visita->foto_factura = $request->foto_factura;
         $visita->estado_id = 2;
         $visita->estado_id_agente = 2;
         $visita->save();

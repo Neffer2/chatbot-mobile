@@ -106,7 +106,7 @@ class InfoController extends Controller
     public function registrarVisita(Request $request)
     {
         // Validar los datos de entrada
-        $validatedData = $request->validate([
+        $request->validate([
             'user_id' => 'integer',
             'pdv_id' => 'integer',
             'foto_pop' => 'string',
@@ -121,16 +121,16 @@ class InfoController extends Controller
     
         // Crear la visita
         $visita = Visita::create([
-            'user_id' => $validatedData['user_id'],
-            'pdv_id' => $validatedData['pdv_id'],
-            'foto_pop' => $validatedData['foto_pop'],
-            'pdv_inscrito' => $validatedData['pdv_inscrito'],
-            'marca_id' => $validatedData['marca_id'],
-            'referencias' => $validatedData['referencias'],
-            'presentaciones' => $validatedData['presentaciones'],
-            'num_cajas' => $validatedData['num_cajas'],
-            'foto_factura' => $validatedData['foto_factura'],
-            'valor_factura' => $validatedData['valor_factura'],
+            'user_id' => $request->user_id,
+            'pdv_id' => $request->pdv_id,
+            'foto_pop' => $request->foto_pop,
+            'pdv_inscrito' => $request->pdv_inscrito,
+            'marca_id' => $request->marca_id,
+            'referencias' => $request->referencias,
+            'presentaciones' => $request->presentaciones,
+            'num_cajas' => $request->num_cajas,
+            'foto_factura' => $request->foto_factura,
+            'valor_factura' => $request->valor_factura,
             'estado_id' => 2,
             'estado_id_agente' => 2,
         ]);

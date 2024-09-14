@@ -24,9 +24,9 @@ return new class extends Migration
             $table->string('referencias')->nullable();
             $table->string('presentaciones')->nullable();
             $table->integer('num_cajas')->nullable();
-            $table->string('foto_fatura')->nullable();
+            $table->string('foto_factura')->nullable();
             $table->string('foto_precios')->nullable();
-            $table->string('valor_fatura')->nullable();
+            $table->string('valor_factura')->nullable();
             $table->foreign('estado_id')->references('id')->on('estados');
             $table->foreignId('estado_id');
             $table->foreign('estado_id_agente')->references('id')->on('estados');

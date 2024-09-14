@@ -27,8 +27,8 @@
                         </a>
                     </td>
                     <td>
-                        <a href="{{ $visita->foto_fatura }}" target="_blank">
-                            <img src="{{ $visita->foto_fatura }}" alt="" height="100">
+                        <a href="{{ $visita->foto_factura }}" target="_blank">
+                            <img src="{{ $visita->foto_factura }}" alt="" height="100">
                         </a>
                     </td>
                     <td>{{ $visita->created_at }}</td>
