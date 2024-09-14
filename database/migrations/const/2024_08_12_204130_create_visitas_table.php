@@ -17,19 +17,23 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreign('pdv_id')->references('id')->on('puntos_venta');
             $table->foreignId('pdv_id');
-            $table->string('foto_pdv');
-            $table->string('segmento');
-            $table->string('punto_inscrito')->nullable();
-            $table->string('terpel')->nullable();
-            $table->string('mobil')->nullable();
-            $table->string('valor_fatura')->nullable();
+            $table->string('foto_pop')->nullable();
+            $table->string('pdv_inscrito')->nullable();
+            $table->unsignedBigInteger('marca_id');
+            $table->foreign('marca_id')->references('id')->on('marca')->onDelete('cascade');
+            $table->string('referencias')->nullable();
+            $table->string('presentaciones')->nullable();
+            $table->integer('num_cajas')->nullable();
             $table->string('foto_fatura')->nullable();
+            $table->string('foto_precios')->nullable();
+            $table->string('valor_fatura')->nullable();
             $table->foreign('estado_id')->references('id')->on('estados');
             $table->foreignId('estado_id');
-
             $table->foreign('estado_id_agente')->references('id')->on('estados');
             $table->foreignId('estado_id_agente');
             $table->timestamps();
+
+
         });
     }
 

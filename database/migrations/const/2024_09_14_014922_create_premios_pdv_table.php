@@ -11,20 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('puntos_venta', function (Blueprint $table) {
+        Schema::create('premios_pdv', function (Blueprint $table) {
             $table->id();
-            $table->string('num_pdv')->unique();
-            $table->string('agente');
-            $table->string('descripcion');
-            $table->string('nit');
-            $table->string('direccion');
+            $table->integer('num_venta');
+            $table->text('descripcion');
             $table->unsignedBigInteger('marca_id');
-            $table->string('barrio');
-            $table->string('localidad');
-            $table->string('segmento_pdv');
-            $table->float('vol_prom_mes')->nullable();
             $table->timestamps();
-
             $table->foreign('marca_id')->references('id')->on('marca')->onDelete('cascade');
         });
     }
@@ -34,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('puntos_venta');
+        Schema::dropIfExists('premios_pdv');
     }
 };
