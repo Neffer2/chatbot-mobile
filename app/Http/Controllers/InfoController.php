@@ -106,18 +106,18 @@ class InfoController extends Controller
     public function registrarVisita(Request $request)
     {
         // Validar los datos de entrada
-        $request->validate([
-            'user_id' => 'integer',
-            'pdv_id' => 'integer',
-            'foto_pop' => 'string',
-            'pdv_inscrito' => 'string',
-            'marca_id' => 'integer',
-            'referencias' => 'string',
-            'presentaciones' => 'string',
-            'num_cajas' => 'string',
-            'foto_factura' => 'string',
-            'valor_factura' => 'string',
-        ]);
+        // $request->validate([
+        //     'user_id' => 'integer',
+        //     'pdv_id' => 'integer',
+        //     'foto_pop' => 'string',
+        //     'pdv_inscrito' => 'string',
+        //     'marca_id' => 'integer',
+        //     'referencias' => 'string',
+        //     'presentaciones' => 'string',
+        //     'num_cajas' => 'string',
+        //     'foto_factura' => 'string',
+        //     'valor_factura' => 'string',
+        // ]);
     
         // Crear la visita
         $visita = Visita::create([
