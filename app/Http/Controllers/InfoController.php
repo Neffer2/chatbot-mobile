@@ -125,9 +125,9 @@ class InfoController extends Controller
         return response()->json(['message' => 'Visita registrada exitosamente', 'visita' => $visita], 201);
     }
 
-    public function getPremioByNumVisita($num_venta)
+    public function getPremioByNumVisita($num_visita)
     {
-        $premio = PremiosPdv::where('num_venta', $num_venta)->first();
+        $premio = PremiosPdv::where('num_venta', $num_visita)->first();
 
         if (!$premio) {
             return response()->json(['Premio no encontrado'], 404);
