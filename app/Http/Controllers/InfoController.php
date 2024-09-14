@@ -8,6 +8,7 @@ use App\Models\PuntoVenta;
 use App\Models\Premio;
 use App\Models\Redencion;
 use App\Models\Visita;
+use App\Models\PremiosPdv;
 
 class InfoController extends Controller
 {
@@ -105,20 +106,6 @@ class InfoController extends Controller
 
     public function registrarVisita(Request $request)
     {
-        // Validar los datos de entrada
-        // $request->validate([
-        //     'user_id' => 'integer',
-        //     'pdv_id' => 'integer',
-        //     'foto_pop' => 'string',
-        //     'pdv_inscrito' => 'string',
-        //     'marca_id' => 'integer',
-        //     'referencias' => 'string',
-        //     'presentaciones' => 'string',
-        //     'num_cajas' => 'string',
-        //     'foto_factura' => 'string',
-        //     'valor_factura' => 'string',
-        // ]);
-    
         // Crear la visita
         $visita = Visita::create([
             'user_id' => $request->user_id,
@@ -134,7 +121,19 @@ class InfoController extends Controller
             'estado_id' => 2,
             'estado_id_agente' => 2,
         ]);
-    
+
         return response()->json(['message' => 'Visita registrada exitosamente', 'visita' => $visita], 201);
+    }
+
+    public function getPremioByNumVisita($num_visita)
+    {
+        $premio = PremiosPdv::where('num_venta', $num_visita)->first();
+
+        if (!$premio) {
+            return response()->json(['Premio no encontrado'], 404);
+        } else {
+            return response()->json([$premio->descripcion], 200);
+        }
+
     }
 }
