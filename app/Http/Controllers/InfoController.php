@@ -42,13 +42,14 @@ class InfoController extends Controller
         }
 
         $punto_inscrito = ($pdv->visitas->where('punto_inscrito', "Si.")->first()) ? 1 : 0;
-        return response()->json(['id' => $pdv->id, 'descripcion' => $pdv->descripcion, 'punto_inscrito' => $punto_inscrito]);
+
 
         $visitas = Visita::where('pdv_id', $pdv->id)
         ->where('user_id', $user_id)->count();
 
         return response()->json([
             'id' => $pdv->id,
+            'punto_inscrito' => $punto_inscrito,
             'descripcion' => $pdv->descripcion,
             'visitas' => $visitas
         ]);
