@@ -36,4 +36,6 @@ class Visita extends Model
     public function estado(){
         return $this->belongsTo(Estado::class, 'estado_id', 'id');
     }
+
+
 }

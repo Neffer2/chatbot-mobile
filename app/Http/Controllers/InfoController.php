@@ -107,18 +107,18 @@ class InfoController extends Controller
     {
         // Validar los datos de entrada
         $validatedData = $request->validate([
-            'user_id' => 'required|integer|exists:users,id',
-            'pdv_id' => 'required|integer|exists:punto_ventas,id',
-            'foto_pop' => 'required|string',
-            'pdv_inscrito' => 'required|string',
-            'marca_id' => 'required|integer|exists:marcas,id',
-            'referencias' => 'required|string',
-            'presentaciones' => 'required|string',
-            'num_cajas' => 'required|string',
-            'foto_factura' => 'required|string',
-            'valor_factura' => 'required|string',
+            'user_id' => 'integer',
+            'pdv_id' => 'integer',
+            'foto_pop' => 'string',
+            'pdv_inscrito' => 'string',
+            'marca_id' => 'integer',
+            'referencias' => 'string',
+            'presentaciones' => 'string',
+            'num_cajas' => 'string',
+            'foto_factura' => 'string',
+            'valor_factura' => 'string',
         ]);
-
+    
         // Crear la visita
         $visita = Visita::create([
             'user_id' => $validatedData['user_id'],
@@ -134,7 +134,7 @@ class InfoController extends Controller
             'estado_id' => 2,
             'estado_id_agente' => 2,
         ]);
-
-        return response()->json(['Visita registrada exitosamente', 'visita' => $visita], 201);
+    
+        return response()->json(['message' => 'Visita registrada exitosamente', 'visita' => $visita], 201);
     }
 }
