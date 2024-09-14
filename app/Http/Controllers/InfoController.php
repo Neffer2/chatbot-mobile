@@ -117,6 +117,7 @@ class InfoController extends Controller
             'presentaciones' => $request->presentaciones,
             'num_cajas' => $request->num_cajas,
             'foto_factura' => $request->foto_factura,
+            'foto_precios' => $request->foto_precios,
             'valor_factura' => $request->valor_factura,
             'estado_id' => 2,
             'estado_id_agente' => 2,
