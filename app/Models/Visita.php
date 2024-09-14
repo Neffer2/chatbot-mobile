@@ -10,6 +10,21 @@ class Visita extends Model
     use HasFactory;
     protected $table = "visitas";
 
+    protected $fillable = [
+        'user_id',
+        'pdv_id',
+        'foto_pop',
+        'pdv_inscrito',
+        'marca_id',
+        'referencias',
+        'presentaciones',
+        'num_cajas',
+        'foto_factura',
+        'valor_factura',
+        'estado_id',
+        'estado_id_agente',
+    ];
+
     public function user(){
         return $this->belongsTo(User::class, 'user_id', 'id');
     }

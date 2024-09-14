@@ -45,13 +45,13 @@ class InfoController extends Controller
 
 
         $visitas = Visita::where('pdv_id', $pdv->id)
-        ->where('user_id', $user_id)->count();
+            ->where('user_id', $user_id)->count();
 
         return response()->json([
             'id' => $pdv->id,
             'punto_inscrito' => $punto_inscrito,
             'descripcion' => $pdv->descripcion,
-            'visita' => $visitas+1
+            'visita' => $visitas + 1
         ]);
     }
 
@@ -103,4 +103,38 @@ class InfoController extends Controller
         return response()->json(['Redención exitosa'], 200);
     }
 
+    public function registrarVisita(Request $request)
+    {
+        // Validar los datos de entrada
+        $validatedData = $request->validate([
+            'user_id' => 'required|integer|exists:users,id',
+            'pdv_id' => 'required|integer|exists:punto_ventas,id',
+            'foto_pop' => 'required|string',
+            'pdv_inscrito' => 'required|string',
+            'marca_id' => 'required|integer|exists:marcas,id',
+            'referencias' => 'required|string',
+            'presentaciones' => 'required|string',
+            'num_cajas' => 'required|string',
+            'foto_factura' => 'required|string',
+            'valor_factura' => 'required|string',
+        ]);
+
+        // Crear la visita
+        $visita = Visita::create([
+            'user_id' => $validatedData['user_id'],
+            'pdv_id' => $validatedData['pdv_id'],
+            'foto_pop' => $validatedData['foto_pop'],
+            'pdv_inscrito' => $validatedData['pdv_inscrito'],
+            'marca_id' => $validatedData['marca_id'],
+            'referencias' => $validatedData['referencias'],
+            'presentaciones' => $validatedData['presentaciones'],
+            'num_cajas' => $validatedData['num_cajas'],
+            'foto_factura' => $validatedData['foto_factura'],
+            'valor_factura' => $validatedData['valor_factura'],
+            'estado_id' => 2,
+            'estado_id_agente' => 2,
+        ]);
+
+        return response()->json(['Visita registrada exitosamente', 'visita' => $visita], 201);
+    }
 }
