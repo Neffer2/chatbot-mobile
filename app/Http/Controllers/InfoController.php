@@ -51,7 +51,7 @@ class InfoController extends Controller
             'id' => $pdv->id,
             'punto_inscrito' => $punto_inscrito,
             'descripcion' => $pdv->descripcion,
-            'visitas' => $visitas
+            'visitas' => $visitas+1
         ]);
     }
 
