@@ -28,4 +28,4 @@ Route::get('/get-pdv/{num_pdv?}/{user_id?}', [InfoController::class, 'getPdv']);
 Route::get('/get-premios-by-marca/{marca_id?}', [InfoController::class, 'getPremiosByMarca']);
 Route::post('/redimir-premio/{user_id?}/{premio_id?}', [InfoController::class, 'redimirPremio']);
 Route::post('/registrar-visita', [InfoController::class, 'registrarVisita']);
-Route::get('/get-premio-pdv/{num_visita?}', [InfoController::class, 'getPremioByNumVisita']);
+Route::get('/get-premio-pdv/{num_venta?}', [InfoController::class, 'getPremioByNumVisita']);
