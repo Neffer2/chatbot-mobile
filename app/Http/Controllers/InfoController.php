@@ -42,8 +42,9 @@ class InfoController extends Controller
             return response()->json(['Punto de venta no encontrado'], 404);
         }
 
+        //Punto de venta inscrito
         $pdv_inscrito = ($pdv->visitas->where('pdv_inscrito', "Si.")->first()) ? 1 : 0;
-
+        dd($pdv_inscrito);
 
         $visitas = Visita::where('pdv_id', $pdv->id)
             ->where('user_id', $user_id)->count();
@@ -90,7 +91,7 @@ class InfoController extends Controller
         // Restar puntos del usuario y stock del premio
         $user->puntos -= $premio->puntos;
         $premio->stock -= 1;
-        
+
         $user->save();
         $premio->save();
 
