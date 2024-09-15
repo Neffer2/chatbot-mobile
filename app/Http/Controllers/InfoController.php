@@ -50,7 +50,7 @@ class InfoController extends Controller
 
         return response()->json([
             'id' => $pdv->id,
-            'punto_inscrito' => $pdv_inscrito,
+            'pdv_inscrito' => $pdv_inscrito,
             'descripcion' => $pdv->descripcion,
             'visita' => $visitas + 1
         ]);
