@@ -42,7 +42,7 @@ class InfoController extends Controller
             return response()->json(['Punto de venta no encontrado'], 404);
         }
 
-        $punto_inscrito = ($pdv->visitas->where('pdv_inscrito', "Si.")->first()) ? 1 : 0;
+        $pdv_inscrito = ($pdv->visitas->where('pdv_inscrito', "Si.")->first()) ? 1 : 0;
 
 
         $visitas = Visita::where('pdv_id', $pdv->id)
@@ -50,7 +50,7 @@ class InfoController extends Controller
 
         return response()->json([
             'id' => $pdv->id,
-            'punto_inscrito' => $punto_inscrito,
+            'punto_inscrito' => $pdv_inscrito,
             'descripcion' => $pdv->descripcion,
             'visita' => $visitas + 1
         ]);
