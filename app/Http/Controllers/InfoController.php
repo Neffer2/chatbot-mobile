@@ -50,7 +50,7 @@ class InfoController extends Controller
         ->where('user_id', $user_id)
         ->get();
 
-    $valor_factura_count = 1;
+    $valor_factura_count = 0;
 
     foreach ($visitas as $visita) {
         if (!is_null($visita->valor_factura) && !is_null($visita->foto_factura)) {
