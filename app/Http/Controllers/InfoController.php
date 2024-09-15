@@ -44,7 +44,6 @@ class InfoController extends Controller
 
         //Punto de venta inscrito
         $pdv_inscrito = ($pdv->visitas->where('pdv_inscrito', "Si.")->first()) ? 1 : 0;
-        dd($pdv_inscrito);
 
         $visitas = Visita::where('pdv_id', $pdv->id)
             ->where('user_id', $user_id)->count();
@@ -105,7 +104,6 @@ class InfoController extends Controller
 
     public function registrarVisita(Request $request)
     {
-        // Crear la visita
         $visita = Visita::create([
             'user_id' => $request->user_id,
             'pdv_id' => $request->pdv_id,
