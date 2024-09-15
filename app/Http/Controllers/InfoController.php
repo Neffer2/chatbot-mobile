@@ -90,12 +90,10 @@ class InfoController extends Controller
         // Restar puntos del usuario y stock del premio
         $user->puntos -= $premio->puntos;
         $premio->stock -= 1;
-
-        // Guardar los cambios
+        
         $user->save();
         $premio->save();
 
-        // Crear la redención
         Redencion::create([
             'user_id' => $user_id,
             'premio_id' => $premio_id,
