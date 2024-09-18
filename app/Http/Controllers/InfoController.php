@@ -81,7 +81,7 @@ class InfoController extends Controller
         return response()->json($premios);
     }
 
-    public function redimirPremio($user_id, $premio_id)
+    public function redimirPremio($user_id, $premio_id, $direccion, $fecha_entrega)
     {
         $user = User::find($user_id);
         $premio = Premio::find($premio_id);
@@ -108,6 +108,8 @@ class InfoController extends Controller
         Redencion::create([
             'user_id' => $user_id,
             'premio_id' => $premio_id,
+            'direccion' => $direccion,
+            'fecha_entrega' => $fecha_entrega
         ]);
 
         return response()->json(['Redención exitosa'], 200);

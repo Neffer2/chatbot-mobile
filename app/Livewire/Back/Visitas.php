@@ -83,7 +83,7 @@ class Visitas extends Component
         /*
             1 - Frecuencia
             2 - Visibilidad
-            3 - Volumen // Funciona más adelante ---
+            3 - Volumen
             4 - Cobertura
         */
         $visita->user->puntos += $items_metas->find($item)->puntos;
