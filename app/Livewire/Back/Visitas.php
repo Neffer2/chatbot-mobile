@@ -25,22 +25,20 @@ class Visitas extends Component
         return view('livewire.back.visitas', ['visitas' => $visitas]);
     }
 
-    public function cambioEstado($visita_id, $estado)
-    {
+    public function cambioEstado($visita_id, $estado){
         $visita = Visita::find($visita_id);
         $visita->estado_id = $estado;
         $visita->update();
 
-        if ($visita->estado_id == 1) {
+        if ($visita->estado_id == 1){
             $this->establecerPuntos($visita);
             return redirect()->back()->with('success', 'Visita aprobada correctamente.');
-        } else {
+        }else {
             return redirect()->back()->with('success', 'Visita rechazada correctamente.');
         }
     }
 
-    public function buscar()
-    {
+    public function buscar(){
         $this->validate([
             'documento' => 'required'
         ]);
@@ -48,13 +46,12 @@ class Visitas extends Component
         $this->visitas_user = User::where('documento', $this->documento)->first()->visitas->where('estado_id', 1);
     }
 
-    // PUNTOS 
-    public function establecerPuntos($visita)
-    {
+    // PUNTOS
+    public function establecerPuntos($visita){
         /** INSCRITOS **/
-        // if (is_null($visita->punto_inscrito) && ($visita->terpel != "Si." && $visita->mobil != "Si.")){
-        if ($visita->pdv_inscrito == "Si.") {
-            // Frecuencia 
+
+        if (is_null($visita->punto_inscrito) && ($visita->terpel != "Si." && $visita->mobil != "Si.")){
+            // Frecuencia
             $this->sumPuntos($visita, 1);
             //Visibilidad
             $this->sumPuntos($visita, 2);
@@ -64,7 +61,7 @@ class Visitas extends Component
         }
 
         /** NO INSCRITOS **/
-        if ($visita->pdv_inscrito == "No.") {
+        if ($visita->punto_inscrito == "No."){
             // Cobertura
             $this->sumPuntos($visita, 4);
 
@@ -73,8 +70,7 @@ class Visitas extends Component
         }
     }
 
-    public function registroVisita($user_id, $visita_id, $item_meta_id, $puntos)
-    {
+    public function registroVisita($user_id, $visita_id, $item_meta_id, $puntos){
         $registro_visita = new RegistroVisita;
         $registro_visita->user_id = $user_id;
         $registro_visita->visita_id = $visita_id;
@@ -83,8 +79,7 @@ class Visitas extends Component
         $registro_visita->save();
     }
 
-    public function sumPuntos($visita, $item)
-    {
+    public function sumPuntos($visita, $item){
         $items_metas = ItemMeta::all();
         /*
             1 - Frecuencia
