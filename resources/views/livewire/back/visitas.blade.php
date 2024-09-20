@@ -8,7 +8,7 @@
                 <th>Punto</th>
                 <th>Foto Punto</th>
                 <th>Fecha</th>
-                <th>Acciones</th> 
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -36,10 +36,10 @@
     </table>
     <br><br><br><br>
 
-    <input type="text" wire:model.lazy="documento">
-    <button wire:click="buscar">Buscar</button>
+    <!-- <input type="text" wire:model.lazy="documento">
+    <button wire:click="buscar">Buscar</button> -->
 
-    <table>
+    <!-- <table>
         <thead>
             <tr>
                 <th>Visita</th>
@@ -64,6 +64,5 @@
                 </tr>
             @endforeach
         </tbody>
-    </table>
+    </table> -->
 </div>
- 

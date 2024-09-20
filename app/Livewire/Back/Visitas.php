@@ -7,23 +7,23 @@ use Livewire\WithPagination;
 use App\Models\Visita;
 use App\Models\User;
 use App\Models\ItemMeta;
-use App\Models\RegistroVisita; 
+use App\Models\RegistroVisita;
 
-class Visitas extends Component 
-{ 
-    use WithPagination;  
-    
+class Visitas extends Component
+{
+    use WithPagination;
+
     // Models
     public $documento;
 
     // Useful vars
     public $visitas_user = [];
-    
+
     public function render()
-    {   
+    {
         $visitas = Visita::where('estado_id', 2)->paginate(15);
         return view('livewire.back.visitas', ['visitas' => $visitas]);
-    } 
+    }
 
     public function cambioEstado($visita_id, $estado){
         $visita = Visita::find($visita_id);
@@ -42,19 +42,20 @@ class Visitas extends Component
         $this->validate([
             'documento' => 'required'
         ]);
-        
+
         $this->visitas_user = User::where('documento', $this->documento)->first()->visitas->where('estado_id', 1);
     }
 
-    // PUNTOS 
+    // PUNTOS
     public function establecerPuntos($visita){
         /** INSCRITOS **/
+
         if (is_null($visita->punto_inscrito) && ($visita->terpel != "Si." && $visita->mobil != "Si.")){
-            // Frecuencia 
+            // Frecuencia
             $this->sumPuntos($visita, 1);
             //Visibilidad
             $this->sumPuntos($visita, 2);
-            
+
             $visita->estado_id_agente = 1;
             $visita->update();
         }
@@ -66,7 +67,7 @@ class Visitas extends Component
 
             $visita->estado_id_agente = 1;
             $visita->update();
-        }  
+        }
     }
 
     public function registroVisita($user_id, $visita_id, $item_meta_id, $puntos){
@@ -75,7 +76,7 @@ class Visitas extends Component
         $registro_visita->visita_id = $visita_id;
         $registro_visita->item_meta_id = $item_meta_id;
         $registro_visita->puntos = $puntos;
-        $registro_visita->save(); 
+        $registro_visita->save();
     }
 
     public function sumPuntos($visita, $item){
