@@ -1,3 +1,18 @@
+@font-face {
+    font-family: 'BigNoodleTitlingOblique';
+    src: url('/fonts/big_noodle_titling_oblique.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'BigNoodleTitling';
+    src: url('/fonts/big_noodle_titling.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'OhioCollegiate';
+    src: url('/fonts/Ohio-Collegiate.ttf') format('truetype');
+}
+
 * {
     margin: 0;
     padding: 0;

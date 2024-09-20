@@ -1,7 +1,8 @@
 .login-container {
     display: flex;
-    flex-wrap: wrap;
     height: 100vh;
+    background-image: url('/assets/plan-choque-bg.jpg');
+    background-size: cover;
 }
 
 .image-section {
@@ -9,6 +10,10 @@
     align-items: center;
     justify-content: center;
     width: 50%;
+}
+
+.image-section img {
+    width: 80%;
 }
 
 .form-section {
@@ -23,13 +28,99 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
+    height: 85px;
     padding: 0px 50px;
     background-color: #EAEAEA;
 }
 
+.login-footer p {
+    font-family: 'BigNoodleTitlingOblique', sans-serif;
+    font-size: 2rem;
+    color: #7B7B7B;
+}
+
 .login-footer img {
-    width: 300px;
+    width: 18rem;
+}
+
+.form-section form {
+    width: 75%;
+}
+
+.custom-input {
+    background: none;
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 20px;
+    width: 100%;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    font-size: 1.3rem;
+}
+
+.custom-input::placeholder {
+    color: white;
+    opacity: 0.7;
+    font-family: 'Arial', sans-serif;
+    font-size: 1.2rem;
+}
+
+.custom-checkbox {
+    border: 1px solid white;
+    background: none;
+    color: white;
+}
+
+.custom-button {
+    background-color: transparent;
+    border: 1px solid #7B7B7B;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Arial', sans-serif;
+    font-size: 1.2rem;
+    background-color: #7B7B7B;
+}
+
+.custom-button:hover {
+    background-color: #7B7B7B;
+    color: black;
+}
+
+.login-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.remember-me-login-cont {
+    margin-left: 10px;
+}
+
+.custom-checkbox {
+    margin-right: 5px;
+}
+
+.custom-checkbox-text {
+    font-family: 'Arial', sans-serif;
+    color: white;
+    font-size: 1rem; 
+}
+
+.custom-error ul {
+    padding: 0;
+}
+
+.custom-error li {
+    list-style: none;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    margin-left: 10px;
 }
 
 
