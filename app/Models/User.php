@@ -53,4 +53,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(Visita::class, 'user_id', 'id');
     }
+
 }
