@@ -32,6 +32,20 @@ class LoginRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'email.required' => "Oops, tu correo es obligatorio.",
+            'email.string' => "Formato no valido.",
+            'email.email' => "Escribe un correo electrónico valido.",
+
+            'password.required' => "Oops, no olvides tu contraseña.",
+            'email.string' => "Formato no valido.",
+
+            'auth.failed' => "Oops, no reconocemos estas credenciales."
+        ];
+    }
+
     /**
      * Attempt to authenticate the request's credentials.
      *
@@ -45,7 +59,7 @@ class LoginRequest extends FormRequest
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'email' => "Oops, no reconocemos estas credenciales.",
             ]);
         }
 
@@ -80,6 +94,6 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->string('email')).'|'.$this->ip());
+        return Str::transliterate(Str::lower($this->input('email')).'|'.$this->ip());
     }
 }
