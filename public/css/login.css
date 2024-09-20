@@ -1,0 +1,45 @@
+.login-container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+}
+
+.image-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.form-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    background-color: #9A0C00;
+}
+
+.login-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0px 50px;
+    background-color: #EAEAEA;
+}
+
+.login-footer img {
+    width: 300px;
+}
+
+
+
+@media (max-width: 768px) {
+    .image-section {
+        display: none;
+    }
+
+    .form-section {
+        flex: 1 1 100%;
+    }
+}
