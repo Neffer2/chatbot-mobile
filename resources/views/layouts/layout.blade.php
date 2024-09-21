@@ -29,10 +29,9 @@
             {{-- <li><a href="#">Home</a></li> --}}
             <li><a href="#">Mis Metas</a></li>
             <li><a href="#">Ranking</a></li>
-            <li><a href="#">Plan Choque</a></li>
-            <li><a href="#">Mecánica</a></li>
             <li><a href="#">Premios</a></li>
-            <li><a href="#">Productos</a></li>
+            <li><a href="#">Catálogos</a></li>
+            <li><a href="#">Términos y condiciones</a></li>
         </ul>
     </nav>
 
