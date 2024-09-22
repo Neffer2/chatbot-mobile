@@ -12,6 +12,7 @@ class HomeController extends Controller
         
         if ($rol == 2){
             return view('agente.index');
+            return view('tyc');
         }elseif ($rol == 3){
             return view('asesor.index');
         }

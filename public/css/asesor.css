@@ -55,3 +55,9 @@
     align-items: center;
     justify-content: center;
 }
+
+@media (max-width: 768px) {
+    .main-asesor-container {
+        margin-left: 0;
+    }
+}
