@@ -29,22 +29,22 @@
     </button>
     <nav class="navbar" id="navbar">
         <div class="logo-container">
-            <img src="{{ asset('assets/mobil-terpel.png') }}" alt="Logo">
+            <a href="/"><img src="{{ asset('assets/mobil-terpel.png') }}" alt="Logo"></a>
         </div>
         <ul class="nav-list">
             @if (Auth::user()->rol_id == 2)
                 <!-- Rol Agente -->
-                <li><a href="/">Home</a></li>
-                <li><a href="#">Vistas por aprobar</a></li>
-                <li><a href="#">Meta global</a></li>
-                <li><a href="#">Reporte zona</a></li>
-                <li><a href="#">Reporte por asesor</a></li>
+                <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="/">Home</a></li>
+                <li class="{{ request()->is('vistas-por-aprobar') ? 'active' : '' }}"><a href="#">Vistas por aprobar</a></li>
+                <li class="{{ request()->is('meta-global') ? 'active' : '' }}"><a href="#">Meta global</a></li>
+                <li class="{{ request()->is('reporte-zona') ? 'active' : '' }}"><a href="#">Reporte zona</a></li>
+                <li class="{{ request()->is('reporte-por-asesor') ? 'active' : '' }}"><a href="#">Reporte por asesor</a></li>
             @elseif(Auth::user()->rol_id == 3)
                 <!-- Rol Asesor -->
-                <li><a href="/">Mis Metas</a></li>
-                <li><a href="#">Ranking</a></li>
-                <li><a href="#">Premios</a></li>
-                <li><a href="#">Catálogos</a></li>
+                <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="/">Mis Metas</a></li>
+                <li class="{{ request()->is('ranking') ? 'active' : '' }}"><a href="#">Ranking</a></li>
+                <li class="{{ request()->is('premios') ? 'active' : '' }}"><a href="#">Premios</a></li>
+                <li class="{{ request()->is('catalogos') ? 'active' : '' }}"><a href="#">Catálogos</a></li>
             @endif
             <li class="tyc-link"><a href="{{ asset('assets/legal/tyc-plan-incentivos-terpel.pdf') }}" target="_blank">Términos y
                     condiciones</a></li>
