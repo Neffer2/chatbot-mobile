@@ -50,23 +50,34 @@ class VisitasAgente extends Component
     }
 
     public function establecerPuntos($visita){
-        /** INSCRITOS **/
-        if (is_null($visita->punto_inscrito) && ($visita->terpel == "Si." || $visita->mobil == "Si.")){
-            // Frecuencia
-            $this->sumPuntos($visita, 1);
-            // Visibilidad
-            $this->sumPuntos($visita, 2);
-        }
+        $num_vista = Visita::where([['user_id', $visita->user_id], ['pdv_id', $visita->pdv_id]])->count();
+        $pdv_inscrito = (Visita::where([['user_id', $visita->user_id], ['pdv_id', $visita->pdv_id], ['pdv_inscrito', 'Si.']])->first()) ? true : false;
 
-        /** NO INSCRITOS **/
-        if ($visita->punto_inscrito == "Si." && ($visita->terpel == "Si." || $visita->mobil == "Si.")){
-            // Frecuencia
-            $this->sumPuntos($visita, 1);
-            // Visibilidad
-            $this->sumPuntos($visita, 2);
+        if ($num_vista == 1 && !is_null($visita->foto_factura) && $visita->pdv_inscrito == "Si."){
             // Cobertura
             $this->sumPuntos($visita, 4);
-        }   
+            // Volumen
+            $this->sumPuntos($visita, 3); 
+
+            return redirect()->back()->with('success', 'Visita aprobada correctamente.');
+        }elseif ($num_vista > 1 && !is_null($visita->foto_factura) && $pdv_inscrito){
+            // Frecuencia
+            $this->sumPuntos($visita, 1);
+            // Volumen
+            $this->sumPuntos($visita, 3);
+
+            return redirect()->back()->with('success', 'Visita aprobada correctamente.');
+        }elseif ($num_vista > 1 && !is_null($visita->foto_factura) && $visita->pdv_inscrito == "Si."){
+            // Volumen
+            $this->sumPuntos($visita, 3);
+
+            return redirect()->back()->with('success', 'Visita aprobada correctamente.');
+        }elseif ($num_vista > 1 && !is_null($visita->foto_factura) && !($pdv_inscrito)){
+            // Volumen
+            $this->sumPuntos($visita, 3);
+
+            return redirect()->back()->with('success', 'Visita aprobada correctamente.');
+        }
     }
 
     public function registroVisita($user_id, $visita_id, $item_meta_id, $puntos){

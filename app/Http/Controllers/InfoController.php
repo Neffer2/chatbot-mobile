@@ -34,38 +34,40 @@ class InfoController extends Controller
         return response()->json(['puntos' => $user->puntos]);
     }
 
-    public function getPdv($num_pdv, $user_id)
-{
-    $pdv = PuntoVenta::select('id', 'descripcion')->where('num_pdv', $num_pdv)->first();
+    public function getPdv($num_pdv, $user_id){
+        $pdv = PuntoVenta::select('id', 'descripcion')->where([
+            ['num_pdv', $num_pdv],
+            ['asesor_id', $user_id]
+        ])->first();
 
-    if (!$pdv) {
-        return response()->json(['Punto de venta no encontrado'], 404);
-    }
-
-    // Punto de venta inscrito
-    $pdv_inscrito = ($pdv->visitas->where('pdv_inscrito', "Si.")->first()) ? 1 : 0;
-
-    // Verificar si valor_factura y foto_factura son null
-    $visitas = Visita::where('pdv_id', $pdv->id)
-        ->where('user_id', $user_id)
-        ->get();
-
-    $valor_factura_count = 0;
-
-    foreach ($visitas as $visita) {
-        if (!is_null($visita->valor_factura) && !is_null($visita->foto_factura)) {
-            $valor_factura_count++;
+        if (!$pdv) {
+            return response()->json(['Punto de venta no encontrado'], 404);
         }
-    }
 
-    return response()->json([
-        'id' => $pdv->id,
-        'pdv_inscrito' => $pdv_inscrito,
-        'descripcion' => $pdv->descripcion,
-        'visita' => $visitas->count() + 1,
-        'num_venta' => $valor_factura_count
-    ]);
-}
+        // Punto de venta inscrito
+        $pdv_inscrito = ($pdv->visitas->where('pdv_inscrito', "Si.")->first()) ? 1 : 0;
+
+        // Verificar si valor_factura y foto_factura son null
+        $visitas = Visita::where('pdv_id', $pdv->id)
+            ->where('user_id', $user_id)
+            ->get();
+
+        $valor_factura_count = 0;
+
+        foreach ($visitas as $visita) {
+            if (!is_null($visita->valor_factura) && !is_null($visita->foto_factura)) {
+                $valor_factura_count++;
+            }
+        }
+
+        return response()->json([
+            'id' => $pdv->id,
+            'pdv_inscrito' => $pdv_inscrito,
+            'descripcion' => $pdv->descripcion,
+            'visita' => $visitas->count() + 1,
+            'num_venta' => $valor_factura_count
+        ]);
+    }
 
     public function getPremiosByMarca($marca_id)
     {
