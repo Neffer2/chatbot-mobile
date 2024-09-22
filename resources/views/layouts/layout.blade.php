@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/asesor.css">
+    <link rel="stylesheet" href="css/agente.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/navbar.css">
@@ -45,7 +46,7 @@
                 <li><a href="#">Premios</a></li>
                 <li><a href="#">Catálogos</a></li>
             @endif
-            <li><a href="{{ asset('assets/legal/tyc-plan-incentivos-terpel.pdf') }}" target="_blank">Términos y
+            <li class="tyc-link"><a href="{{ asset('assets/legal/tyc-plan-incentivos-terpel.pdf') }}" target="_blank">Términos y
                     condiciones</a></li>
         </ul>
     </nav>
