@@ -9,9 +9,9 @@
 .table-container {
     border-radius: 10px;
     overflow-x: auto;
-    overflow-y: auto; 
+    overflow-y: auto;
     font-family: 'Arial', sans-serif;
-    max-height: 80vh; 
+    max-height: 80vh;
 }
 
 .table-header {
@@ -47,7 +47,7 @@
 .table-cell.row-header {
     font-weight: bold;
     text-align: left;
-    font-size: 1.2rem;	
+    font-size: 1.2rem;
 }
 
 .table-cell.header {
