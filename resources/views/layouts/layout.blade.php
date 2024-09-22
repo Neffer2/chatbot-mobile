@@ -31,10 +31,20 @@
             <img src="{{ asset('assets/mobil-terpel.png') }}" alt="Logo">
         </div>
         <ul class="nav-list">
-            <li><a href="/">Mis Metas</a></li>
-            <li><a href="#">Ranking</a></li>
-            <li><a href="#">Premios</a></li>
-            <li><a href="#">Catálogos</a></li>
+            @if (Auth::user()->rol_id == 2)
+                <!-- Rol Agente -->
+                <li><a href="/">Home</a></li>
+                <li><a href="#">Vistas por aprobar</a></li>
+                <li><a href="#">Meta global</a></li>
+                <li><a href="#">Reporte zona</a></li>
+                <li><a href="#">Reporte por asesor</a></li>
+            @elseif(Auth::user()->rol_id == 3)
+                <!-- Rol Asesor -->
+                <li><a href="/">Mis Metas</a></li>
+                <li><a href="#">Ranking</a></li>
+                <li><a href="#">Premios</a></li>
+                <li><a href="#">Catálogos</a></li>
+            @endif
             <li><a href="{{ asset('assets/legal/tyc-plan-incentivos-terpel.pdf') }}" target="_blank">Términos y condiciones</a></li>
         </ul>
     </nav>

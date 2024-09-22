@@ -8,16 +8,23 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     public function index(){
-        $rol = Auth::user()->rol_id;
-        
-        if ($rol == 2){
-            return view('agente.index');
-            return view('tyc');
-        }elseif ($rol == 3){
-            return view('asesor.index');
+        $user = Auth::user();
+
+        if (!$user) {
+            return redirect()->route('login');
         }
-        elseif ($rol == 4){
-            return view('backoffice.index');
+
+        $rol = $user->rol_id;
+
+        switch ($rol) {
+            case 2:
+                return view('agente.index');
+            case 3:
+                return view('asesor.index');
+            case 4:
+                return view('backoffice.index');
+            default:
+                return abort(403, 'Acceso no autorizado');
         }
     }
 }
