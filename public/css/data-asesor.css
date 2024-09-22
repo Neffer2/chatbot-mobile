@@ -25,6 +25,7 @@
 @media (max-width: 768px) {
     .data-asesor {
         margin-left: 0;
+        padding: 10px;
     }
 
     .data-item-asesor {

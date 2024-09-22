@@ -169,7 +169,20 @@
     }
 
     .podium {
-        width: 32.375rem;
+        width: 110%;
+    }
+
+    #copa-2 {
+        left: -6%;
+        bottom: 30%;
+    }
+
+    #copa-1 {
+        bottom: 50%;
+    }
+
+    #copa-3 {
+        bottom: 40%;
     }
 
     .ranking-podium {

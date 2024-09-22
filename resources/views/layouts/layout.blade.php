@@ -38,7 +38,7 @@
             <div class="data-item-asesor">Visibilidad: 20</div>
             <div class="data-item-asesor">Frecuencia: 10</div>
             <div class="data-item-asesor">Precio: 10</div>
-            <div class="data-item-asesor">Puntos Acumulados: 10</div>
+            <div class="data-item-asesor">Puntos Acumulados: 150</div>
         </div>
     </div>
     <button class="menu-button" id="menu-button" aria-label="Menu">
@@ -68,6 +68,10 @@
     </nav>
 
     @yield('content')
+
+    <a href="https://wa.me/1234567890" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp whatsapp-icon"></i>
+    </a>
 
     <script>
         document.getElementById('menu-button').addEventListener('click', function() {
