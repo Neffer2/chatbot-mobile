@@ -21,7 +21,7 @@
     align-items: center;
     justify-content: center;
     width: 50%;
-    background-color: #9A0C00;
+    background-color: #EAEAEA;
 }
 
 .login-footer {
@@ -49,19 +49,19 @@
 
 .custom-input {
     background: none;
-    border: 1px solid white;
+    border: 1px solid #000;
     border-radius: 20px;
     padding: 20px;
     width: 100%;
     margin-bottom: 15px;
     margin-top: 10px;
-    color: white;
+    color: #000;
     font-family: 'Arial', sans-serif;
     font-size: 1.3rem;
 }
 
 .custom-input::placeholder {
-    color: white;
+    color: #000;
     opacity: 0.7;
     font-family: 'Arial', sans-serif;
     font-size: 1.2rem;
@@ -108,7 +108,7 @@
 
 .custom-checkbox-text {
     font-family: 'Arial', sans-serif;
-    color: white;
+    color: #000;
     font-size: 1rem;
 }
 

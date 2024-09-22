@@ -20,6 +20,8 @@ Route::get('/', [HomeController::class, 'index'])->middleware('auth');
 
 Route::middleware('auth')->group(function () {
     Route::get('/ranking', [HomeController::class, 'ranking'])->name('ranking');
+    Route::get('/premios', [HomeController::class, 'premios'])->name('premios');
+    Route::get('/catalogos', [HomeController::class, 'catalogos'])->name('catalogos');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

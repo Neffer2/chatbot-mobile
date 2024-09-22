@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/asesor.css">
     <link rel="stylesheet" href="css/agente.css">
+    <link rel="stylesheet" href="css/asesor.css">
+    <link rel="stylesheet" href="css/catalogos.css">
+    <link rel="stylesheet" href="css/data-asesor.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/premios.css">
     <link rel="stylesheet" href="css/ranking.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -25,6 +28,19 @@
             </div>
         </div>
     </header>
+    @if (Auth::user()->rol_id == 3)
+        
+    @endif
+    <div class="">
+        <div class="data-asesor">
+            <div class="data-item-asesor">Cobertura: 60</div>
+            <div class="data-item-asesor">Volumen: 50</div>
+            <div class="data-item-asesor">Visibilidad: 20</div>
+            <div class="data-item-asesor">Frecuencia: 10</div>
+            <div class="data-item-asesor">Precio: 10</div>
+            <div class="data-item-asesor">Puntos Acumulados: 10</div>
+        </div>
+    </div>
     <button class="menu-button" id="menu-button" aria-label="Menu">
         <i class="fas fa-bars"></i>
         <i class="fas fa-times"></i>
@@ -41,11 +57,12 @@
                 <!-- Rol Asesor -->
                 <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="/">Mis Metas</a></li>
                 <li class="{{ request()->is('ranking') ? 'active' : '' }}"><a href="/ranking">Ranking</a></li>
-                <li class="{{ request()->is('premios') ? 'active' : '' }}"><a href="#">Premios</a></li>
-                <li class="{{ request()->is('catalogos') ? 'active' : '' }}"><a href="#">Catálogos</a></li>
+                <li class="{{ request()->is('premios') ? 'active' : '' }}"><a href="/premios">Premios</a></li>
+                <li class="{{ request()->is('catalogos') ? 'active' : '' }}"><a href="/catalogos">Catálogos</a></li>
             @endif
             <li class="tyc-link {{ request()->is('assets/legal/tyc-plan-incentivos-terpel.pdf') ? 'active' : '' }}">
-                <a href="{{ asset('assets/legal/tyc-plan-incentivos-terpel.pdf') }}" target="_blank">Términos y condiciones</a>
+                <a href="{{ asset('assets/legal/tyc-plan-incentivos-terpel.pdf') }}" target="_blank">Términos y
+                    condiciones</a>
             </li>
         </ul>
     </nav>

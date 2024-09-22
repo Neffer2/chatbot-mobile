@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\PuntoVenta;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $user = Auth::user();
 
         if (!$user) {
@@ -29,7 +32,8 @@ class HomeController extends Controller
         }
     }
 
-    public function ranking(){
+    public function ranking()
+    {
         $user = Auth::user();
 
         if ($user->rol_id != 3) {
@@ -39,7 +43,32 @@ class HomeController extends Controller
         // Obtener los 10 usuarios con más puntos
         $topUsers = User::orderBy('puntos', 'desc')->take(10)->get();
 
+        // Obtener los puntos de venta
+        $puntosVenta = PuntoVenta::all();
+
         // Pasar los usuarios a la vista
-        return view('asesor.ranking', compact('topUsers'));
+        return view('asesor.ranking', compact('topUsers', 'puntosVenta'));
+    }
+
+    public function premios()
+    {
+        $user = Auth::user();
+
+        if ($user->rol_id != 3) {
+            return redirect('/');
+        }
+
+        // Pasar la vista de premios
+        return view('asesor.premios');
+    }
+
+    public function catalogos(){
+        $user = Auth::user();
+    
+        if ($user->rol_id != 3) {
+            return redirect('/');
+        }
+    
+        return view('asesor.catalogos');
     }
 }

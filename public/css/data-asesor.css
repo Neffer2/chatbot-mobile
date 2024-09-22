@@ -1,0 +1,34 @@
+.data-asesor {
+    display: flex;
+    flex-direction: row; /* Mantener en fila */
+    overflow-x: auto;
+    gap: 10px;
+    padding: 0 20px;
+    margin-left: 150px;
+    margin-top: 20px;
+}
+
+.data-item-asesor {
+    flex: 1 1 0; /* Permitir que los elementos ocupen todo el ancho disponible */
+    white-space: nowrap;
+    border: 2px solid #9A0C00; /* Borde más grueso */
+    padding: 20px;
+    color: #9A0C00;
+    border-radius: 5px; /* Opcional: para bordes redondeados */
+    font-weight: bold;
+    background-color: #fff;
+    text-align: center; /* Centrar el texto */
+    font-size: 1.3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .data-asesor {
+        margin-left: 0;
+    }
+
+    .data-item-asesor {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
