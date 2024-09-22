@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,6 +36,10 @@ class HomeController extends Controller
             return redirect('/');
         }
 
-        return view('asesor.ranking');
+        // Obtener los 10 usuarios con más puntos
+        $topUsers = User::orderBy('puntos', 'desc')->take(10)->get();
+
+        // Pasar los usuarios a la vista
+        return view('asesor.ranking', compact('topUsers'));
     }
 }
