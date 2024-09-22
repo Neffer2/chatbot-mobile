@@ -20,6 +20,7 @@
         <div class="header-content">
             <div class="user-info">
                 {{ Auth::user()->name }} {{ Auth::user()->apellido }}
+                <i class="fas fa-circle-user user-icon"></i>
             </div>
         </div>
     </header>
@@ -29,7 +30,7 @@
     </button>
     <nav class="navbar" id="navbar">
         <div class="logo-container">
-            <a href="/"><img src="{{ asset('assets/mobil-terpel.png') }}" alt="Logo"></a>
+            <img src="{{ asset('assets/mobil-terpel.png') }}" alt="Logo">
         </div>
         <ul class="nav-list">
             @if (Auth::user()->rol_id == 2)
@@ -46,8 +47,9 @@
                 <li class="{{ request()->is('premios') ? 'active' : '' }}"><a href="#">Premios</a></li>
                 <li class="{{ request()->is('catalogos') ? 'active' : '' }}"><a href="#">Catálogos</a></li>
             @endif
-            <li class="tyc-link"><a href="{{ asset('assets/legal/tyc-plan-incentivos-terpel.pdf') }}" target="_blank">Términos y
-                    condiciones</a></li>
+            <li class="tyc-link {{ request()->is('assets/legal/tyc-plan-incentivos-terpel.pdf') ? 'active' : '' }}">
+                <a href="{{ asset('assets/legal/tyc-plan-incentivos-terpel.pdf') }}" target="_blank">Términos y condiciones</a>
+            </li>
         </ul>
     </nav>
 
