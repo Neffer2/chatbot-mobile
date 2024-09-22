@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/ranking.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>Landing</title>
@@ -36,14 +37,10 @@
             @if (Auth::user()->rol_id == 2)
                 <!-- Rol Agente -->
                 <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="/">Home</a></li>
-                <li class="{{ request()->is('vistas-por-aprobar') ? 'active' : '' }}"><a href="#">Vistas por aprobar</a></li>
-                <li class="{{ request()->is('meta-global') ? 'active' : '' }}"><a href="#">Meta global</a></li>
-                <li class="{{ request()->is('reporte-zona') ? 'active' : '' }}"><a href="#">Reporte zona</a></li>
-                <li class="{{ request()->is('reporte-por-asesor') ? 'active' : '' }}"><a href="#">Reporte por asesor</a></li>
             @elseif(Auth::user()->rol_id == 3)
                 <!-- Rol Asesor -->
                 <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="/">Mis Metas</a></li>
-                <li class="{{ request()->is('ranking') ? 'active' : '' }}"><a href="#">Ranking</a></li>
+                <li class="{{ request()->is('ranking') ? 'active' : '' }}"><a href="/ranking">Ranking</a></li>
                 <li class="{{ request()->is('premios') ? 'active' : '' }}"><a href="#">Premios</a></li>
                 <li class="{{ request()->is('catalogos') ? 'active' : '' }}"><a href="#">Catálogos</a></li>
             @endif

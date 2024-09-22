@@ -27,4 +27,14 @@ class HomeController extends Controller
                 return abort(403, 'Acceso no autorizado');
         }
     }
+
+    public function ranking(){
+        $user = Auth::user();
+
+        if ($user->rol_id != 3) {
+            return redirect('/');
+        }
+
+        return view('asesor.ranking');
+    }
 }
