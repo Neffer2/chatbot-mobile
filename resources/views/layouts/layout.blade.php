@@ -18,7 +18,7 @@
     <header class="header">
         <div class="header-content">
             <div class="user-info">
-                <span>{{ Auth::user()->name }} {{ Auth::user()->apellido }}</span>
+                {{ Auth::user()->name }} {{ Auth::user()->apellido }}
             </div>
         </div>
     </header>
@@ -45,7 +45,8 @@
                 <li><a href="#">Premios</a></li>
                 <li><a href="#">Catálogos</a></li>
             @endif
-            <li><a href="{{ asset('assets/legal/tyc-plan-incentivos-terpel.pdf') }}" target="_blank">Términos y condiciones</a></li>
+            <li><a href="{{ asset('assets/legal/tyc-plan-incentivos-terpel.pdf') }}" target="_blank">Términos y
+                    condiciones</a></li>
         </ul>
     </nav>
 
