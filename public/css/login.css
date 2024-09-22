@@ -109,7 +109,7 @@
 .custom-checkbox-text {
     font-family: 'Arial', sans-serif;
     color: white;
-    font-size: 1rem; 
+    font-size: 1rem;
 }
 
 .custom-error ul {
@@ -132,5 +132,19 @@
 
     .form-section {
         flex: 1 1 100%;
+        background-image: url('/assets/plan-choque-bg.jpg');
+        background-size: cover;
+    }
+
+    .login-footer {
+        padding: 0px 20px;
+    }
+
+    .login-footer p {
+        font-size: 1rem;
+    }
+
+    .login-footer img {
+        width: 12rem;
     }
 }
