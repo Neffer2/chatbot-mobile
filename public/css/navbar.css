@@ -64,17 +64,6 @@
     margin-top: auto;
 }
 
-.user-info {
-    display: flex;
-    align-items: center;
-}
-
-.user-info .user-icon {
-    margin-left: 15px;
-    font-size: 1.5rem;
-    color: #9A0C00;
-}
-
 /* Media Query para dispositivos móviles */
 @media (max-width: 768px) {
     .navbar {
