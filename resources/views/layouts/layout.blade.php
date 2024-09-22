@@ -30,7 +30,7 @@
     </button>
     <nav class="navbar" id="navbar">
         <div class="logo-container">
-            <img src="{{ asset('assets/mobil-terpel.png') }}" alt="Logo">
+            <a href="/"><img src="{{ asset('assets/mobil-terpel.png') }}" alt="Logo"></a>
         </div>
         <ul class="nav-list">
             @if (Auth::user()->rol_id == 2)

@@ -17,14 +17,14 @@
                 <div>
                     <x-text-input id="email" class="block mt-1 w-full custom-input" type="email" name="email"
                         :value="old('email')" required autofocus autocomplete="username"
-                        placeholder="{{ __('CORREO') }}" />
+                        placeholder="{{ __('CORREO CORPORATIVO') }}" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2 custom-error" />
                 </div>
             
                 <!-- Password -->
                 <div class="mt-4">
                     <x-text-input id="password" class="block mt-1 w-full custom-input" type="password" name="password"
-                        required autocomplete="current-password" placeholder="{{ __('CONTRASEÑA') }}" />
+                        required autocomplete="current-password" placeholder="{{ __('CÓDIGO DE USUARIO') }}" />
                     <x-input-error :messages="$errors->get('password')" class="mt-2 custom-error" />
                 </div>
             
