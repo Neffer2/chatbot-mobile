@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/tyc.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>Landing</title>
 </head>
@@ -36,7 +35,7 @@
             <li><a href="#">Ranking</a></li>
             <li><a href="#">Premios</a></li>
             <li><a href="#">Catálogos</a></li>
-            <li><a href="/terminos-condiciones">Términos y condiciones</a></li>
+            <li><a href="{{ asset('assets/legal/tyc-plan-incentivos-terpel.pdf') }}" target="_blank">Términos y condiciones</a></li>
         </ul>
     </nav>
 

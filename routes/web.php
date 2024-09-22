@@ -24,8 +24,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/terminos-condiciones', function () {
-    return view('terminos-condiciones');
-})->middleware(['auth', 'verified'])->name('terminos-condiciones');
+// Route::get('/terminos-condiciones', function () {
+//     return view('terminos-condiciones');
+// })->middleware(['auth', 'verified'])->name('terminos-condiciones');
 
 require __DIR__.'/auth.php';

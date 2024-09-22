@@ -10,11 +10,8 @@
     align-items: center;
     transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, opacity 0.3s ease-in-out;
     z-index: 1000;
-    /* Asegura que el navbar esté encima de otros elementos */
     overflow: hidden;
-    /* Oculta el contenido cuando el navbar está cerrado */
     opacity: 1;
-    /* Asegura que el navbar sea visible cuando está abierto */
 }
 
 .logo-container {
@@ -61,14 +58,12 @@
         width: 0;
         transform: translateX(-100%);
         opacity: 0;
-        /* Oculta el contenido cuando el navbar está cerrado */
     }
 
     .navbar.active {
         width: 150px;
         transform: translateX(0);
         opacity: 1;
-        /* Muestra el contenido cuando el navbar está abierto */
     }
 
     .logo-container {
@@ -86,7 +81,8 @@
         padding: 10px;
         cursor: pointer;
         z-index: 1001;
-        /* Asegura que el botón esté encima del navbar */
+        border-radius: 5px;
+        font-size: 1.1rem;
     }
 
     .menu-button .fa-bars {
