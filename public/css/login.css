@@ -5,6 +5,10 @@
     background-size: cover;
 }
 
+.image-section-mov {
+    display: none;
+}
+
 .image-section {
     display: flex;
     align-items: center;
@@ -34,8 +38,7 @@
 }
 
 .login-footer p {
-    font-family: 'BigNoodleTitlingOblique', sans-serif;
-    font-size: 2rem;
+    font-size: 1rem;
     color: #7B7B7B;
 }
 
@@ -107,7 +110,6 @@
 }
 
 .custom-checkbox-text {
-    font-family: 'Arial', sans-serif;
     color: #000;
     font-size: 1rem;
 }
@@ -130,8 +132,21 @@
         display: none;
     }
 
+    .image-section-mov {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .image-section-mov img {
+        width: 80%;
+    }
+
     .form-section {
         flex: 1 1 100%;
+        flex-direction: column;
         background-image: url('/assets/plan-choque-bg.jpg');
         background-size: cover;
     }
@@ -146,5 +161,18 @@
 
     .login-footer img {
         width: 12rem;
+    }
+
+    .custom-input {
+        color: #fff;
+        border: 1px solid #fff;
+    }
+
+    .custom-input::placeholder {
+        color: #fff;
+    }
+
+    .custom-checkbox-text {
+        color: #fff;
     }
 }

@@ -64,6 +64,11 @@
     margin-top: auto;
 }
 
+.terminos-nav {
+    text-decoration: underline !important;
+    font-weight: bold;
+}
+
 /* Media Query para dispositivos móviles */
 @media (max-width: 768px) {
     .navbar {

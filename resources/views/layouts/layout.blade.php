@@ -29,18 +29,18 @@
         </div>
     </header>
     @if (Auth::user()->rol_id == 3)
-        
-    @endif
-    <div class="">
-        <div class="data-asesor">
-            <div class="data-item-asesor">Cobertura: 60</div>
-            <div class="data-item-asesor">Volumen: 50</div>
-            <div class="data-item-asesor">Visibilidad: 20</div>
-            <div class="data-item-asesor">Frecuencia: 10</div>
-            <div class="data-item-asesor">Precio: 10</div>
-            <div class="data-item-asesor">Puntos Acumulados: 150</div>
+        <div class="">
+            <div class="data-asesor">
+                <div class="data-item-asesor">Cobertura: 60</div>
+                <div class="data-item-asesor">Volumen: 50</div>
+                <div class="data-item-asesor">Visibilidad: 20</div>
+                <div class="data-item-asesor">Frecuencia: 10</div>
+                <div class="data-item-asesor">Precio: 10</div>
+                <div class="data-item-asesor puntos-acumulados">Puntos Acumulados: 150</div>
+            </div>
         </div>
-    </div>
+    @endif
+
     <button class="menu-button" id="menu-button" aria-label="Menu">
         <i class="fas fa-bars"></i>
         <i class="fas fa-times"></i>
@@ -56,22 +56,23 @@
             @elseif(Auth::user()->rol_id == 3)
                 <!-- Rol Asesor -->
                 <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="/">Mis Metas</a></li>
-                <li class="{{ request()->is('ranking') ? 'active' : '' }}"><a href="/ranking">Ranking</a></li>
+                <li class="{{ request()->is('ranking') ? 'active' : '' }}"><a href="/ranking">Rankings</a></li>
                 <li class="{{ request()->is('premios') ? 'active' : '' }}"><a href="/premios">Premios</a></li>
                 <li class="{{ request()->is('catalogos') ? 'active' : '' }}"><a href="/catalogos">Catálogos</a></li>
             @endif
             <li class="tyc-link {{ request()->is('assets/legal/tyc-plan-incentivos-terpel.pdf') ? 'active' : '' }}">
-                <a href="{{ asset('assets/legal/tyc-plan-incentivos-terpel.pdf') }}" target="_blank">Términos y
+                <a class="terminos-nav" href="{{ asset('assets/legal/tyc-plan-incentivos-terpel.pdf') }}" target="_blank">Términos y
                     condiciones</a>
             </li>
         </ul>
     </nav>
 
     @yield('content')
-
-    <a href="https://wa.me/1234567890" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp whatsapp-icon"></i>
-    </a>
+    @if (Auth::user()->rol_id == 3)
+        <a href="https://wa.me/573212282774?text=Hola%2C+quiero+hacer+mi+prueba+en+el+Chatbot+Plan+Choque+Visionarios." class="whatsapp-float" target="_blank">
+            <i class="fab fa-whatsapp whatsapp-icon"></i>
+        </a>
+    @endif
 
     <script>
         document.getElementById('menu-button').addEventListener('click', function() {
@@ -80,5 +81,6 @@
         });
     </script>
 </body>
+
 
 </html>

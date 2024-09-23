@@ -2,7 +2,7 @@
 @section('content')
     <div class="main-ranking-container">
         <div class="ranking-title-bar">
-            <h1>Ranking</h1>
+            <h1>Ranking de Asesores</h1>
         </div>
         <div class="ranking-container">
             <div class="ranking-podium-container">
@@ -56,10 +56,10 @@
             </div>
             <div class="ranking-list">
                 {{-- Ranking PDV --}}
-                @foreach ($puntosVenta as $index => $puntoVenta)
+                @foreach ($topPuntosVenta as $index => $topPuntosVenta)
                     <div class="ranking-item {{ $index < 3 ? 'top-three' : 'top-ten' }}">
                         <span class="ranking-position">{{ $index + 1 }}</span>
-                        <span class="ranking-name">{{ $puntoVenta->descripcion }}</span>
+                        <span class="ranking-name">{{ $topPuntosVenta->descripcion }}</span>
                     </div>
                 @endforeach
             </div>

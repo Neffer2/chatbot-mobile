@@ -9,6 +9,11 @@
         <!-- Form Section -->
         <div class="form-section">
             <!-- Session Status -->
+
+            <div class="image-section-mov">
+                <img src="{{ asset('assets/login-plan-choque-text.png') }}" alt="Login Image">
+    
+            </div>
             <x-auth-session-status :status="session('status')" />
 
             <form method="POST" action="{{ route('login') }}">
@@ -54,7 +59,7 @@
         </div>
     </div>
     <div class="login-footer">
-        <p>© MOBIL | TERPEL 2024. TODOS LOS DERECHOS RESERVADOS.</p>
+        <p>© ORGANIZACIÓN TERPEL 2024. TODOS LOS DERECHOS RESERVADOS.</p>
         <img src="{{ asset('assets/mobil-terpel.png') }}" alt="">
     </div>
 </x-guest-layout>
