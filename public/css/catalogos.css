@@ -56,7 +56,6 @@
     width: 200px;
     height: 200px;
     background-color: #fff;
-    border: 2px solid #9A0C00;
     border-radius: 5px;
     margin: 0 auto 20px auto;
     display: flex;
@@ -97,6 +96,7 @@
 @media (max-width: 768px) {
     .main-catalogos-container {
         margin-left: 0;
+        margin-bottom: 40px;
     }
 
     .catalogos-container {
