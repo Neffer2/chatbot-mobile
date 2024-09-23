@@ -21,6 +21,13 @@
     font-size: 1.3rem;
 }
 
+.puntos-acumulados {
+    color: #FFF;
+    background-color: #FF1E0A;
+    border: none;
+    border-radius: 5px;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .data-asesor {
