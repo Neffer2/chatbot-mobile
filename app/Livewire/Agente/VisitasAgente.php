@@ -14,7 +14,7 @@ class VisitasAgente extends Component
     use WithPagination; 
 
     // Models
-    public $documento;
+    public $documento; 
 
     // Useful vars
     public $visitas_user = [];

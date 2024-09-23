@@ -8,7 +8,7 @@
                 <div class="table-cell header"></div>
                 <div class="table-cell header">COBERTURA</div>
                 <div class="table-cell header">VOLUMEN</div>
-                <div class="table-cell header">VISIBILIDAD</div>
+                <div class="table-cell header">VISIBILIDAD</div> 
                 <div class="table-cell header">FRECUENCIA</div>
                 <div class="table-cell header">PRECIO</div>
 

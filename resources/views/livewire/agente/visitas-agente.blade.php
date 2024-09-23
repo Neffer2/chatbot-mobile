@@ -11,7 +11,7 @@
                 <th>Fecha</th>
                 <th>Acciones</th> 
             </tr>
-        </thead>
+        </thead> 
         <tbody>
             @foreach ($visitas as $key => $visita)
                 <tr>
