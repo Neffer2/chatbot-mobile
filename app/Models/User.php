@@ -54,4 +54,39 @@ class User extends Authenticatable
         return $this->hasMany(Visita::class, 'user_id', 'id');
     }
 
+
+    public function puntaje()
+    {
+        return $this->puntos;
+    }
+
+    public function getFrecuencia(){
+        $registro_visita = RegistroVisita::where('user_id', $this->id)->get();
+        $frecuencia = $registro_visita->where('item_meta_id', 1)->count();
+        return $frecuencia;
+    }
+
+    public function getVisibilidad(){
+        $registro_visita = RegistroVisita::where('user_id', $this->id)->get();
+        $visibilidad = $registro_visita->where('item_meta_id', 2)->count();
+        return $visibilidad;
+    }
+
+    public function getVolumen(){
+        $registro_visita = RegistroVisita::where('user_id', $this->id)->get();
+        $volumen = $registro_visita->where('item_meta_id', 3)->count();
+        return $volumen;
+    }
+
+    public function getCobertura(){
+        $registro_visita = RegistroVisita::where('user_id', $this->id)->get();
+        $cobertura = $registro_visita->where('item_meta_id', 4)->count();
+        return $cobertura;
+    }
+
+    public function getPrecio(){
+        $registro_visita = RegistroVisita::where('user_id', $this->id)->get();
+        $precio = $registro_visita->where('item_meta_id', 5)->count();
+        return $precio;
+    }
 }

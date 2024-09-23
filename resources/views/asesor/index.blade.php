@@ -14,19 +14,19 @@
 
                 <!-- Row: Meta -->
                 <div class="table-cell row-header">Meta</div>
-                <div class="table-cell">XXX</div>
-                <div class="table-cell">XXX</div>
-                <div class="table-cell">XXX</div>
-                <div class="table-cell">XXX</div>
-                <div class="table-cell">XXX</div>
+                <div class="table-cell">10</div>
+                <div class="table-cell">15</div>
+                <div class="table-cell">32</div>
+                <div class="table-cell">20</div>
+                <div class="table-cell">5</div>
 
                 <!-- Row: Ejecución -->
                 <div class="table-cell row-header">Ejecución</div>
-                <div class="table-cell">XXX</div>
-                <div class="table-cell">XXX</div>
-                <div class="table-cell">XXX</div>
-                <div class="table-cell">XXX</div>
-                <div class="table-cell">XXX</div>
+                <div class="table-cell">{{ $cobertura }}</div>
+                <div class="table-cell">{{ $volumen }}</div>
+                <div class="table-cell">{{ $visibilidad }}</div>
+                <div class="table-cell">{{ $frecuencia }}</div>
+                <div class="table-cell">{{ $precio }}</div>
 
                 <!-- Row: Ejecución -->
                 <div class="table-cell row-header">Ejecución</div>

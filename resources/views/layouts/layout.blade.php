@@ -31,12 +31,12 @@
     @if (Auth::user()->rol_id == 3)
         <div class="">
             <div class="data-asesor">
-                <div class="data-item-asesor">Cobertura: 60</div>
-                <div class="data-item-asesor">Volumen: 50</div>
-                <div class="data-item-asesor">Visibilidad: 20</div>
-                <div class="data-item-asesor">Frecuencia: 10</div>
-                <div class="data-item-asesor">Precio: 10</div>
-                <div class="data-item-asesor puntos-acumulados">Puntos Acumulados: 150</div>
+                <div class="data-item-asesor">Cobertura: {{ Auth::user()->getCobertura() }}</div>
+                <div class="data-item-asesor">Volumen: {{ Auth::user()->getVolumen() }}</div>
+                <div class="data-item-asesor">Visibilidad: {{ Auth::user()->getVisibilidad() }}</div>
+                <div class="data-item-asesor">Frecuencia: {{ Auth::user()->getFrecuencia() }}</div>
+                <div class="data-item-asesor">Precio: {{ Auth::user()->getPrecio() }}</div>
+                <div class="data-item-asesor puntos-acumulados">Puntos Acumulados: {{ Auth::user()->puntaje() }}</div>
             </div>
         </div>
     @endif

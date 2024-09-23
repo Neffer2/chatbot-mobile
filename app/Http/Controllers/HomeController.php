@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Visita;
+use App\Models\RegistroVisita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,7 +26,7 @@ class HomeController extends Controller
             case 2:
                 return view('agente.index');
             case 3:
-                return view('asesor.index');
+                return view('asesor.index', $this->getMetas($user->id));
             case 4:
                 return view('backoffice.index');
             default:
@@ -47,6 +48,7 @@ class HomeController extends Controller
         // Obtener los puntos de venta
         $topPuntosVenta = Visita::select('pdv_id', DB::raw('count(*) as total_ventas'))
                         ->whereNotNull('foto_factura')
+                        ->where('user_id', $user->id)
                         ->groupBy('pdv_id')
                         ->orderBy('total_ventas', 'desc')
                         ->take(10)
@@ -77,12 +79,29 @@ class HomeController extends Controller
     }
 
     public function catalogos(){
-        $user = Auth::user();
+        $user = Auth::user(); 
     
         if ($user->rol_id != 3) {
             return redirect('/');
         }
     
         return view('asesor.catalogos');
+    }
+
+    public function getMetas($user_id){
+        $registro_visita = RegistroVisita::where('user_id', $user_id)->get();
+        $frecuencia = $registro_visita->where('item_meta_id', 1)->count();
+        $visibilidad = $registro_visita->where('item_meta_id', 2)->count();
+        $volumen = $registro_visita->where('item_meta_id', 3)->count();
+        $cobertura = $registro_visita->where('item_meta_id', 4)->count();
+        $precio = $registro_visita->where('item_meta_id', 5)->count();
+
+        return [
+            'frecuencia' => $frecuencia,
+            'visibilidad' => $visibilidad,
+            'volumen' => $volumen,
+            'cobertura' => $cobertura,  
+            'precio' => $precio
+        ];
     }
 }

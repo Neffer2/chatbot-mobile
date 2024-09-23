@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Hash;
 */
 
 Route::get('/', [HomeController::class, 'index'])->middleware('auth'); 
+Route::get('visitas', function (){
+    return view('agente.visitas'); 
+});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/ranking', [HomeController::class, 'ranking'])->name('ranking');
