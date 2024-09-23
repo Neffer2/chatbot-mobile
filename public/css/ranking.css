@@ -48,6 +48,7 @@
     justify-content: center;
     align-items: flex-end;
     min-height: 400px;
+    margin-top: 50px;
     width: 500px;
 }
 
@@ -63,21 +64,21 @@
 #copa-2 {
     left: 2%;
     /* Más separado hacia la izquierda */
-    bottom: 40%;
+    bottom: 35%;
     /* Más arriba */
 }
 
 #copa-1 {
     left: 50%;
     transform: translateX(-50%);
-    bottom: 60%;
+    bottom: 55%;
     /* Más arriba */
 }
 
 #copa-3 {
     left: 77%;
     /* Más separado hacia la derecha */
-    bottom: 50%;
+    bottom: 45%;
     /* Más arriba */
 }
 
@@ -99,9 +100,17 @@
 .copa span {
     margin-top: 20px;
     font-size: 1.1rem;
+    width: 75px;
     color: #666666;
     font-family: 'Arial', sans-serif;
     font-weight: bold;
+    text-align: center;
+}
+
+.copa .span-puntos-ranking {
+    font-size: 1.05rem;
+    margin-top: 7px;
+    color: #000;
 }
 
 #copa-1 span {
@@ -175,15 +184,15 @@
 
     #copa-2 {
         left: -6%;
-        bottom: 30%;
+        bottom: 25%;
     }
 
     #copa-1 {
-        bottom: 50%;
+        bottom: 45%;
     }
 
     #copa-3 {
-        bottom: 40%;
+        bottom: 35%;
     }
 
     .ranking-podium {

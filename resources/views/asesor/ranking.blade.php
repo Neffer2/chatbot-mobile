@@ -8,16 +8,19 @@
             <div class="ranking-podium-container">
                 <div class="ranking-podium">
                     <div class="copa" id="copa-2">
-                        <img src="{{ asset('assets/Asesor2Copa.png') }}" alt="Asesor 2">
-                        <span>Asesor 2</span>
+                        <img src="{{ asset('assets/Asesor2Copa.png') }}" alt="{{ $topUsers[1]->name }}">
+                        <span>{{ $topUsers[1]->name }} {{ $topUsers[1]->apellido }}</span>
+                        <span class="span-puntos-ranking">{{ $topUsers[1]->puntos }}</span>
                     </div>
                     <div class="copa" id="copa-1">
-                        <img src="{{ asset('assets/Asesor1Copa.png') }}" alt="Asesor 1">
-                        <span>Asesor 1</span>
+                        <img src="{{ asset('assets/Asesor1Copa.png') }}" alt="{{ $topUsers[0]->name }}">
+                        <span>{{ $topUsers[0]->name }} {{ $topUsers[0]->apellido }}</span>
+                        <span class="span-puntos-ranking">{{ $topUsers[0]->puntos }}</span>
                     </div>
                     <div class="copa" id="copa-3">
-                        <img src="{{ asset('assets/Asesor3Copa.png') }}" alt="Asesor 3">
-                        <span>Asesor 3</span>
+                        <img src="{{ asset('assets/Asesor3Copa.png') }}" alt="{{ $topUsers[2]->name }}">
+                        <span>{{ $topUsers[2]->name }} {{ $topUsers[2]->apellido }}</span>
+                        <span class="span-puntos-ranking">{{ $topUsers[2]->puntos }}</span>
                     </div>
                     <img src="{{ asset('assets/ranking-podium.png') }}" alt="Podio" class="podium">
                 </div>
