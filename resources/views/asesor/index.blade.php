@@ -44,5 +44,14 @@
                 <div class="table-cell">%</div>
             </div>
         </div>
+        <div class="ranking-link-container">
+            <a href="{{ url('/ranking') }}">
+                <img src="{{ asset('assets/ranking-asesores.png') }}" alt="Ranking Asesores" class="ranking-link-image">
+            </a>
+            <a href="{{ url('/ranking') }}">
+                <img src="{{ asset('assets/ranking-pdv.png') }}" alt="Ranking PDV" class="ranking-link-image">
+            </a>
+        </div>
+
     </div>
 @endsection
