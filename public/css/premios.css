@@ -150,4 +150,9 @@
         width: 300px;
         height: 300px;
     }
+    
+    .instrucciones-container {
+        margin-bottom: 50px;
+    }
+
 }

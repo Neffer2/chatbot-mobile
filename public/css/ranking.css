@@ -161,6 +161,7 @@
 
     .ranking-container {
         flex-direction: column;
+        margin-bottom: 40px;
     }
 
     .ranking-podium-container {
