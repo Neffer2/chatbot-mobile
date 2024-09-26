@@ -24,15 +24,15 @@
     <header class="header">
         <div class="header-content">
             <div class="user-info">
-                {{ Auth::user()->name }} {{ Auth::user()->apellido }} - 
+                {{ Auth::user()->name }} {{ Auth::user()->apellido }}  
                 @if (Auth::user()->rol_id == 2)
-                    {{ Auth::user()->empresa_id == 1 ? 'RYR' : 'Cia Lubricantes' }}
+                    ({{ Auth::user()->empresa_id == 1 ? 'RYR' : 'Cia Lubricantes' }})
                     
                 @endif
                 <i class="fas fa-circle-user user-icon"></i>
             </div>
         </div>
-    </header>
+    </header>    
     @if (Auth::user()->rol_id == 3)
         <div class="">
             <div class="data-asesor">
@@ -58,7 +58,7 @@
             @if (Auth::user()->rol_id == 2)
                 <!-- Rol Agente -->
                 <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="/">Home</a></li>
-                <li class="{{ request()->is('visitas') ? 'active' : '' }}"><a href="/visitas">Visitas</a></li>
+                {{-- <li class="{{ request()->is('visitas') ? 'active' : '' }}"><a href="/visitas">Visitas</a></li> --}}
             @elseif(Auth::user()->rol_id == 3)
                 <!-- Rol Asesor -->
                 <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="/">Mis Metas</a></li>
