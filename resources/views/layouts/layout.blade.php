@@ -24,7 +24,11 @@
     <header class="header">
         <div class="header-content">
             <div class="user-info">
-                {{ Auth::user()->name }} {{ Auth::user()->apellido }}
+                {{ Auth::user()->name }} {{ Auth::user()->apellido }} - 
+                @if (Auth::user()->rol_id == 2)
+                    {{ Auth::user()->empresa_id == 1 ? 'RYR' : 'Cia Lubricantes' }}
+                    
+                @endif
                 <i class="fas fa-circle-user user-icon"></i>
             </div>
         </div>
