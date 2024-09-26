@@ -7,7 +7,6 @@ use App\Models\Visita;
 use App\Models\RegistroVisita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -23,6 +22,7 @@ class HomeController extends Controller
         $rol = $user->rol_id;
 
         switch ($rol) {
+            case 1:
             case 2:
                 return view('agente.index');
             case 3:
@@ -37,14 +37,17 @@ class HomeController extends Controller
     public function ranking()
     {
         $user = Auth::user();
-
+    
         if ($user->rol_id != 3) {
             return redirect('/');
         }
-
-        // Obtener los 10 usuarios con más puntos
-        $topUsers = User::orderBy('puntos', 'desc')->take(10)->get();
-
+    
+        // Obtener los 10 usuarios con más puntos filtrados por empresa_id
+        $topUsers = User::where('empresa_id', $user->empresa_id)
+                        ->orderBy('puntos', 'desc')
+                        ->take(10)
+                        ->get();
+    
         // Obtener los puntos de venta
         $topPuntosVenta = Visita::select('pdv_id', DB::raw('count(*) as total_ventas'))
                         ->whereNotNull('foto_factura')
@@ -56,12 +59,12 @@ class HomeController extends Controller
                             $query->select('id', 'descripcion');
                         }])
                         ->get();
-
+    
         // Añadir la descripción del punto de venta a cada resultado
         $topPuntosVenta->each(function ($visita) {
             $visita->descripcion = $visita->puntoVenta->descripcion ?? 'N/A';
         });
-
+    
         // Pasar los usuarios a la vista
         return view('asesor.ranking', compact('topUsers', 'topPuntosVenta'));
     }
@@ -92,7 +95,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
 
-        if ($user->rol_id != 2) {
+        if ($user->rol_id != 1 && $user->rol_id != 2) {
             return redirect('/');
         }
 

@@ -24,15 +24,19 @@
     <header class="header">
         <div class="header-content">
             <div class="user-info">
-                {{ Auth::user()->name }} {{ Auth::user()->apellido }}  
-                @if (Auth::user()->rol_id == 2)
-                    ({{ Auth::user()->empresa_id == 1 ? 'RYR' : 'Cia Lubricantes' }})
-                    
+                {{ Auth::user()->name }} {{ Auth::user()->apellido }}
+                @if (Auth::user()->rol_id == 2 || Auth::user()->rol_id == 1)
+                    @if (Auth::user()->rol_id == 1)
+                        (Organización Terpel)
+                    @else
+                        ({{ Auth::user()->empresa_id == 1 ? 'RYR' : 'Cia Lubricantes' }})
+                    @endif
+
                 @endif
                 <i class="fas fa-circle-user user-icon"></i>
             </div>
         </div>
-    </header>    
+    </header>
     @if (Auth::user()->rol_id == 3)
         <div class="">
             <div class="data-asesor">
@@ -55,10 +59,11 @@
             <a href="/"><img src="{{ asset('assets/mobil-terpel.png') }}" alt="Logo"></a>
         </div>
         <ul class="nav-list">
-            @if (Auth::user()->rol_id == 2)
+            @if (Auth::user()->rol_id == 2 || Auth::user()->rol_id == 1)
                 <!-- Rol Agente -->
                 <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="/">Home</a></li>
-                <li class="{{ request()->is('visitas') ? 'active' : '' }}"><a href="/visitas">Visitas</a></li>
+                <li class="{{ request()->is('visitas') ? 'active' : '' }}"><a href="/visitas">Ventas por aprobar</a>
+                </li>
             @elseif(Auth::user()->rol_id == 3)
                 <!-- Rol Asesor -->
                 <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="/">Mis Metas</a></li>
@@ -76,7 +81,8 @@
 
     @yield('content')
     @if (Auth::user()->rol_id == 3)
-        <a href="https://wa.me/573212282774?text=Hola%2C+quiero+hacer+mi+prueba+en+el+Chatbot+Plan+Choque+Visionarios." class="whatsapp-float" target="_blank">
+        <a href="https://wa.me/573212282774?text=Hola%2C+quiero+hacer+mi+prueba+en+el+Chatbot+Plan+Choque+Visionarios."
+            class="whatsapp-float" target="_blank">
             <i class="fab fa-whatsapp whatsapp-icon"></i>
         </a>
     @endif
