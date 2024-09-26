@@ -66,8 +66,9 @@
                 <li class="{{ request()->is('premios') ? 'active' : '' }}"><a href="/premios">Premios</a></li>
                 <li class="{{ request()->is('catalogos') ? 'active' : '' }}"><a href="/catalogos">Catálogos</a></li>
             @endif
+            {{-- Terminos y Condiciones --}}
             <li class="tyc-link {{ request()->is('assets/legal/tyc-plan-incentivos-terpel.pdf') ? 'active' : '' }}">
-                <a class="terminos-nav" href="{{ asset('assets/legal/tyc-plan-incentivos-terpel.pdf') }}" target="_blank">Términos y
+                <a class="terminos-nav" href="{{ asset('') }}" target="_blank">Términos y
                     condiciones</a>
             </li>
         </ul>
