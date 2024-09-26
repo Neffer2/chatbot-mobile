@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/premios.css">
     <link rel="stylesheet" href="css/ranking.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/visitas.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>Plan Choque Visionarios</title>
 </head>
@@ -53,6 +54,7 @@
             @if (Auth::user()->rol_id == 2)
                 <!-- Rol Agente -->
                 <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="/">Home</a></li>
+                <li class="{{ request()->is('visitas') ? 'active' : '' }}"><a href="/visitas">Visitas</a></li>
             @elseif(Auth::user()->rol_id == 3)
                 <!-- Rol Asesor -->
                 <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="/">Mis Metas</a></li>

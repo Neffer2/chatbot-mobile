@@ -1,0 +1,122 @@
+.main-visitas-container {
+    margin-left: 150px;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #e0dddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #9A0C00;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.visitas-table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+
+.visitas-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+.visitas-table th, .visitas-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.visitas-table th {
+    background-color: #9A0C00;
+    color: white;
+}
+
+.visitas-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.visitas-table tr:hover {
+    background-color: #ddd;
+}
+
+.visitas-table img {
+    max-height: 100px;
+    border-radius: 5px;
+}
+
+.url-truncate {
+    display: inline-block;
+    max-width: 150px; /* Adjust the width as needed */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+
+.btn-approve, .btn-reject, .btn-search {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-approve {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-approve:hover {
+    background-color: #218838;
+}
+
+.btn-reject {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-reject:hover {
+    background-color: #c82333;
+}
+
+.btn-search {
+    background-color: #666666;
+    color: white;
+    margin-left: 10px;
+}
+
+.btn-search:hover {
+    background-color: #0069d9;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 100px;
+}
+
+.search-container input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 200px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-visitas-container {
+        margin-left: 0;
+    }
+}

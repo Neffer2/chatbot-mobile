@@ -88,6 +88,18 @@ class HomeController extends Controller
         return view('asesor.catalogos');
     }
 
+    public function visitas()
+    {
+        $user = Auth::user();
+
+        if ($user->rol_id != 2) {
+            return redirect('/');
+        }
+
+        // Pasar la vista de visitas
+        return view('agente.visitas');
+    }
+
     public function getMetas($user_id){
         $registro_visita = RegistroVisita::where('user_id', $user_id)->get();
         $frecuencia = $registro_visita->where('item_meta_id', 1)->count();
