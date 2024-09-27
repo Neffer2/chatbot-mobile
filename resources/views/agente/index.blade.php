@@ -18,7 +18,7 @@
                 frameborder="0" allowFullScreen="true"></iframe>
         @elseif (Auth::user()->empresa_id == 3)
             {{-- Ludelpa --}}
-            <h1>BI LUDELPA</h1>
+            <h1>Cargando...</h1>
         @endif
     </div>
 @endsection
