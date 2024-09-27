@@ -14,11 +14,11 @@
 
                 <!-- Row: Meta -->
                 <div class="table-cell row-header">Meta</div>
-                <div class="table-cell">10</div>
-                <div class="table-cell">15</div>
-                <div class="table-cell">32</div>
-                <div class="table-cell">20</div>
-                <div class="table-cell">5</div>
+                <div class="table-cell">{{ $meta_cobertura }}</div>
+                <div class="table-cell">{{ $meta_volumen }}</div>
+                <div class="table-cell">{{ $meta_visibilidad }}</div>
+                <div class="table-cell">{{ $meta_frecuencia }}</div>
+                <div class="table-cell">{{ $meta_precio }}</div>  
 
                 <!-- Row: Ejecución -->
                 <div class="table-cell row-header">Ejecución</div>

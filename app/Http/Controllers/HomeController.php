@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Visita;
 use App\Models\RegistroVisita;
+use App\Models\PuntoVenta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -111,12 +112,26 @@ class HomeController extends Controller
         $cobertura = $registro_visita->where('item_meta_id', 4)->count();
         $precio = $registro_visita->where('item_meta_id', 5)->count();
 
+
+        $meta_pdv = PuntoVenta::where('asesor_id', $user_id)->get();
+        $meta_cobertura = $meta_pdv->count();
+        $meta_volumen = $meta_pdv->count();
+        $meta_visibilidad = $meta_pdv->count() * 9;
+        $meta_frecuencia = $meta_pdv->count() * 9;
+        $meta_precio = $meta_pdv->count();
+
         return [
             'frecuencia' => $frecuencia,
             'visibilidad' => $visibilidad,
             'volumen' => $volumen,
             'cobertura' => $cobertura,  
-            'precio' => $precio
+            'precio' => $precio, 
+
+            'meta_frecuencia' => $meta_frecuencia,  
+            'meta_visibilidad' => $meta_visibilidad,
+            'meta_volumen' => $meta_volumen,
+            'meta_cobertura' => $meta_cobertura,
+            'meta_precio' => $meta_precio
         ];
     }
 }
