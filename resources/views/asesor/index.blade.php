@@ -8,7 +8,7 @@
                 <div class="table-cell header"></div>
                 <div class="table-cell header">COBERTURA</div>
                 <div class="table-cell header">VOLUMEN</div>
-                <div class="table-cell header">VISIBILIDAD</div> 
+                <div class="table-cell header">VISIBILIDAD</div>
                 <div class="table-cell header">FRECUENCIA</div>
                 <div class="table-cell header">PRECIO</div>
 
@@ -18,7 +18,7 @@
                 <div class="table-cell">{{ $meta_volumen }}</div>
                 <div class="table-cell">{{ $meta_visibilidad }}</div>
                 <div class="table-cell">{{ $meta_frecuencia }}</div>
-                <div class="table-cell">{{ $meta_precio }}</div>  
+                <div class="table-cell">{{ $meta_precio }}</div>
 
                 <!-- Row: Ejecución -->
                 <div class="table-cell row-header">Ejecución</div>
@@ -28,20 +28,47 @@
                 <div class="table-cell">{{ $frecuencia }}</div>
                 <div class="table-cell">{{ $precio }}</div>
 
-                <!-- Row: Ejecución -->
-                {{-- <div class="table-cell row-header">Ejecución</div>
-                <div class="table-cell">-</div>
-                <div class="table-cell">-</div>
-                <div class="table-cell">-</div>
-                <div class="table-cell">-</div>
-                <div class="table-cell">-</div>
+                <!-- Row: Porcentaje Ejecución -->
+                <div class="table-cell row-header">Porcentaje Ej</div>
+                <div class="table-cell">
+                    <div class="progress-bar">
+                        <div class="progress"
+                            style="width: {{ $meta_cobertura > 0 ? ($cobertura / $meta_cobertura) * 100 : 0 }}%;"></div>
+                    </div>
+                </div>
+                <div class="table-cell">
+                    <div class="progress-bar">
+                        <div class="progress"
+                            style="width: {{ $meta_volumen > 0 ? ($volumen / $meta_volumen) * 100 : 0 }}%;"></div>
+                    </div>
+                </div>
+                <div class="table-cell">
+                    <div class="progress-bar">
+                        <div class="progress"
+                            style="width: {{ $meta_visibilidad > 0 ? ($visibilidad / $meta_visibilidad) * 100 : 0 }}%;">
+                        </div>
+                    </div>
+                </div>
+                <div class="table-cell">
+                    <div class="progress-bar">
+                        <div class="progress"
+                            style="width: {{ $meta_frecuencia > 0 ? ($frecuencia / $meta_frecuencia) * 100 : 0 }}%;">
+                        </div>
+                    </div>
+                </div>
+                <div class="table-cell">
+                    <div class="progress-bar">
+                        <div class="progress"
+                            style="width: {{ $meta_precio > 0 ? ($precio / $meta_precio) * 100 : 0 }}%;"></div>
+                    </div>
+                </div>
 
                 <div class="table-cell row-header"></div>
                 <div class="table-cell">%</div>
                 <div class="table-cell">%</div>
                 <div class="table-cell">%</div>
                 <div class="table-cell">%</div>
-                <div class="table-cell">%</div> --}}
+                <div class="table-cell">%</div>
             </div>
         </div>
         <div class="ranking-link-container">
