@@ -29,7 +29,7 @@
                 <div class="table-cell">{{ $precio }}</div>
 
                 <!-- Row: Porcentaje Ejecución -->
-                <div class="table-cell row-header">Porcentaje Ej</div>
+                <div class="table-cell row-header">Porcentaje Ejecución</div>
                 <div class="table-cell">
                     <div class="progress-bar">
                         <div class="progress"
