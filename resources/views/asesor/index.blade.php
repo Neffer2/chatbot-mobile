@@ -29,7 +29,7 @@
                 <div class="table-cell">{{ $precio }}</div>
 
                 <!-- Row: Ejecución -->
-                <div class="table-cell row-header">Ejecución</div>
+                {{-- <div class="table-cell row-header">Ejecución</div>
                 <div class="table-cell">-</div>
                 <div class="table-cell">-</div>
                 <div class="table-cell">-</div>
@@ -41,7 +41,7 @@
                 <div class="table-cell">%</div>
                 <div class="table-cell">%</div>
                 <div class="table-cell">%</div>
-                <div class="table-cell">%</div>
+                <div class="table-cell">%</div> --}}
             </div>
         </div>
         <div class="ranking-link-container">
