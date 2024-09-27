@@ -29,7 +29,7 @@
                     @if (Auth::user()->rol_id == 1)
                         (Organización Terpel)
                     @else
-                        ({{ Auth::user()->empresa_id == 1 ? 'RYR' : 'Cia Lubricantes' }})
+                    ({{ Auth::user()->empresa_id == 1 ? 'RYR' : (Auth::user()->empresa_id == 2 ? 'Cia Lubricantes' : 'Ludelpa') }})
                     @endif
 
                 @endif

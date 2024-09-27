@@ -16,6 +16,9 @@
             <iframe title="RyR"
                 src="https://app.powerbi.com/view?r=eyJrIjoiZTQ2M2M5M2QtODA4My00NDhhLTg0YWItYjNmZWJlNTcwZmIwIiwidCI6Ijk2OWUxYWZhLTM2YWItNGQ5ZS1iYmM2LWU5Y2U3ZWE0N2U5OSIsImMiOjR9"
                 frameborder="0" allowFullScreen="true"></iframe>
+        @elseif (Auth::user()->empresa_id == 3)
+            {{-- Ludelpa --}}
+            <h1>BI LUDELPA</h1>
         @endif
     </div>
 @endsection
