@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/ranking.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/visitas.css">
+    <link rel="stylesheet" href="css/puntos-venta.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>Plan Choque Visionarios</title>
 </head>
