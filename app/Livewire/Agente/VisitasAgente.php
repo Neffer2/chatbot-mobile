@@ -7,24 +7,25 @@ use Livewire\WithPagination;
 use App\Models\Visita;
 use App\Models\User;
 use App\Models\ItemMeta;
-use App\Models\RegistroVisita; 
- 
-class VisitasAgente extends Component 
+use App\Models\RegistroVisita;
+use Illuminate\Support\Facades\Auth;
+class VisitasAgente extends Component
 {
-    use WithPagination; 
+    use WithPagination;
 
     // Models
-    public $documento; 
+    public $documento;
 
     // Useful vars
     public $visitas_user = [];
 
     public function render()
     {
-        $visitas = Visita::where([
-            ['estado_id', 1],
-            ['estado_id_agente', 2]
-        ])->paginate(15);
+        $user = Auth::user();
+        $visitas = Visita::with('user')->wherehas('user', function($query) use ($user){
+            $query->where('empresa_id', $user->empresa_id);
+        })->where([['estado_id', 1],['estado_id_agente', 2]])->paginate(15);
+
         return view('livewire.agente.visitas-agente', ['visitas' => $visitas]);
     }
 
@@ -45,7 +46,7 @@ class VisitasAgente extends Component
         $this->validate([
             'documento' => 'required'
         ]);
-        
+
         $this->visitas_user = User::where('documento', $this->documento)->first()->visitas->where('estado_id', 1);
     }
 
@@ -57,7 +58,7 @@ class VisitasAgente extends Component
             // Cobertura
             $this->sumPuntos($visita, 4);
             // Volumen
-            $this->sumPuntos($visita, 3); 
+            $this->sumPuntos($visita, 3);
 
             return redirect()->back()->with('success', 'Visita aprobada correctamente.');
         }elseif ($num_vista > 1 && !is_null($visita->foto_factura) && $pdv_inscrito){

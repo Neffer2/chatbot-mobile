@@ -11,7 +11,7 @@ use App\Models\RegistroVisita;
 
 class Visitas extends Component
 {
-    use WithPagination; 
+    use WithPagination;
 
     // Models
     public $documento;
@@ -31,7 +31,6 @@ class Visitas extends Component
         $visita->update();
 
         if ($visita->estado_id == 1){
-        // if (true){
             $this->establecerPuntos($visita);
             return redirect()->back()->with('success', 'Visita aprobada correctamente.');
         }else {
