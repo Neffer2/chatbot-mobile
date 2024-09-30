@@ -29,7 +29,7 @@
                     @if (Auth::user()->rol_id == 1)
                         (Organización Terpel)
                     @else
-                    ({{ Auth::user()->empresa_id == 1 ? 'RYR' : (Auth::user()->empresa_id == 2 ? 'Cia Lubricantes' : 'Ludelpa') }})
+                        ({{ Auth::user()->empresa_id == 1 ? 'RYR' : (Auth::user()->empresa_id == 2 ? 'Cia Lubricantes' : 'Ludelpa') }})
                     @endif
 
                 @endif
@@ -62,8 +62,10 @@
             @if (Auth::user()->rol_id == 2 || Auth::user()->rol_id == 1)
                 <!-- Rol Agente -->
                 <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="/">Home</a></li>
-                <li class="{{ request()->is('visitas') ? 'active' : '' }}"><a href="/visitas">Ventas por aprobar</a>
-                </li>
+                @if (Auth::user()->rol_id == 2)
+                    <li class="{{ request()->is('visitas') ? 'active' : '' }}"><a href="/ventas-aprobar">Ventas por
+                            aprobar</a></li>
+                @endif
             @elseif(Auth::user()->rol_id == 3)
                 <!-- Rol Asesor -->
                 <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="/">Mis Metas</a></li>

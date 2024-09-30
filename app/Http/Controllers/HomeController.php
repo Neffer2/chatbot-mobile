@@ -96,7 +96,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
 
-        if ($user->rol_id != 1 && $user->rol_id != 2) {
+        if ($user->rol_id != 2) {
             return redirect('/');
         }
 
