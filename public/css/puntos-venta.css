@@ -15,14 +15,14 @@
 }
 
 
-.table-puntos {
+.table-puntos-venta {
     width: 90%;
     border-collapse: collapse;
     margin-bottom: 20px;
     text-transform: capitalize;
 }
 
-.table-puntos th, .table-puntos td {
+.table-puntos-venta th, .table-puntos-venta td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
@@ -30,21 +30,21 @@
 
 }
 
-.table-puntos th {
+.table-puntos-venta th {
     background-color: #f2f2f2;
     color: #333;
     text-transform: capitalize;
 }
 
-.table-puntos tr:nth-child(even) {
+.table-puntos-venta tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-.table-puntos tr:nth-child(odd) {
+.table-puntos-venta tr:nth-child(odd) {
     background-color: #fff;
 }
 
-.table-puntos-puntos tr:hover {
+.table-puntos-venta-puntos tr:hover {
     background-color: #ddd;
 }
 
@@ -60,24 +60,24 @@
         font-size: 20px;
     }
 
-    .table-puntos {
+    .table-puntos-venta {
         width: 95%;
     }
 
-    .table-puntos th, .table-puntos td {
+    .table-puntos-venta th, .table-puntos-venta td {
         padding: 5px;
     }
 
-    .table-puntos th {
+    .table-puntos-venta th {
         font-size: 8px;
 
     }
 
-    .table-puntos tr {
+    .table-puntos-venta tr {
         font-size: 8px;
     }
 
-    .table-puntos tr:nth-child(even) {
+    .table-puntos-venta tr:nth-child(even) {
         background-color: #fff;
     }
 

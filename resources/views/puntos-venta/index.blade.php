@@ -13,7 +13,7 @@
 <body>
     <div class="container-puntos-venta">
         <h2>Puntos de Venta</h2>
-        <table class="table-puntos">
+        <table class="table-puntos-venta">
             <thead>
                 <tr>
                     <th>Descripción</th>
