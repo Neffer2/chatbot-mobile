@@ -84,13 +84,7 @@
     background-color: #e01a08;
 }
 
-.ia-button-container {
-    margin-top: 40px;
-    text-align: center;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
+
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -106,7 +100,4 @@
         justify-content: center;
     }
 
-    .ia-button-container {
-        margin-top: 20px;
-    }
 }

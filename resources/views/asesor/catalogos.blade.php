@@ -42,9 +42,6 @@
                 </div>
                 <a href="{{ asset('assets/cat_refrigerantes.pdf') }}" class="catalogo-button" download>Descargar</a>
             </div>
-            <div class="ia-button-container">
-                <button class="ia-button">Interactúa con la inteligencia artificial</button>
-            </div>
         </div>
 
         
