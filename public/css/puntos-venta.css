@@ -1,0 +1,73 @@
+.container-puntos-venta {
+    margin-top: 20px;
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-puntos-venta h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #9A0C00;
+}
+
+
+.table {
+    width: 90%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    text-transform: capitalize;
+
+}
+
+.table th {
+    background-color: #f2f2f2;
+    color: #333;
+    text-transform: capitalize;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table tr:hover {
+    background-color: #ddd;
+}
+
+/* Media query */
+
+@media (max-width: 768px) {
+
+    .table {
+        width: 90%;
+    }
+
+    .table th, .table td {
+        padding: 5px;
+    }
+
+    .table th {
+        font-size: 10px;
+
+    }
+
+    .table tr {
+        font-size: 10px;
+    }
+
+    .table tr:nth-child(even) {
+        background-color: #fff;
+    }
+
+
+}

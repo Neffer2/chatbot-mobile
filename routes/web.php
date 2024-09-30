@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PuntosVentaController;
 use Illuminate\Support\Facades\Hash;
 
 /*
@@ -35,5 +36,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/terminos-condiciones', function () {
     return view('terminos-condiciones');
 })->middleware(['auth', 'verified'])->name('terminos-condiciones');
+
+Route::get('/puntos-venta', [PuntosVentaController::class, 'index'])->name('puntos-venta');
 
 require __DIR__.'/auth.php';
