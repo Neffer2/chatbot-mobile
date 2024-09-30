@@ -50,7 +50,7 @@
                 <div class="premio-item">
                     <h2>Tarjetas de regalo</h2>
                     <div class="premio-image-container">
-                        <img src="{{ asset('assets/premios/premio_bonos_spotify_netflix.png') }}" alt="Tarjetas de regalo"
+                        <img src="{{ asset('assets/premios/premio_bonos_ns.png') }}" alt="Tarjetas de regalo"
                             class="premio-image">
                     </div>
                     <p>XXX Puntos</p>
