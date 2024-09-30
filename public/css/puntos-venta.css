@@ -15,14 +15,14 @@
 }
 
 
-.table {
+.table-puntos {
     width: 90%;
     border-collapse: collapse;
     margin-bottom: 20px;
     text-transform: capitalize;
 }
 
-.table th, .table td {
+.table-puntos th, .table-puntos td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
@@ -30,21 +30,21 @@
 
 }
 
-.table th {
+.table-puntos th {
     background-color: #f2f2f2;
     color: #333;
     text-transform: capitalize;
 }
 
-.table tr:nth-child(even) {
+.table-puntos tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-.table tr:nth-child(odd) {
+.table-puntos tr:nth-child(odd) {
     background-color: #fff;
 }
 
-.table tr:hover {
+.table-puntos-puntos tr:hover {
     background-color: #ddd;
 }
 
@@ -60,24 +60,24 @@
         font-size: 20px;
     }
 
-    .table {
+    .table-puntos {
         width: 95%;
     }
 
-    .table th, .table td {
+    .table-puntos th, .table-puntos td {
         padding: 5px;
     }
 
-    .table th {
+    .table-puntos th {
         font-size: 8px;
 
     }
 
-    .table tr {
+    .table-puntos tr {
         font-size: 8px;
     }
 
-    .table tr:nth-child(even) {
+    .table-puntos tr:nth-child(even) {
         background-color: #fff;
     }
 
