@@ -18,7 +18,9 @@
                 frameborder="0" allowFullScreen="true"></iframe>
         @elseif (Auth::user()->empresa_id == 3)
             {{-- Ludelpa --}}
-            <h1>Cargando...</h1>
+            <iframe title="Ludelpa"
+                src="https://app.powerbi.com/view?r=eyJrIjoiYzM5YmViZjAtZmM0Yi00MGNhLWFlZDUtOWUxMTg0NDlmMjFhIiwidCI6Ijk2OWUxYWZhLTM2YWItNGQ5ZS1iYmM2LWU5Y2U3ZWE0N2U5OSIsImMiOjR9"
+                frameborder="0" allowFullScreen="true"></iframe>
         @endif
     </div>
 @endsection
