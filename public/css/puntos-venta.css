@@ -53,7 +53,7 @@
 @media (max-width: 768px) {
 
     .container-puntos-venta {
-        padding: 5px;
+        padding: 15px;
     }
 
     .container-puntos-venta h2 {
@@ -61,7 +61,7 @@
     }
 
     .table {
-        width: 100%;
+        width: 95%;
     }
 
     .table th, .table td {
