@@ -86,8 +86,11 @@ class InfoController extends Controller
     public function redimirPremio($user_id, $premio_id, $direccion, $fecha_entrega)
     {
         $user = User::find($user_id);
-        $premio = Premio::find($premio_id);
-
+        $premio = Premio::where([
+            ['premio_id', $premio_id],
+            ['empresa_id', $user->empresa_id]
+        ])->first();
+ 
         if (!$user || !$premio) {
             return response()->json(['Usuario o premio no encontrado'], 404);
         }
@@ -98,7 +101,7 @@ class InfoController extends Controller
 
         if ($premio->stock <= 0) {
             return response()->json(['Stock insuficiente'], 400);
-        }
+        } 
 
         // Restar puntos del usuario y stock del premio
         $user->puntos -= $premio->puntos;

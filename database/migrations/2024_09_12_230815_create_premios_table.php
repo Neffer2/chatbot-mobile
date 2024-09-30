@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('premios', function (Blueprint $table) {
             $table->id();
+            $table->string('premio_id');
             $table->string('nombre');
             $table->integer('stock');
             $table->integer('puntos');
-            $table->unsignedBigInteger('marca_id');
+            $table->foreignId('marca_id');
+            $table->foreign('marca_id')->references('id')->on('marca');
+            $table->foreignId('empresa_id');
+            $table->foreign('empresa_id')->references('id')->on('empresas');
             $table->timestamps();
-
-            // Definir la clave foránea
-            $table->foreign('marca_id')->references('id')->on('marca')->onDelete('cascade');
         });
     }
 
