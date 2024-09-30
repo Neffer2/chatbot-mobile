@@ -40,6 +40,10 @@
     background-color: #f9f9f9;
 }
 
+.table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
 .table tr:hover {
     background-color: #ddd;
 }
@@ -48,8 +52,16 @@
 
 @media (max-width: 768px) {
 
+    .container-puntos-venta {
+        padding: 5px;
+    }
+
+    .container-puntos-venta h2 {
+        font-size: 20px;
+    }
+
     .table {
-        width: 90%;
+        width: 100%;
     }
 
     .table th, .table td {
@@ -57,12 +69,12 @@
     }
 
     .table th {
-        font-size: 10px;
+        font-size: 8px;
 
     }
 
     .table tr {
-        font-size: 10px;
+        font-size: 8px;
     }
 
     .table tr:nth-child(even) {
