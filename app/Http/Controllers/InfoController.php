@@ -9,7 +9,7 @@ use App\Models\Premio;
 use App\Models\Redencion;
 use App\Models\Visita;
 use App\Models\PremiosPdv;
- 
+
 class InfoController extends Controller
 {
     public function getUser($documento)
@@ -90,7 +90,7 @@ class InfoController extends Controller
             ['premio_id', $premio_id],
             ['empresa_id', $user->empresa_id]
         ])->first();
- 
+
         if (!$user || !$premio) {
             return response()->json(['Usuario o premio no encontrado'], 404);
         }
@@ -101,7 +101,7 @@ class InfoController extends Controller
 
         if ($premio->stock <= 0) {
             return response()->json(['Stock insuficiente'], 400);
-        } 
+        }
 
         // Restar puntos del usuario y stock del premio
         $user->puntos -= $premio->puntos;
@@ -111,8 +111,8 @@ class InfoController extends Controller
         $premio->save();
 
         Redencion::create([
-            'user_id' => $user_id,
-            'premio_id' => $premio_id,
+            'user_id' => $user->id,
+            'premio_id' => $premio->id,
             'direccion' => $direccion,
             'fecha_entrega' => $fecha_entrega
         ]);
@@ -126,19 +126,19 @@ class InfoController extends Controller
             ['premio_id', $premio_id],
             ['empresa_id', $user->empresa_id]
         ])->first();
-    
+
         if (!$user || !$premio) {
             return response()->json(['Usuario o premio no encontrado'], 404);
         }
-    
+
         if ($user->puntos < $premio->puntos) {
             return response()->json(['Puntos insuficientes'], 400);
         }
-    
+
         if ($premio->stock <= 0) {
             return response()->json(['Stock insuficiente'], 400);
         }
-    
+
         return response()->json(['Ok'], 200);
     }
 
