@@ -45,11 +45,17 @@ class InfoController extends Controller
         }
 
         // Punto de venta inscrito
-        $pdv_inscrito = ($pdv->visitas->where('pdv_inscrito', "Si.")->first()) ? 1 : 0;
+        $pdv_inscrito = ($pdv->visitas->where(
+            ['pdv_inscrito', "Si."],
+            ['estado_id', 1],
+        )->first()) ? 1 : 0;
 
         // Verificar si valor_factura y foto_factura son null
-        $visitas = Visita::where('pdv_id', $pdv->id)
-            ->where('user_id', $user_id)
+        $visitas = Visita::where([
+            ['pdv_id', $pdv->id],
+            ['estado_id', 1],
+            ['user_id', $user_id]
+            ])
             ->get();
 
         $valor_factura_count = 0;
