@@ -7,9 +7,13 @@
                 <th>Usuario</th>
                 <th>PDV Inscrito</th>
                 <th>Punto</th>
+                <th>Referencias</th>
+                <th>Presentaciones</th>
+                <th>Num cajas</th>
                 <th>Foto Punto</th>
                 <th>Foto Factura</th>
                 <th>Foto Precios</th>
+                <th>Valor Factura</th>
                 <th>Fecha</th>
                 <th>Acciones</th>
             </tr>
@@ -26,6 +30,9 @@
                         {{ $visita->pdv_inscrito }}
                     </td>
                     <td>{{ $visita->puntoVenta->descripcion }}</td>
+                    <td>{{ $visita->referencias }}</td>
+                    <td>{{ $visita->presentaciones }}</td>
+                    <td>{{ $visita->num_cajas }}</td>
                     <td>
                         @if ($visita->foto_pop)
                             <a href="{{ $visita->foto_pop }}" target="_blank" class="truncate-link">
@@ -53,6 +60,7 @@
                             N/A
                         @endif
                     </td>
+                    <td>{{ $visita->valor_factura }}</td>
                     <td>{{ $visita->created_at }}</td>
                     <td>
                         <button class="btn-approve" wire:click="cambioEstado({{ $visita->id }}, 1)" wire:confirm="¿Estás seguro de APROBAR esta visita?">Aprobar</button>
