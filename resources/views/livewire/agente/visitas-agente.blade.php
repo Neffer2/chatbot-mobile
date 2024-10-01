@@ -23,9 +23,9 @@
                         </td>
                         <td>{{ $visita->puntoVenta->descripcion }}</td>
                         <td>
-                            @if ($visita->foto_pdv)
-                                <a href="{{ $visita->foto_pdv }}" target="_blank"
-                                    class="url-truncate">{{ $visita->foto_pdv }}</a>
+                            @if ($visita->foto_pop)
+                                <a href="{{ $visita->foto_pop }}" target="_blank"
+                                    class="url-truncate">{{ $visita->foto_pop }}</a>
                             @else
                                 N/A
                             @endif
@@ -63,7 +63,7 @@
                     <th>Visita</th>
                     <th>Punto de venta</th>
                     <th>Foto factura</th>
-                    <th>Foto POP</th>
+                    <th>Foto Punto</th>
                     <th>Foto precios</th>
                     <th>Fecha</th>
                     <th>Estado</th>
