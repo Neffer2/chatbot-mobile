@@ -5,6 +5,7 @@
             <tr>
                 <th>#</th>
                 <th>Usuario</th>
+                <th>PDV Inscrito</th>
                 <th>Punto</th>
                 <th>Foto Punto</th>
                 <th>Foto Factura</th>
@@ -20,6 +21,9 @@
                     <td>
                         {{ $visita->user->name }} <br>
                         {{ $visita->user->documento }}
+                    </td>
+                    <td>
+                        {{ $visita->pdv_inscrito }}
                     </td>
                     <td>{{ $visita->puntoVenta->descripcion }}</td>
                     <td>
