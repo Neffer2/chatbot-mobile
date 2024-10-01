@@ -62,7 +62,9 @@
                 <tr>
                     <th>Visita</th>
                     <th>Punto de venta</th>
-                    <th>Foto punto de venta</th>
+                    <th>Foto factura</th>
+                    <th>Foto POP</th>
+                    <th>Foto precios</th>
                     <th>Fecha</th>
                     <th>Estado</th>
                 </tr>
@@ -73,9 +75,25 @@
                         <td>{{ $visita_user->id }}</td>
                         <td>{{ $visita_user->puntoVenta->descripcion }}</td>
                         <td>
-                            @if ($visita_user->foto_pdv)
-                                <a href="{{ $visita_user->foto_pdv }}" target="_blank"
-                                    class="url-truncate">{{ $visita_user->foto_pdv }}</a>
+                            @if ($visita_user->foto_factura)
+                                <a href="{{ $visita_user->foto_factura }}" target="_blank"
+                                    class="url-truncate">{{ $visita_user->foto_factura }}</a>
+                            @else
+                                N/A
+                            @endif
+                        </td>
+                        <td>
+                            @if ($visita_user->foto_pop)
+                                <a href="{{ $visita_user->foto_pop }}" target="_blank"
+                                    class="url-truncate">{{ $visita_user->foto_pop }}</a>
+                            @else
+                                N/A
+                            @endif
+                        </td>
+                        <td>
+                            @if ($visita_user->foto_precios)
+                                <a href="{{ $visita_user->foto_precios }}" target="_blank"
+                                    class="url-truncate">{{ $visita_user->foto_precios }}</a>
                             @else
                                 N/A
                             @endif

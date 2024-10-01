@@ -12,7 +12,7 @@
                 <div class="catalogo-image-container">
                     <img src="{{ asset('assets/catalogo_plan_pdv.png') }}" alt="Cátalogo plan PDV" class="catalogo-image">
                 </div>
-                <a href="{{ asset('assets/cat_plan_pdv.pdf') }}" class="catalogo-button" download>Descargar</a>
+                <a href="{{ asset('assets/cat_plan_de_incentivos.pdf') }}" class="catalogo-button" download>Descargar</a>
             </div>
             <div class="catalogo-item">
                 <h2>Cátalogo Ultrek</h2>

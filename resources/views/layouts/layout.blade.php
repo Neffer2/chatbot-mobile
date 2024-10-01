@@ -17,6 +17,12 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/visitas.css">
     <link rel="stylesheet" href="css/puntos-venta.css">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="https://portalcolombia.terpel.com/static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="https://portalcolombia.terpel.com/static/favicon-16x16.png">
+    <link rel="icon" href="https://portalcolombia.terpel.com/static/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="https://portalcolombia.terpel.com/static/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>Plan Choque Visionarios</title>
 </head>
