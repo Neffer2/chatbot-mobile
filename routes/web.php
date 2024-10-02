@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PuntosVentaController;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +25,16 @@ Route::get('visitas', function (){
     return view('agente.visitas'); 
 });
 
+
+Route::get('get-content', function (){
+    $url = 'https://storage.googleapis.com/media.landbot.io/572046/customers/419417095/RX3TZ80BYG0E42WYGZP04TZX4TAXSOSP.jpg';
+    $imageContent = file_get_contents($url);
+
+    $path = "public/photos/".Str::uuid().".jpg";
+    Storage::disk('local')->put($path, $imageContent); 
+    
+    dd($path);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/ranking', [HomeController::class, 'ranking'])->name('ranking');
