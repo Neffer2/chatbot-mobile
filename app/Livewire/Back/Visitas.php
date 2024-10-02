@@ -22,7 +22,7 @@ class Visitas extends Component
     public function render()
     {
         $visitas = Visita::where('estado_id', 2)
-            ->orderBy('created_at', 'asc')
+            ->orderBy('created_at', 'desc')
             ->paginate(15);
         return view('livewire.back.visitas', ['visitas' => $visitas]);
     }
