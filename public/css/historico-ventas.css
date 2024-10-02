@@ -8,8 +8,73 @@
     align-items: center;
 }
 
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.9em;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    overflow-x: auto; /* Add horizontal scroll */
+}
+
+.styled-table thead tr {
+    background-color: #9A0C00;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+    border: 1px solid #dddddd;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.styled-table a {
+    color: #001aff;
+    text-decoration: none;
+}
+
+.styled-table a:hover {
+    text-decoration: underline;
+}
+
+.truncate-link {
+    display: inline-block;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+
+/* Responsive Styles */
+
 @media (max-width: 768px) { 
     .main-historico-ventas-container {
         margin-left: 0;
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    .styled-table {
+        font-size: 0.8em; /* Adjust font size for smaller screens */
+        overflow-x: auto; /* Ensure horizontal scroll on smaller screens */
+    }
+
+    .styled-table th,
+    .styled-table td {
+        padding: 8px 10px; /* Adjust padding for smaller screens */
     }
 }
