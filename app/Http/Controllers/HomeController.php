@@ -116,11 +116,11 @@ class HomeController extends Controller
 
 
         $meta_pdv = PuntoVenta::where('asesor_id', $user_id)->get();
-        $meta_cobertura = $meta_pdv->count();
-        $meta_volumen = $meta_pdv->count();
-        $meta_visibilidad = $meta_pdv->count() * 9;
-        $meta_frecuencia = $meta_pdv->count() * 9;
-        $meta_precio = $meta_pdv->count();
+        $meta_cobertura = $meta_pdv->count(); // pdv X 10 puntos cobertura
+        $meta_volumen = $meta_pdv->count(); // pdv x 8 ventas minimas X 15 puntos volumen
+        $meta_visibilidad = $meta_pdv->count() * 9; // pdv x 8 fotos minimas X 20 puntos visibilidad
+        $meta_frecuencia = $meta_pdv->count() * 9; // pdv X 12 (3 meses de visitas semanales) X 25 puntos frecuencia
+        $meta_precio = $meta_pdv->count(); // pdv x ? X 30 puntos precio
 
         return [
             'frecuencia' => $frecuencia,
