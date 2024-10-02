@@ -35,8 +35,11 @@
                     <td>{{ $visita->num_cajas }}</td>
                     <td>
                         @if ($visita->foto_pop)
-                            <a href="{{ asset($visita->foto_pop) }}" target="_blank" class="truncate-link">
-                                {{ asset($visita->foto_pop) }}
+                            @php
+                                $foto_pop_path = str_replace('public/', 'storage/', $visita->foto_pop);
+                            @endphp
+                            <a href="{{ asset($foto_pop_path) }}" target="_blank" class="truncate-link">
+                                {{ asset($foto_pop_path) }}
                             </a>
                         @else
                             N/A
@@ -44,8 +47,11 @@
                     </td>
                     <td>
                         @if ($visita->foto_factura)
-                            <a href="{{ asset($visita->foto_factura) }}" target="_blank" class="truncate-link">
-                                {{ asset($visita->foto_factura) }}
+                            @php
+                                $foto_factura_path = str_replace('public/', 'storage/', $visita->foto_factura);
+                            @endphp
+                            <a href="{{ asset($foto_factura_path) }}" target="_blank" class="truncate-link">
+                                {{ asset($foto_factura_path) }}
                             </a>
                         @else
                             N/A
@@ -53,8 +59,11 @@
                     </td>
                     <td>
                         @if ($visita->foto_precios)
-                            <a href="{{ asset($visita->foto_precios) }}" target="_blank" class="truncate-link">
-                                {{ asset($visita->foto_precios) }}
+                            @php
+                                $foto_precios_path = str_replace('public/', 'storage/', $visita->foto_precios);
+                            @endphp
+                            <a href="{{ asset($foto_precios_path) }}" target="_blank" class="truncate-link">
+                                {{ asset($foto_precios_path) }}
                             </a>
                         @else
                             N/A
@@ -63,8 +72,10 @@
                     <td>{{ $visita->valor_factura }}</td>
                     <td>{{ $visita->created_at }}</td>
                     <td>
-                        <button class="btn-approve" wire:click="cambioEstado({{ $visita->id }}, 1)" wire:confirm="¿Estás seguro de APROBAR esta visita?">Aprobar</button>
-                        <button class="btn-reject" wire:click="cambioEstado({{ $visita->id }}, 3)" wire:confirm="¿Estás seguro de RECHAZAR esta visita?">Rechazar</button>
+                        <button class="btn-approve" wire:click="cambioEstado({{ $visita->id }}, 1)"
+                            wire:confirm="¿Estás seguro de APROBAR esta visita?">Aprobar</button>
+                        <button class="btn-reject" wire:click="cambioEstado({{ $visita->id }}, 3)"
+                            wire:confirm="¿Estás seguro de RECHAZAR esta visita?">Rechazar</button>
                     </td>
                 </tr>
             @endforeach

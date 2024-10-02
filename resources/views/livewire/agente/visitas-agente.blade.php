@@ -24,8 +24,11 @@
                         <td>{{ $visita->puntoVenta->descripcion }}</td>
                         <td>
                             @if ($visita->foto_pop)
-                                <a href="{{ asset($visita->foto_pop) }}" target="_blank" class="url-truncate">
-                                    {{ asset($visita->foto_pop) }}
+                                @php
+                                    $foto_pop_path = str_replace('public/', 'storage/', $visita->foto_pop);
+                                @endphp
+                                <a href="{{ asset($foto_pop_path) }}" target="_blank" class="url-truncate">
+                                    {{ asset($foto_pop_path) }}
                                 </a>
                             @else
                                 N/A
@@ -33,8 +36,11 @@
                         </td>
                         <td>
                             @if ($visita->foto_factura)
-                                <a href="{{ asset($visita->foto_factura) }}" target="_blank" class="url-truncate">
-                                    {{ asset($visita->foto_factura) }}
+                                @php
+                                    $foto_factura_path = str_replace('public/', 'storage/', $visita->foto_factura);
+                                @endphp
+                                <a href="{{ asset($foto_factura_path) }}" target="_blank" class="url-truncate">
+                                    {{ asset($foto_factura_path) }}
                                 </a>
                             @else
                                 N/A
