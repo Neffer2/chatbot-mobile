@@ -24,16 +24,18 @@
                         <td>{{ $visita->puntoVenta->descripcion }}</td>
                         <td>
                             @if ($visita->foto_pop)
-                                <a href="{{ $visita->foto_pop }}" target="_blank"
-                                    class="url-truncate">{{ $visita->foto_pop }}</a>
+                                <a href="{{ asset($visita->foto_pop) }}" target="_blank" class="url-truncate">
+                                    {{ asset($visita->foto_pop) }}
+                                </a>
                             @else
                                 N/A
                             @endif
                         </td>
                         <td>
                             @if ($visita->foto_factura)
-                                <a href="{{ $visita->foto_factura }}" target="_blank"
-                                    class="url-truncate">{{ $visita->foto_factura }}</a>
+                                <a href="{{ asset($visita->foto_factura) }}" target="_blank" class="url-truncate">
+                                    {{ asset($visita->foto_factura) }}
+                                </a>
                             @else
                                 N/A
                             @endif
@@ -76,24 +78,27 @@
                         <td>{{ $visita_user->puntoVenta->descripcion }}</td>
                         <td>
                             @if ($visita_user->foto_factura)
-                                <a href="{{ $visita_user->foto_factura }}" target="_blank"
-                                    class="url-truncate">{{ $visita_user->foto_factura }}</a>
+                                <a href="{{ asset($visita_user->foto_factura) }}" target="_blank" class="url-truncate">
+                                    {{ asset($visita_user->foto_factura) }}
+                                </a>
                             @else
                                 N/A
                             @endif
                         </td>
                         <td>
                             @if ($visita_user->foto_pop)
-                                <a href="{{ $visita_user->foto_pop }}" target="_blank"
-                                    class="url-truncate">{{ $visita_user->foto_pop }}</a>
+                                <a href="{{ asset($visita_user->foto_pop) }}" target="_blank" class="url-truncate">
+                                    {{ asset($visita_user->foto_pop) }}
+                                </a>
                             @else
                                 N/A
                             @endif
                         </td>
                         <td>
                             @if ($visita_user->foto_precios)
-                                <a href="{{ $visita_user->foto_precios }}" target="_blank"
-                                    class="url-truncate">{{ $visita_user->foto_precios }}</a>
+                                <a href="{{ asset($visita_user->foto_precios) }}" target="_blank" class="url-truncate">
+                                    {{ asset($visita_user->foto_precios) }}
+                                </a>
                             @else
                                 N/A
                             @endif

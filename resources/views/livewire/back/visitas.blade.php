@@ -35,8 +35,8 @@
                     <td>{{ $visita->num_cajas }}</td>
                     <td>
                         @if ($visita->foto_pop)
-                            <a href="{{ $visita->foto_pop }}" target="_blank" class="truncate-link">
-                                {{ $visita->foto_pop }}
+                            <a href="{{ asset($visita->foto_pop) }}" target="_blank" class="truncate-link">
+                                {{ asset($visita->foto_pop) }}
                             </a>
                         @else
                             N/A
@@ -44,8 +44,8 @@
                     </td>
                     <td>
                         @if ($visita->foto_factura)
-                            <a href="{{ $visita->foto_factura }}" target="_blank" class="truncate-link">
-                                {{ $visita->foto_factura }}
+                            <a href="{{ asset($visita->foto_factura) }}" target="_blank" class="truncate-link">
+                                {{ asset($visita->foto_factura) }}
                             </a>
                         @else
                             N/A
@@ -53,8 +53,8 @@
                     </td>
                     <td>
                         @if ($visita->foto_precios)
-                            <a href="{{ $visita->foto_precios }}" target="_blank" class="truncate-link">
-                                {{ $visita->foto_precios }}
+                            <a href="{{ asset($visita->foto_precios) }}" target="_blank" class="truncate-link">
+                                {{ asset($visita->foto_precios) }}
                             </a>
                         @else
                             N/A

@@ -17,10 +17,10 @@
                     <tr>
                         <td>{{ $visita->id }}</td>
                         <td>{{ $visita->puntoVenta->descripcion }}</td>
-                        <td>
+                        <<td>
                             @if ($visita->foto_factura)
-                                <a href="{{ $visita->foto_factura }}" target="_blank" class="truncate-link">
-                                    {{ $visita->foto_factura }}
+                                <a href="{{ asset($visita->foto_factura) }}" target="_blank" class="truncate-link">
+                                    {{ asset($visita->foto_factura) }}
                                 </a>
                             @else
                                 N/A
