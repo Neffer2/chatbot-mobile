@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/premios', [HomeController::class, 'premios'])->name('premios');
     Route::get('/catalogos', [HomeController::class, 'catalogos'])->name('catalogos');
     Route::get('/ventas-aprobar', [HomeController::class, 'visitas'])->name('visitas');
+    Route::get('/historico-ventas', [HomeController::class, 'historicoVentas'])->name('historico-ventas');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

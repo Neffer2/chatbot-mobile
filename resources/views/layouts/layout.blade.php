@@ -10,13 +10,14 @@
     <link rel="stylesheet" href="css/catalogos.css">
     <link rel="stylesheet" href="css/data-asesor.css">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/historico-ventas.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/premios.css">
+    <link rel="stylesheet" href="css/puntos-venta.css">
     <link rel="stylesheet" href="css/ranking.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/visitas.css">
-    <link rel="stylesheet" href="css/puntos-venta.css">
     <link rel="icon" type="image/png" sizes="32x32"
         href="https://portalcolombia.terpel.com/static/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16"
@@ -79,6 +80,7 @@
                 <li class="{{ request()->is('ranking') ? 'active' : '' }}"><a href="/ranking">Rankings</a></li>
                 <li class="{{ request()->is('premios') ? 'active' : '' }}"><a href="/premios">Premios</a></li>
                 <li class="{{ request()->is('catalogos') ? 'active' : '' }}"><a href="/catalogos">Catálogos</a></li>
+                <li class="{{ request()->is('historico-ventas') ? 'active' : '' }}"><a href="/historico-ventas">Historico de Ventas</a></li>
             @endif
             {{-- Terminos y Condiciones --}}
             <li class="tyc-link {{ request()->is('assets/legal/tyc-plan-incentivos-terpel.pdf') ? 'active' : '' }}">
