@@ -34,6 +34,8 @@ class Visitas extends Component
             $this->establecerPuntos($visita);
             return redirect()->back()->with('success', 'Visita aprobada correctamente.');
         }else {
+            $visita->estado_id_agente = $estado;
+            $visita->update();
             return redirect()->back()->with('success', 'Visita rechazada correctamente.');
         }
     }
