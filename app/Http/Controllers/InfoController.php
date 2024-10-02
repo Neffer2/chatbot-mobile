@@ -46,28 +46,28 @@ class InfoController extends Controller
             return response()->json(['Punto de venta no encontrado'], 404);
         }
 
-        // Punto de venta inscrito
-        $pdv_inscrito = ($pdv->visitas->where(
-            ['pdv_inscrito', "Si."],
-            ['estado_id', 1],
-            ['estado_id_agente', 1]
-        )->first()) ? 1 : 0;
+        $punto_revision = ($pdv->visitas->where('estado_id', 2)->first()) ? 1 : 0;
+        $punto_revision = ($pdv->visitas->where('estado_id_agente', 2)->first()) ? 1 : 0;
 
-        // Verificar si valor_factura y foto_factura son null
+        // Punto de venta inscrito
+        $pdv_inscrito = ($pdv->visitas
+                        ->where('pdv_inscrito', "Si.")
+                        ->where('estado_id', 1)
+                        ->where('estado_id_agente', 1)->first()) ? 1 : 0;
+
         $visitas = Visita::where([
-            ['pdv_id', $pdv->id],
-            ['estado_id', 1],
-            ['estado_id_agente', 1],
-            ['user_id', $user_id]
-            ])
-            ->get();
+                ['pdv_id', $pdv->id],
+                ['estado_id', 1],
+                ['estado_id_agente', 1],
+                ['user_id', $user_id]
+            ])->get();
 
         $valor_factura_count = 0;
 
         foreach ($visitas as $visita) {
             if (!is_null($visita->valor_factura) && !is_null($visita->foto_factura)) {
                 $valor_factura_count++;
-            }
+            } 
         }
 
         return response()->json([
@@ -75,7 +75,8 @@ class InfoController extends Controller
             'pdv_inscrito' => $pdv_inscrito,
             'descripcion' => $pdv->descripcion,
             'visita' => $visitas->count() + 1,
-            'num_venta' => $valor_factura_count
+            'num_venta' => $valor_factura_count,
+            'punto_revision' => $punto_revision
         ]);
     }
 
