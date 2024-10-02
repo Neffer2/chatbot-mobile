@@ -22,7 +22,6 @@ Route::get('visitas', function (){
     return view('agente.visitas'); 
 });
 
-
 Route::middleware('auth')->group(function () {
     Route::get('/ranking', [HomeController::class, 'ranking'])->name('ranking');
     Route::get('/premios', [HomeController::class, 'premios'])->name('premios');

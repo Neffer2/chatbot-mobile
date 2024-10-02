@@ -9,6 +9,8 @@ use App\Models\Premio;
 use App\Models\Redencion;
 use App\Models\Visita;
 use App\Models\PremiosPdv;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class InfoController extends Controller
 {
@@ -44,28 +46,28 @@ class InfoController extends Controller
             return response()->json(['Punto de venta no encontrado'], 404);
         }
 
-        // Punto de venta inscrito
-        $pdv_inscrito = ($pdv->visitas->where(
-            ['pdv_inscrito', "Si."],
-            ['estado_id', 1],
-            ['estado_id_agente', 1]
-        )->first()) ? 1 : 0;
+        $punto_revision = ($pdv->visitas->where('estado_id', 2)->first()) ? 1 : 0;
+        $punto_revision = ($pdv->visitas->where('estado_id_agente', 2)->first()) ? 1 : 0;
 
-        // Verificar si valor_factura y foto_factura son null
+        // Punto de venta inscrito
+        $pdv_inscrito = ($pdv->visitas
+                        ->where('pdv_inscrito', "Si.")
+                        ->where('estado_id', 1)
+                        ->where('estado_id_agente', 1)->first()) ? 1 : 0;
+
         $visitas = Visita::where([
-            ['pdv_id', $pdv->id],
-            ['estado_id', 1],
-            ['estado_id_agente', 1],
-            ['user_id', $user_id]
-            ])
-            ->get();
+                ['pdv_id', $pdv->id],
+                ['estado_id', 1],
+                ['estado_id_agente', 1],
+                ['user_id', $user_id]
+            ])->get();
 
         $valor_factura_count = 0;
 
         foreach ($visitas as $visita) {
             if (!is_null($visita->valor_factura) && !is_null($visita->foto_factura)) {
                 $valor_factura_count++;
-            }
+            } 
         }
 
         return response()->json([
@@ -73,7 +75,8 @@ class InfoController extends Controller
             'pdv_inscrito' => $pdv_inscrito,
             'descripcion' => $pdv->descripcion,
             'visita' => $visitas->count() + 1,
-            'num_venta' => $valor_factura_count
+            'num_venta' => $valor_factura_count,
+            'punto_revision' => $punto_revision
         ]);
     }
 
@@ -151,24 +154,38 @@ class InfoController extends Controller
     }
 
     public function registrarVisita(Request $request)
-    {
+    {   
+        $foto_pop = (!is_null($request->foto_pop)) ? $this->uploadFile($request->foto_pop) : null;
+        $foto_factura = (!is_null($request->foto_factura)) ? $this->uploadFile($request->foto_factura) : null;
+        $foto_precios = (!is_null($request->foto_precios)) ? $this->uploadFile($request->foto_precios) : null;
+
         $visita = Visita::create([
             'user_id' => $request->user_id,
             'pdv_id' => $request->pdv_id,
-            'foto_pop' => $request->foto_pop,
+            'foto_pop' => $foto_pop,
             'pdv_inscrito' => $request->pdv_inscrito,
             'marca_id' => $request->marca_id,
             'referencias' => $request->referencias,
             'presentaciones' => $request->presentaciones,
             'num_cajas' => $request->num_cajas,
-            'foto_factura' => $request->foto_factura,
-            'foto_precios' => $request->foto_precios,
+            'foto_factura' => $foto_factura,
+            'foto_precios' => $foto_precios,
             'valor_factura' => $request->valor_factura,
             'estado_id' => 2,
             'estado_id_agente' => 2,
         ]);
 
         return response()->json(['message' => 'Visita registrada exitosamente', 'visita' => $visita], 201);
+    }
+
+    public function uploadFile($url){
+        $imageContent = file_get_contents($url);
+
+        // Crea un nombre único para la imagen
+        $path = "public/photos/".Str::uuid().".jpg";
+        Storage::disk('local')->put($path, $imageContent); 
+
+        return $path;
     }
 
     public function getPremioByNumVisita($num_visita)
