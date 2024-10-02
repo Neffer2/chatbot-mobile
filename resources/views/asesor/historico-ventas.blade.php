@@ -13,9 +13,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($visitas as $visita)
+                @foreach ($visitas as $index => $visita)
                     <tr>
-                        <td>{{ $visita->id }}</td>
+                        <td>{{ $index + 1 }}</td>
                         <td>{{ $visita->puntoVenta->descripcion }}</td>
                         <td>
                             @if ($visita->foto_factura)
