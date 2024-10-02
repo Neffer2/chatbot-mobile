@@ -21,26 +21,30 @@ class Visitas extends Component
 
     public function render()
     {
-        $visitas = Visita::where('estado_id', 2)->paginate(15);
+        $visitas = Visita::where('estado_id', 2)
+            ->orderBy('created_at', 'asc')
+            ->paginate(15);
         return view('livewire.back.visitas', ['visitas' => $visitas]);
     }
 
-    public function cambioEstado($visita_id, $estado){
+    public function cambioEstado($visita_id, $estado)
+    {
         $visita = Visita::find($visita_id);
         $visita->estado_id = $estado;
         $visita->update();
 
-        if ($visita->estado_id == 1){
+        if ($visita->estado_id == 1) {
             $this->establecerPuntos($visita);
             return redirect()->back()->with('success', 'Visita aprobada correctamente.');
-        }else {
+        } else {
             $visita->estado_id_agente = $estado;
             $visita->update();
             return redirect()->back()->with('success', 'Visita rechazada correctamente.');
         }
     }
 
-    public function buscar(){
+    public function buscar()
+    {
         $this->validate([
             'documento' => 'required'
         ]);
@@ -49,27 +53,28 @@ class Visitas extends Component
     }
 
     // PUNTOS
-    public function establecerPuntos($visita){
+    public function establecerPuntos($visita)
+    {
         $num_vista = Visita::where([['user_id', $visita->user_id], ['pdv_id', $visita->pdv_id]])->count();
         $pdv_inscrito = (Visita::where([['user_id', $visita->user_id], ['pdv_id', $visita->pdv_id], ['pdv_inscrito', 'Si.']])->first()) ? true : false;
 
-        if (is_null($visita->foto_factura)){
+        if (is_null($visita->foto_factura)) {
             $visita->estado_id_agente = 1;
             $visita->update();
         }
 
         // Primera visita
-        if ($num_vista == 1 && is_null($visita->foto_factura) && $visita->pdv_inscrito == "No."){
+        if ($num_vista == 1 && is_null($visita->foto_factura) && $visita->pdv_inscrito == "No.") {
             // Cobertura
             $this->sumPuntos($visita, 4);
 
             return redirect()->back()->with('success', 'Visita aprobada correctamente.');
         }
         // Visitas 2,3,4
-        elseif ($num_vista > 1 && is_null($visita->foto_factura) && !($pdv_inscrito)){
+        elseif ($num_vista > 1 && is_null($visita->foto_factura) && !($pdv_inscrito)) {
 
             return redirect()->back()->with('success', 'Visita aprobada correctamente.');
-        }elseif ($num_vista > 1 && is_null($visita->foto_factura) && $pdv_inscrito){
+        } elseif ($num_vista > 1 && is_null($visita->foto_factura) && $pdv_inscrito) {
             // Frecuencia
             $this->sumPuntos($visita, 1);
 
@@ -77,7 +82,8 @@ class Visitas extends Component
         }
     }
 
-    public function registroVisita($user_id, $visita_id, $item_meta_id, $puntos){
+    public function registroVisita($user_id, $visita_id, $item_meta_id, $puntos)
+    {
         $registro_visita = new RegistroVisita;
         $registro_visita->user_id = $user_id;
         $registro_visita->visita_id = $visita_id;
@@ -86,7 +92,8 @@ class Visitas extends Component
         $registro_visita->save();
     }
 
-    public function sumPuntos($visita, $item){
+    public function sumPuntos($visita, $item)
+    {
         $items_metas = ItemMeta::all();
         /*
             1 - Frecuencia
