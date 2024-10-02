@@ -74,9 +74,14 @@ class Visitas extends Component
         elseif ($num_vista > 1 && is_null($visita->foto_factura) && !($pdv_inscrito)) {
 
             return redirect()->back()->with('success', 'Visita aprobada correctamente.');
-        } elseif ($num_vista > 1 && is_null($visita->foto_factura) && $pdv_inscrito) {
+        }elseif ($num_vista > 1 && is_null($visita->foto_factura) && $pdv_inscrito && !is_null($visita->foto_pop)) {
             // Frecuencia
             $this->sumPuntos($visita, 1);
+
+            return redirect()->back()->with('success', 'Visita aprobada correctamente.');
+        }elseif ($num_vista > 1 && is_null($visita->foto_factura) && $pdv_inscrito && !is_null($visita->foto_precios)) {
+            // Precios
+            $this->sumPuntos($visita, 5);
 
             return redirect()->back()->with('success', 'Visita aprobada correctamente.');
         }
