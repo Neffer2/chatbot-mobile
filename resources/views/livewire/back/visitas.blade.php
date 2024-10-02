@@ -27,7 +27,7 @@
                         {{ $visita->user->documento }}
                     </td>
                     <td>
-                        {{ $visita->pdv_inscrito }}
+                        {{ $visita->pdv_inscrito ?? 'N/A' }}
                     </td>
                     <td>{{ $visita->puntoVenta->descripcion }}</td>
                     <td>{{ $visita->referencias }}</td>
