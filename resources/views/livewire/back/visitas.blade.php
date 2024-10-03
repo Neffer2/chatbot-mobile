@@ -108,6 +108,7 @@
                 <th>Foto Factura</th>
                 <th>Foto Precios</th>
                 <th>Valor Factura</th>
+                <th>Estados</th>
                 <th>Fecha</th>
             </tr>
         </thead>
@@ -164,9 +165,29 @@
                         @endif
                     </td>
                     <td>{{ $visita->valor_factura }}</td>
+                    <td>
+                        Backoffice:
+                        @if ($visita->estado_id == 1)
+                            Aprobado
+                        @elseif($visita->estado_id == 2)
+                            Revisión
+                        @elseif($visita->estado_id == 3)
+                            Rechazado
+                        @endif
+                        <hr>
+                        Agente:
+                        @if ($visita->estado_id_agente == 1)
+                            Aprobado
+                        @elseif($visita->estado_id_agente == 2)
+                            Revisión
+                        @elseif($visita->estado_id_agente == 3)
+                            Rechazado
+                        @endif
+                    </td>
                     <td>{{ $visita->created_at }}</td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    
 </div>
