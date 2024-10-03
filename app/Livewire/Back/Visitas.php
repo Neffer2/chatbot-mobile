@@ -18,6 +18,7 @@ class Visitas extends Component
 
     // Useful vars
     public $visitas_user = [];
+    public $searchResults = [];
 
     public function render()
     {
@@ -25,6 +26,13 @@ class Visitas extends Component
             ->orderBy('created_at', 'asc')
             ->paginate(15);
         return view('livewire.back.visitas', ['visitas' => $visitas]);
+    }
+
+    public function buscar()
+    {
+        $this->searchResults = Visita::whereHas('user', function ($query) {
+            $query->where('documento', 'like', "%{$this->documento}%");
+        })->get();
     }
 
     public function cambioEstado($visita_id, $estado)
@@ -43,14 +51,14 @@ class Visitas extends Component
         }
     }
 
-    public function buscar()
-    {
-        $this->validate([
-            'documento' => 'required'
-        ]);
+    // public function buscar()
+    // {
+    //     $this->validate([
+    //         'documento' => 'required'
+    //     ]);
 
-        $this->visitas_user = User::where('documento', $this->documento)->first()->visitas->where('estado_id', 1);
-    }
+    //     $this->visitas_user = User::where('documento', $this->documento)->first()->visitas->where('estado_id', 1);
+    // }
 
     // PUNTOS
     public function establecerPuntos($visita)
