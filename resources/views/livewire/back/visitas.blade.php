@@ -5,7 +5,7 @@
     <table class="styled-table">
         <thead>
             <tr>
-                <th>#</th>
+                <th>ID</th>
                 <th>Usuario</th>
                 <th>Telefono</th>
                 <th>PDV Inscrito</th>
@@ -22,9 +22,9 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($visitas as $index => $visita)
+            @foreach ($visitas as $visita)
                 <tr>
-                    <td>{{ $index + 1 }}</td>
+                    <td>{{ $visita->id }}</td>
                     <td>
                         {{ $visita->user->name }} <br>
                         {{ $visita->user->documento }}
@@ -96,7 +96,7 @@
     <table class="styled-table">
         <thead>
             <tr>
-                <th>#</th>
+                <th>ID</th>
                 <th>Usuario</th>
                 <th>Telefono</th>
                 <th>PDV Inscrito</th>
@@ -113,15 +113,15 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($searchResults as $index => $visita)
+            @foreach ($searchResults as $visita)
                 <tr>
-                    <td>{{ $index + 1 }}</td>
+                    <td>{{ $visita->id }}</td>
                     <td>
                         {{ $visita->user->name }} <br>
                         {{ $visita->user->documento }}
                     </td>
                     <td>{{ $visita->user->telefono }}</td>
-                    <td>
+                    <td class="truncate-link">
                         {{ $visita->pdv_inscrito ?? 'N/A' }}
                     </td>
                     <td>{{ $visita->puntoVenta->descripcion }}</td>
