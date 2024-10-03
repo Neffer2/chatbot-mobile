@@ -5,6 +5,7 @@
             <tr>
                 <th>#</th>
                 <th>Usuario</th>
+                <th>Telefono</th>
                 <th>PDV Inscrito</th>
                 <th>Punto</th>
                 <th>Referencias</th>
@@ -26,6 +27,7 @@
                         {{ $visita->user->name }} <br>
                         {{ $visita->user->documento }}
                     </td>
+                    <td>{{ $visita->user->telefono }}</td>
                     <td>
                         {{ $visita->pdv_inscrito ?? 'N/A' }}
                     </td>
