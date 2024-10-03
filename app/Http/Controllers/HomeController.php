@@ -114,7 +114,6 @@ class HomeController extends Controller
         $cobertura = $registro_visita->where('item_meta_id', 4)->count();
         $precio = $registro_visita->where('item_meta_id', 5)->count();
 
-
         $meta_pdv = PuntoVenta::where('asesor_id', $user_id)->get();
         $meta_cobertura = $meta_pdv->count(); // pdv X 10 puntos cobertura
         $meta_volumen = $meta_pdv->count(); // pdv x 8 ventas minimas X 15 puntos volumen
@@ -126,6 +125,8 @@ class HomeController extends Controller
             'frecuencia' => $frecuencia,
             'visibilidad' => $visibilidad,
             'volumen' => $volumen,
+
+
             'cobertura' => $cobertura,
             'precio' => $precio,
 

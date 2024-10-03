@@ -80,8 +80,7 @@ class Visitas extends Component
         }
         // Visitas 2,3,4
         elseif ($num_vista > 1 && is_null($visita->foto_factura) && !($pdv_inscrito)) {
-            // Frecuencia
-            $this->sumPuntos($visita, 1);
+            // NO SUMA PORQUE ES SU SEGUNDA VISITA SIN VENDER PLAN CHOQUE
 
             return redirect()->back()->with('success', 'Visita aprobada correctamente.');
         }elseif ($num_vista > 1 && is_null($visita->foto_factura) && $pdv_inscrito && !is_null($visita->foto_pop)) {
@@ -93,8 +92,9 @@ class Visitas extends Component
 
             return redirect()->back()->with('success', 'Visita aprobada correctamente.');
         }elseif ($num_vista > 1 && is_null($visita->foto_factura) && $pdv_inscrito && !is_null($visita->foto_precios)) {
-            // Precios
+            // Frecuencia
             $this->sumPuntos($visita, 1);
+            // Precios
             $this->sumPuntos($visita, 5);
 
             return redirect()->back()->with('success', 'Visita aprobada correctamente.');
