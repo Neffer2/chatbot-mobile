@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/catalogos.css">
     <link rel="stylesheet" href="css/data-asesor.css">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/historico-registros.css">
     <link rel="stylesheet" href="css/historico-ventas.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/navbar.css">
@@ -80,6 +81,7 @@
                 <li class="{{ request()->is('ranking') ? 'active' : '' }}"><a href="/ranking">Rankings</a></li>
                 <li class="{{ request()->is('premios') ? 'active' : '' }}"><a href="/premios">Premios</a></li>
                 <li class="{{ request()->is('catalogos') ? 'active' : '' }}"><a href="/catalogos">Catálogos</a></li>
+                <li class="{{ request()->is('historico-registros') ? 'active' : '' }}"><a href="/historico-registros">Historico de Registros</a></li>
                 <li class="{{ request()->is('historico-ventas') ? 'active' : '' }}"><a href="/historico-ventas">Historico de Ventas</a></li>
             @endif
             {{-- Terminos y Condiciones --}}

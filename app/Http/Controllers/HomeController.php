@@ -140,6 +140,12 @@ class HomeController extends Controller
 
     public function historicoVentas()
     {
+
+        //Middleware para verificar que el usuario autenticado sea un asesor
+        if (Auth::user()->rol_id != 3) {
+            return redirect('/');
+        }
+
         // Obtener las visitas del usuario autenticado que cumplen con los criterios especificados
         $visitas = Visita::where('user_id', Auth::id())
             ->whereNotNull('foto_factura')
@@ -148,5 +154,19 @@ class HomeController extends Controller
             ->get();
 
         return view('asesor.historico-ventas', compact('visitas'));
+    }
+
+    //Historico de registros
+    public function historicoRegistros()
+    {
+        // Middleware para verificar que el usuario autenticado sea un asesor
+        if (Auth::user()->rol_id != 3) {
+            return redirect('/');
+        }
+
+        // Obtener los registros de visita del usuario autenticado con los datos de la visita
+        $registros = Visita::where('user_id', Auth::id())->get();
+
+        return view('asesor.historico-registros', compact('registros'));
     }
 }
