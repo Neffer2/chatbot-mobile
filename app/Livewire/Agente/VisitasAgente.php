@@ -59,8 +59,6 @@ class VisitasAgente extends Component
             $this->sumPuntos($visita, 4);
             // Volumen
             $this->sumPuntos($visita, 3);
-            // Frecuencia
-            $this->sumPuntos($visita, 1);
 
             return redirect()->back()->with('success', 'Visita aprobada correctamente.');
         }elseif ($num_vista > 1 && !is_null($visita->foto_factura) && $pdv_inscrito){
