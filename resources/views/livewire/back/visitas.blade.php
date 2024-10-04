@@ -18,6 +18,7 @@
                 <th>Foto Precios</th>
                 <th>Valor Factura</th>
                 <th>Fecha</th>
+                <th>Observaciones</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -75,6 +76,9 @@
                     </td>
                     <td>{{ $visita->valor_factura }}</td>
                     <td>{{ $visita->created_at }}</td>
+                    <td>
+                        <input type="text" wire:model.lazy="observacion" placeholder="Escribe observaciones">
+                    </td>
                     <td>
                         <button class="btn-approve" wire:click="cambioEstado({{ $visita->id }}, 1)"
                             wire:confirm="¿Estás seguro de APROBAR esta visita?">Aprobar</button>

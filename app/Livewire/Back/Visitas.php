@@ -14,7 +14,7 @@ class Visitas extends Component
     use WithPagination;
 
     // Models
-    public $documento;
+    public $documento, $observacion;
 
     // Useful vars
     public $visitas_user = [];
@@ -39,8 +39,10 @@ class Visitas extends Component
     {
         $visita = Visita::find($visita_id);
         $visita->estado_id = $estado;
+        $visita->observaciones = $this->observacion;
         $visita->update();
-
+        
+        $this->observacion = '';
         if ($visita->estado_id == 1) {
             $this->establecerPuntos($visita);
             return redirect()->back()->with('success', 'Visita aprobada correctamente.');
@@ -49,6 +51,7 @@ class Visitas extends Component
             $visita->update();
             return redirect()->back()->with('success', 'Visita rechazada correctamente.');
         }
+
     }
 
     // public function buscar()
@@ -83,7 +86,7 @@ class Visitas extends Component
             // NO SUMA PORQUE ES SU SEGUNDA VISITA SIN VENDER PLAN CHOQUE
 
             return redirect()->back()->with('success', 'Visita aprobada correctamente.');
-        }elseif ($num_vista > 1 && is_null($visita->foto_factura) && $pdv_inscrito && !is_null($visita->foto_pop)) {
+        } elseif ($num_vista > 1 && is_null($visita->foto_factura) && $pdv_inscrito && !is_null($visita->foto_pop)) {
             // Frecuencia
             $this->sumPuntos($visita, 1);
             // Visibilidad
@@ -91,7 +94,7 @@ class Visitas extends Component
 
 
             return redirect()->back()->with('success', 'Visita aprobada correctamente.');
-        }elseif ($num_vista > 1 && is_null($visita->foto_factura) && $pdv_inscrito && !is_null($visita->foto_precios)) {
+        } elseif ($num_vista > 1 && is_null($visita->foto_factura) && $pdv_inscrito && !is_null($visita->foto_precios)) {
             // Frecuencia
             $this->sumPuntos($visita, 1);
             // Precios

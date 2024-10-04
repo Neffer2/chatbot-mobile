@@ -70,7 +70,7 @@
                             @endif
                         </td>
                         <td>{{ $visita->valor_factura }}</td>
-                        <td>Observación</td>
+                        <td>{{ $visita->observaciones ?? 'N/A'  }}</td>
                         <td>
                             @php
                                 $estadoFinal = 'Revisión'; // Valor por defecto

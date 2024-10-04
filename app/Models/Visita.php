@@ -22,6 +22,7 @@ class Visita extends Model
         'foto_factura',
         'valor_factura',
         'foto_precios',
+        'observaciones',
         'estado_id',
         'estado_id_agente',
     ];
