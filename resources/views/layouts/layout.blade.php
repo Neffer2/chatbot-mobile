@@ -43,6 +43,7 @@
 
                 @endif
                 <i class="fas fa-circle-user user-icon"></i>
+                <a href="/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
             </div>
         </div>
     </header>

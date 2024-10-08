@@ -28,7 +28,7 @@
     color: #666666;
 }
 
-.user-info .user-icon {
+.user-info .user-icon, .fa-arrow-right-from-bracket {
     margin-left: 15px;
     font-size: 1.5rem;
     color: #9A0C00;
