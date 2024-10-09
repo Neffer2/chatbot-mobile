@@ -46,8 +46,8 @@ class InfoController extends Controller
             return response()->json(['Punto de venta no encontrado'], 404);
         }
 
-        $punto_revision = ($pdv->visitas->where('estado_id', 2)->first()) ? 1 : 0;
-        $punto_revision = ($pdv->visitas->where('estado_id_agente', 2)->first()) ? 1 : 0;
+        $punto_revision = ($punto_revision = $pdv->visitas->where('estado_id', 2)->count() >= 2) ? 1 : 0;
+        $punto_revision = ($punto_revision = $pdv->visitas->where('estado_id_agente', 2)->count() >= 2) ? 1 : 0;
 
         // Punto de venta inscrito
         $pdv_inscrito = ($pdv->visitas
@@ -67,7 +67,7 @@ class InfoController extends Controller
         foreach ($visitas as $visita) {
             if (!is_null($visita->valor_factura) && !is_null($visita->foto_factura)) {
                 $valor_factura_count++;
-            } 
+            }
         }
 
         return response()->json([
@@ -154,7 +154,7 @@ class InfoController extends Controller
     }
 
     public function registrarVisita(Request $request)
-    {   
+    {
         $foto_pop = (!is_null($request->foto_pop)) ? $this->uploadFile($request->foto_pop) : null;
         $foto_factura = (!is_null($request->foto_factura)) ? $this->uploadFile($request->foto_factura) : null;
         $foto_precios = (!is_null($request->foto_precios)) ? $this->uploadFile($request->foto_precios) : null;
@@ -183,7 +183,7 @@ class InfoController extends Controller
 
         // Crea un nombre único para la imagen
         $path = "public/photos/".Str::uuid().".jpg";
-        Storage::disk('local')->put($path, $imageContent); 
+        Storage::disk('local')->put($path, $imageContent);
 
         return $path;
     }
