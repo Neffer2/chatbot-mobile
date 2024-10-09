@@ -6,6 +6,7 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Agente</th>
                 <th>Usuario</th>
                 <th>Telefono</th>
                 <th>PDV Inscrito</th>
@@ -26,6 +27,17 @@
             @foreach ($visitas as $visita)
                 <tr>
                     <td>{{ $visita->id }}</td>
+                    <td>
+                        @if($visita->user->empresa_id == 1)
+                            RYR
+                        @elseif($visita->user->empresa_id == 2)
+                            Cia Lubricantes
+                        @elseif($visita->user->empresa_id == 3)
+                            Ludelpa
+                        @else
+                            Desconocido
+                        @endif
+                    </td>
                     <td>
                         {{ $visita->user->name }} <br>
                         {{ $visita->user->documento }}
