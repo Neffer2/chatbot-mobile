@@ -39,6 +39,8 @@ class HomeController extends Controller
     {
         $user = Auth::user();
 
+        dd($this->getMetas($user->id));
+
         if ($user->rol_id != 1) {
             return redirect('/');
         }
@@ -117,21 +119,26 @@ class HomeController extends Controller
         return view('agente.visitas');
     }
 
-    public function getMetas($user_id)
+    public function getMetas($user_id = null)
     {
-        $registro_visita = RegistroVisita::where('user_id', $user_id)->get();
-        $frecuencia = $registro_visita->where('item_meta_id', 1)->count();
-        $visibilidad = $registro_visita->where('item_meta_id', 2)->count();
-        $volumen = $registro_visita->where('item_meta_id', 3)->count();
-        $cobertura = $registro_visita->where('item_meta_id', 4)->count();
-        $precio = $registro_visita->where('item_meta_id', 5)->count();
+        if ($user_id) {
+            $registro_visita = RegistroVisita::where('user_id', $user_id)->get();
+            $pdv_x_user = PuntoVenta::where('asesor_id', $user_id)->get();
+        }
 
-        $meta_pdv = PuntoVenta::where('asesor_id', $user_id)->get();
-        $meta_cobertura = $meta_pdv->count(); // pdv X 10 puntos cobertura
-        $meta_volumen = $meta_pdv->count(); // pdv x 8 ventas minimas X 15 puntos volumen
-        $meta_visibilidad = $meta_pdv->count() * 9; // pdv x 8 fotos minimas X 20 puntos visibilidad
-        $meta_frecuencia = $meta_pdv->count() * 9; // pdv X 12 (3 meses de visitas semanales) X 25 puntos frecuencia
-        $meta_precio = $meta_pdv->count(); // pdv x ? X 30 puntos precio
+        $registro_visita = RegistroVisita::where('user_id', $user_id)->get();
+        $frecuencia = $registro_visita->where('item_meta_id', 1)->sum('puntos');
+        $visibilidad = $registro_visita->where('item_meta_id', 2)->sum('puntos');
+        $volumen = $registro_visita->where('item_meta_id', 3)->sum('puntos');
+        $cobertura = $registro_visita->where('item_meta_id', 4)->sum('puntos');
+        $precio = $registro_visita->where('item_meta_id', 5)->sum('puntos');
+
+        $pdv_x_user = PuntoVenta::where('asesor_id', $user_id)->get();
+        $meta_cobertura = ($pdv_x_user->count() * 10);
+        $meta_volumen = (($pdv_x_user->sum('vol_prom_mes') + ($pdv_x_user->count() * 4)) * $pdv_x_user->count());
+        $meta_visibilidad = ($pdv_x_user->count() * 20);
+        $meta_frecuencia = ($pdv_x_user->count() * 12) * 25;
+        $meta_precio = ($pdv_x_user->count() * 4) * 30;
 
         return [
             'frecuencia' => $frecuencia,

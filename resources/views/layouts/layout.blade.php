@@ -73,7 +73,7 @@
                 <!-- Rol Agente -->
                 <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="/">Home</a></li>
                 @if (Auth::user()->rol_id == 1)
-                    {{-- <li class="{{ request()->is('metas') ? 'active' : '' }}"><a href="/metas">Metas</a></li> --}}
+                    <li class="{{ request()->is('metas') ? 'active' : '' }}"><a href="/metas">Metas</a></li>
                 @endif
                 @if (Auth::user()->rol_id == 2)
                     <li class="{{ request()->is('visitas') ? 'active' : '' }}"><a href="/ventas-aprobar">Ventas por
