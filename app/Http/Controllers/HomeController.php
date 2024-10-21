@@ -35,6 +35,18 @@ class HomeController extends Controller
         }
     }
 
+    public function metas()
+    {
+        $user = Auth::user();
+
+        if ($user->rol_id != 1) {
+            return redirect('/');
+        }
+
+        // Pasar la vista de metas
+        return view('agente.metas');
+    }
+
     public function ranking()
     {
         $user = Auth::user();
@@ -125,11 +137,8 @@ class HomeController extends Controller
             'frecuencia' => $frecuencia,
             'visibilidad' => $visibilidad,
             'volumen' => $volumen,
-
-
             'cobertura' => $cobertura,
             'precio' => $precio,
-
             'meta_frecuencia' => $meta_frecuencia,
             'meta_visibilidad' => $meta_visibilidad,
             'meta_volumen' => $meta_volumen,
@@ -138,10 +147,8 @@ class HomeController extends Controller
         ];
     }
 
-
     public function historicoVentas()
     {
-
         //Middleware para verificar que el usuario autenticado sea un asesor
         if (Auth::user()->rol_id != 3) {
             return redirect('/');

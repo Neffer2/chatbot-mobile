@@ -23,6 +23,7 @@ Route::get('visitas', function (){
 });
 
 Route::middleware('auth')->group(function () {
+    Route::get('/metas', [HomeController::class, 'metas'])->name('metas');
     Route::get('/ranking', [HomeController::class, 'ranking'])->name('ranking');
     Route::get('/premios', [HomeController::class, 'premios'])->name('premios');
     Route::get('/catalogos', [HomeController::class, 'catalogos'])->name('catalogos');
