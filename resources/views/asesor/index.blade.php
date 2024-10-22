@@ -31,44 +31,52 @@
                 <!-- Row: Porcentaje Ejecución -->
                 <div class="table-cell row-header">Porcentaje Ejecución</div>
                 <div class="table-cell">
+                    @php
+                        $porcentaje_cobertura = $meta_cobertura > 0 ? ($cobertura / $meta_cobertura) * 100 : 0;
+                    @endphp
                     <div class="progress-bar">
-                        <div class="progress"
-                            style="width: {{ $meta_cobertura > 0 ? ($cobertura / $meta_cobertura) * 100 : 0 }}%;"></div>
+                        <div class="progress" style="width: {{ $porcentaje_cobertura }}%;"></div>
                     </div>
                 </div>
                 <div class="table-cell">
+                    @php
+                        $porcentaje_volumen = $meta_volumen > 0 ? ($volumen / $meta_volumen) * 100 : 0;
+                    @endphp
                     <div class="progress-bar">
-                        <div class="progress"
-                            style="width: {{ $meta_volumen > 0 ? ($volumen / $meta_volumen) * 100 : 0 }}%;"></div>
+                        <div class="progress" style="width: {{ $porcentaje_volumen }}%;"></div>
                     </div>
                 </div>
                 <div class="table-cell">
+                    @php
+                        $porcentaje_visibilidad = $meta_visibilidad > 0 ? ($visibilidad / $meta_visibilidad) * 100 : 0;
+                    @endphp
                     <div class="progress-bar">
-                        <div class="progress"
-                            style="width: {{ $meta_visibilidad > 0 ? ($visibilidad / $meta_visibilidad) * 100 : 0 }}%;">
-                        </div>
+                        <div class="progress" style="width: {{ $porcentaje_visibilidad }}%;"></div>
                     </div>
                 </div>
                 <div class="table-cell">
+                    @php
+                        $porcentaje_frecuencia = $meta_frecuencia > 0 ? ($frecuencia / $meta_frecuencia) * 100 : 0;
+                    @endphp
                     <div class="progress-bar">
-                        <div class="progress"
-                            style="width: {{ $meta_frecuencia > 0 ? ($frecuencia / $meta_frecuencia) * 100 : 0 }}%;">
-                        </div>
+                        <div class="progress" style="width: {{ $porcentaje_frecuencia }}%;"></div>
                     </div>
                 </div>
                 <div class="table-cell">
+                    @php
+                        $porcentaje_precio = $meta_precio > 0 ? ($precio / $meta_precio) * 100 : 0;
+                    @endphp
                     <div class="progress-bar">
-                        <div class="progress"
-                            style="width: {{ $meta_precio > 0 ? ($precio / $meta_precio) * 100 : 0 }}%;"></div>
+                        <div class="progress" style="width: {{ $porcentaje_precio }}%;"></div>
                     </div>
                 </div>
 
                 <div class="table-cell row-header"></div>
-                <div class="table-cell">%</div>
-                <div class="table-cell">%</div>
-                <div class="table-cell">%</div>
-                <div class="table-cell">%</div>
-                <div class="table-cell">%</div>
+                <div class="table-cell">{{ round($porcentaje_cobertura, 2) }}%</div>
+                <div class="table-cell">{{ round($porcentaje_volumen, 2) }}%</div>
+                <div class="table-cell">{{ round($porcentaje_visibilidad, 2) }}%</div>
+                <div class="table-cell">{{ round($porcentaje_frecuencia, 2) }}%</div>
+                <div class="table-cell">{{ round($porcentaje_precio, 2) }}%</div>
             </div>
         </div>
         <div class="ranking-link-container">
@@ -79,6 +87,5 @@
                 <img src="{{ asset('assets/ranking-pdv.png') }}" alt="Ranking PDV" class="ranking-link-image">
             </a>
         </div>
-
     </div>
 @endsection

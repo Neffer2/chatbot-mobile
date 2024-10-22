@@ -39,14 +39,24 @@ class HomeController extends Controller
     {
         $user = Auth::user();
 
-        dd($this->getMetas());
-
         if ($user->rol_id != 1) {
             return redirect('/');
         }
 
-        // Pasar la vista de metas
-        return view('agente.metas');
+        $metas = $this->getMetas(); // Llama al método getMetas sin user_id para obtener datos generales
+
+        return view('agente.metas', [
+            'meta_cobertura' => $metas['meta_cobertura'],
+            'meta_volumen' => $metas['meta_volumen'],
+            'meta_visibilidad' => $metas['meta_visibilidad'],
+            'meta_frecuencia' => $metas['meta_frecuencia'],
+            'meta_precio' => $metas['meta_precio'],
+            'cobertura' => $metas['cobertura'],
+            'volumen' => $metas['volumen'],
+            'visibilidad' => $metas['visibilidad'],
+            'frecuencia' => $metas['frecuencia'],
+            'precio' => $metas['precio'],
+        ]);
     }
 
     public function ranking()
@@ -124,7 +134,7 @@ class HomeController extends Controller
         if ($user_id) {
             $registro_visita = RegistroVisita::where('user_id', $user_id)->get();
             $pdv_x_user = PuntoVenta::where('asesor_id', $user_id)->get();
-        }else {
+        } else {
             $registro_visita = RegistroVisita::all();
             $pdv_x_user = PuntoVenta::all();
         }
