@@ -3,7 +3,7 @@
     <div>
         <div class="main-asesor-container">
             <div class="table-container">
-                <div class="table-header">Mis Metas</div>
+                <div class="table-header">Metas generales</div>
                 <div class="table-grid">
                     <!-- Column Headers -->
                     <div class="table-cell header"></div>
