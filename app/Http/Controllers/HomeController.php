@@ -39,7 +39,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
 
-        dd($this->getMetas(12));
+        dd($this->getMetas($user->id));
 
         if ($user->rol_id != 1) {
             return redirect('/');
@@ -124,19 +124,18 @@ class HomeController extends Controller
         if ($user_id) {
             $registro_visita = RegistroVisita::where('user_id', $user_id)->get();
             $pdv_x_user = PuntoVenta::where('asesor_id', $user_id)->get();
-        }else {
-            $registro_visita = RegistroVisita::all();
-            $pdv_x_user = PuntoVenta::all();
         }
 
-        $cobertura = $registro_visita->where('item_meta_id', 4)->sum('puntos');
-        $volumen = $registro_visita->where('item_meta_id', 3)->sum('puntos');
-        $visibilidad = $registro_visita->where('item_meta_id', 2)->sum('puntos');
+        $registro_visita = RegistroVisita::where('user_id', $user_id)->get();
         $frecuencia = $registro_visita->where('item_meta_id', 1)->sum('puntos');
+        $visibilidad = $registro_visita->where('item_meta_id', 2)->sum('puntos');
+        $volumen = $registro_visita->where('item_meta_id', 3)->sum('puntos');
+        $cobertura = $registro_visita->where('item_meta_id', 4)->sum('puntos');
         $precio = $registro_visita->where('item_meta_id', 5)->sum('puntos');
 
+        $pdv_x_user = PuntoVenta::where('asesor_id', $user_id)->get();
         $meta_cobertura = ($pdv_x_user->count() * 10);
-        $meta_volumen = (($pdv_x_user->sum('vol_prom_mes') + ($pdv_x_user->count() * 4)) * $pdv_x_user->count());
+        $meta_volumen = (($pdv_x_user->sum('vol_prom_mes') + ($pdv_x_user->count() * 4)));
         $meta_visibilidad = ($pdv_x_user->count() * 20);
         $meta_frecuencia = ($pdv_x_user->count() * 12) * 25;
         $meta_precio = ($pdv_x_user->count() * 4) * 30;
