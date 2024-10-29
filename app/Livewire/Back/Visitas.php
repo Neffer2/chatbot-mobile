@@ -14,11 +14,21 @@ class Visitas extends Component
     use WithPagination;
 
     // Models
-    public $documento, $observacion;
+    public $documento;
+    public $observaciones = [];
 
     // Useful vars
     public $visitas_user = [];
     public $searchResults = [];
+
+    public function mount()
+    {
+        // Inicializa las observaciones para cada visita
+        $visitas = Visita::where('estado_id', 2)->get();
+        foreach ($visitas as $visita) {
+            $this->observaciones[$visita->id] = '';
+        }
+    }
 
     public function render()
     {
@@ -39,10 +49,10 @@ class Visitas extends Component
     {
         $visita = Visita::find($visita_id);
         $visita->estado_id = $estado;
-        $visita->observaciones = $this->observacion;
+        $visita->observaciones = $this->observaciones[$visita_id];
         $visita->update();
         
-        $this->observacion = '';
+        $this->observaciones[$visita_id] = '';
         if ($visita->estado_id == 1) {
             $this->establecerPuntos($visita);
             return redirect()->back()->with('success', 'Visita aprobada correctamente.');
@@ -51,17 +61,7 @@ class Visitas extends Component
             $visita->update();
             return redirect()->back()->with('success', 'Visita rechazada correctamente.');
         }
-
     }
-
-    // public function buscar()
-    // {
-    //     $this->validate([
-    //         'documento' => 'required'
-    //     ]);
-
-    //     $this->visitas_user = User::where('documento', $this->documento)->first()->visitas->where('estado_id', 1);
-    // }
 
     // PUNTOS
     public function establecerPuntos($visita)

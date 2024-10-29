@@ -17,7 +17,7 @@
                 <th>Foto Punto</th>
                 <th>Foto Factura</th>
                 <th>Foto Precios</th>
-                <th>Valor Factura</th>
+                <th>Galonaje reportado</th>
                 <th>Fecha</th>
                 <th>Observaciones</th>
                 <th>Acciones</th>
@@ -28,7 +28,7 @@
                 <tr>
                     <td>{{ $visita->id }}</td>
                     <td>
-                        @if($visita->user->empresa_id == 1)
+                        @if ($visita->user->empresa_id == 1)
                             RYR
                         @elseif($visita->user->empresa_id == 2)
                             Cia Lubricantes
@@ -89,7 +89,8 @@
                     <td>{{ $visita->valor_factura }}</td>
                     <td>{{ $visita->created_at }}</td>
                     <td>
-                        <input type="text" wire:model.lazy="observacion" placeholder="Escribe observaciones">
+                        <input type="text" wire:model.lazy="observaciones.{{ $visita->id }}"
+                            placeholder="Escribe observaciones">
                     </td>
                     <td>
                         <button class="btn-approve" wire:click="cambioEstado({{ $visita->id }}, 1)"
@@ -205,5 +206,5 @@
             @endforeach
         </tbody>
     </table>
-    
+
 </div>
