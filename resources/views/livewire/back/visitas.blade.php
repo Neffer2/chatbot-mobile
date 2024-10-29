@@ -46,7 +46,10 @@
                     <td>
                         {{ $visita->pdv_inscrito ?? 'N/A' }}
                     </td>
-                    <td>{{ $visita->puntoVenta->descripcion }}</td>
+                    <td>- {{ $visita->puntoVenta->descripcion }}
+                        <br>
+                        - {{ $visita ->puntoVenta->num_pdv }}
+                    </td>
                     <td>{{ $visita->referencias }}</td>
                     <td>{{ $visita->presentaciones }}</td>
                     <td>{{ $visita->num_cajas }}</td>
