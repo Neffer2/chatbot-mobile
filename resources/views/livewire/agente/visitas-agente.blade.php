@@ -1,5 +1,5 @@
 <div class="main-visitas-container">
-    <h2>AGENTE</h2>
+    <h2>AGENTE - TERPEL</h2>
     <div class="visitas-table-container">
         <table class="visitas-table">
             <thead>

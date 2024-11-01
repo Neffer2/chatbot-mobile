@@ -1,5 +1,5 @@
 <div class="main-visitas-container">
-    <h2>AGENTE</h2>
+    <h2>AGENTE - MOBIL</h2>
     <div class="visitas-table-container">
         <table class="visitas-table">
             <thead>
@@ -14,7 +14,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($visitasMobil as $key => $visita)
+                @foreach ($visitas as $key => $visita)
                     <tr>
                         <td>{{ $visita->id }}</td>
                         <td>
