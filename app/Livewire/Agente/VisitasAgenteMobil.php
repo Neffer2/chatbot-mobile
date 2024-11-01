@@ -26,7 +26,7 @@ class VisitasAgente extends Component
             $query->where('empresa_id', $user->empresa_id);
         })->where([['estado_id', 1],['estado_id_agente', 2]])->paginate(15);
 
-        return view('livewire.agente.visitas-agente', ['visitas' => $visitasMobil]);
+        return view('livewire.agente.visitas-agente-mobil', ['visitas' => $visitasMobil]);
     }
 
     public function cambioEstado($visita_id, $estado){

@@ -31,7 +31,9 @@ class HomeController extends Controller
             case 3:
                 return view('asesor.index', $this->getMetas($user->id));
             case 4:
-                return view('backoffice.index');
+                return view('backoffice-terpel.index');
+            case 6:
+                return view('backoffice-mobil.index');
             default:
                 return abort(403, 'Acceso no autorizado');
         }

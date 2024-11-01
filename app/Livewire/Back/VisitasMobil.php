@@ -4,12 +4,12 @@ namespace App\Livewire\Back;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Visita;
+use App\Models\VisitaMobil;
 use App\Models\User;
 use App\Models\ItemMeta;
 use App\Models\RegistroVisitaMobil;
 
-class Visitas extends Component
+class VisitasMobil extends Component
 {
     use WithPagination;
 
@@ -24,7 +24,7 @@ class Visitas extends Component
     public function mount()
     {
         // Inicializa las observaciones para cada visita
-        $visitas = Visita::where('estado_id', 2)->get();
+        $visitas = VisitaMobil::where('estado_id', 2)->get();
         foreach ($visitas as $visita) {
             $this->observaciones[$visita->id] = '';
         }
@@ -32,26 +32,26 @@ class Visitas extends Component
 
     public function render()
     {
-        $visitas = Visita::where('estado_id', 2)
+        $visitas = VisitaMobil::where('estado_id', 2)
             ->orderBy('created_at', 'asc')
             ->paginate(15);
-        return view('livewire.back.visitas', ['visitas' => $visitas]);
+        return view('livewire.back.visitas-mobil', ['visitas' => $visitas]);
     }
 
     public function buscar()
     {
-        $this->searchResults = Visita::whereHas('user', function ($query) {
+        $this->searchResults = VisitaMobil::whereHas('user', function ($query) {
             $query->where('documento', 'like', "%{$this->documento}%");
         })->get();
     }
 
     public function cambioEstado($visita_id, $estado)
     {
-        $visita = Visita::find($visita_id);
+        $visita = VisitaMobil::find($visita_id);
         $visita->estado_id = $estado;
         $visita->observaciones = $this->observaciones[$visita_id];
         $visita->update();
-        
+
         $this->observaciones[$visita_id] = '';
         if ($visita->estado_id == 1) {
             $this->establecerPuntos($visita);
@@ -66,8 +66,8 @@ class Visitas extends Component
     // PUNTOS
     public function establecerPuntos($visita)
     {
-        $num_vista = Visita::where([['user_id', $visita->user_id], ['pdv_id', $visita->pdv_id]])->count();
-        $pdv_inscrito = (Visita::where([['user_id', $visita->user_id], ['pdv_id', $visita->pdv_id], ['pdv_inscrito', 'Si.']])->first()) ? true : false;
+        $num_vista = VisitaMobil::where([['user_id', $visita->user_id], ['pdv_id', $visita->pdv_id]])->count();
+        $pdv_inscrito = (VisitaMobil::where([['user_id', $visita->user_id], ['pdv_id', $visita->pdv_id], ['pdv_inscrito', 'Si.']])->first()) ? true : false;
 
         if (is_null($visita->foto_factura)) {
             $visita->estado_id_agente = 1;
