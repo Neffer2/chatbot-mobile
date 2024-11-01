@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Visita;
+use App\Models\VisitaMobil;
 use App\Models\RegistroVisita;
 use App\Models\PuntoVenta;
+use App\Models\PuntoVentaMobil;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
