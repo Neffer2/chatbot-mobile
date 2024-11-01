@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Hash;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->middleware('auth'); 
-Route::get('visitas', function (){
-    return view('agente.visitas'); 
+Route::get('/', [HomeController::class, 'index'])->middleware('auth');
+Route::get('visitas', function () {
+    return view('agente.visitas');
 });
 
 Route::middleware('auth')->group(function () {
@@ -43,4 +43,4 @@ Route::get('/terminos-condiciones', function () {
 
 Route::get('/puntos-venta', [PuntosVentaController::class, 'index'])->name('puntos-venta');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
