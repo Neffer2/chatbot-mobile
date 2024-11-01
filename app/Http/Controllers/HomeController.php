@@ -133,6 +133,18 @@ class HomeController extends Controller
         return view('agente.visitas');
     }
 
+    public function visitasMobil()
+    {
+        $user = Auth::user();
+
+        if ($user->rol_id != 2) {
+            return redirect('/');
+        }
+
+        // Pasar la vista de visitas-mobil
+        return view('agente.visitas-mobil');
+    }
+
     public function getMetas($user_id = null)
     {
         if ($user_id) {

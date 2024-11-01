@@ -77,7 +77,9 @@
                 @endif
                 @if (Auth::user()->rol_id == 2)
                     <li class="{{ request()->is('visitas') ? 'active' : '' }}"><a href="/ventas-aprobar">Ventas por
-                            aprobar</a></li>
+                            aprobar Terpel</a></li>
+                    <li class="{{ request()->is('visitas') ? 'active' : '' }}"><a href="/ventas-aprobar-mobil">Ventas por
+                            aprobar Mobil</a></li>
                 @endif
             @elseif(Auth::user()->rol_id == 3)
                 <!-- Rol Asesor -->

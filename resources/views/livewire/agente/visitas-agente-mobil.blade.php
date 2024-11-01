@@ -14,7 +14,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($visitas as $key => $visita)
+                @foreach ($visitasMobil as $key => $visita)
                     <tr>
                         <td>{{ $visita->id }}</td>
                         <td>

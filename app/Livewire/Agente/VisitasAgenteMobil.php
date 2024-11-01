@@ -9,7 +9,7 @@ use App\Models\User;
 use App\Models\ItemMeta;
 use App\Models\RegistroVisitaMobil;
 use Illuminate\Support\Facades\Auth;
-class VisitasAgente extends Component
+class VisitasAgenteMobil extends Component
 {
     use WithPagination;
 

@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/premios', [HomeController::class, 'premios'])->name('premios');
     Route::get('/catalogos', [HomeController::class, 'catalogos'])->name('catalogos');
     Route::get('/ventas-aprobar', [HomeController::class, 'visitas'])->name('visitas');
+    Route::get('/ventas-aprobar-mobil', [HomeController::class, 'visitasMobil'])->name('visitas-mobil');
     //Historico de registros
     Route::get('/historico-registros', [HomeController::class, 'historicoRegistros'])->name('historico-registros');
     Route::get('/historico-ventas', [HomeController::class, 'historicoVentas'])->name('historico-ventas');
