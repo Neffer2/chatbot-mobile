@@ -9,6 +9,8 @@ use App\Models\Premio;
 use App\Models\Redencion;
 use App\Models\Visita;
 use App\Models\PremiosPdv;
+use App\Models\PuntoVentaMobil;
+use App\Models\VisitaMobil;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -75,6 +77,50 @@ class InfoController extends Controller
             'pdv_inscrito' => $pdv_inscrito,
             'descripcion' => $pdv->descripcion,
             'visita' => $visitas->count() + 1,
+            'num_venta' => $valor_factura_count,
+            'punto_revision' => $punto_revision
+        ]);
+    }
+
+    public function getPdvMobil($num_pdv, $user_id){
+        $pdvMobil = PuntoVentaMobil::select('id', 'descripcion')->where([
+            ['num_pdv', $num_pdv],
+            ['asesor_id', $user_id]
+        ])->first();
+
+        if (!$pdvMobil) {
+            return response()->json(['Punto de venta no encontrado'], 404);
+        }
+
+        $punto_revision = ($punto_revision = $pdvMobil->visitas->where('estado_id', 2)->count() >= 2) ? 1 : 0;
+        $punto_revision = ($punto_revision = $pdvMobil->visitas->where('estado_id_agente', 2)->count() >= 2) ? 1 : 0;
+
+        // Punto de venta inscrito
+        $pdv_inscrito = ($pdvMobil->visitas
+                        ->where('pdv_inscrito', "Si.")
+                        ->where('estado_id', 1)
+                        ->where('estado_id_agente', 1)->first()) ? 1 : 0;
+
+        $visitasMobil = VisitaMobil::where([
+                ['pdv_id', $pdvMobil->id],
+                ['estado_id', 1],
+                ['estado_id_agente', 1],
+                ['user_id', $user_id]
+            ])->get();
+
+        $valor_factura_count = 0;
+
+        foreach ($visitasMobil as $visita) {
+            if (!is_null($visita->valor_factura) && !is_null($visita->foto_factura)) {
+                $valor_factura_count++;
+            }
+        }
+
+        return response()->json([
+            'id' => $pdvMobil->id,
+            'pdv_inscrito' => $pdv_inscrito,
+            'descripcion' => $pdvMobil->descripcion,
+            'visita' => $visitasMobil->count() + 1,
             'num_venta' => $valor_factura_count,
             'punto_revision' => $punto_revision
         ]);
@@ -176,6 +222,32 @@ class InfoController extends Controller
         ]);
 
         return response()->json(['message' => 'Visita registrada exitosamente', 'visita' => $visita], 201);
+    }
+
+    public function registrarVisitaMobil(Request $request)
+    {
+        $foto_pop = (!is_null($request->foto_pop)) ? $this->uploadFile($request->foto_pop) : null;
+        $foto_factura = (!is_null($request->foto_factura)) ? $this->uploadFile($request->foto_factura) : null;
+        $foto_precios = (!is_null($request->foto_precios)) ? $this->uploadFile($request->foto_precios) : null;
+
+        $visitaMobil = VisitaMobil::create([
+            'user_id' => $request->user_id,
+            'pdv_id' => $request->pdv_id,
+            'foto_pop' => $foto_pop,
+            'pdv_inscrito' => $request->pdv_inscrito,
+            'marca_id' => $request->marca_id,
+            'referencias' => $request->referencias,
+            'presentaciones' => $request->presentaciones,
+            'num_cajas' => $request->num_cajas,
+            'foto_factura' => $foto_factura,
+            'foto_precios' => $foto_precios,
+            'valor_factura' => $request->valor_factura,
+            'valor_galonaje' => $request->valor_galonaje,
+            'estado_id' => 2,
+            'estado_id_agente' => 2,
+        ]);
+
+        return response()->json(['message' => 'Visita registrada exitosamente', 'visita' => $visitaMobil], 201);
     }
 
     public function uploadFile($url){
