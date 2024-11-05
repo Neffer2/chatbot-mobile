@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreignId('user_id');
-            $table->foreign('pdv_id')->references('id')->on('puntos_venta');
+            $table->foreign('pdv_id')->references('id')->on('puntos_venta_mobil');
             $table->foreignId('pdv_id');
             $table->string('foto_pop')->nullable();
             $table->string('pdv_inscrito')->nullable();
