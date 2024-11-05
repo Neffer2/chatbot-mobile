@@ -18,6 +18,7 @@
                 <th>Foto Factura</th>
                 <th>Foto Precios</th>
                 <th>Galonaje reportado</th>
+                <th>Valor factura</th>
                 <th>Fecha</th>
                 <th>Observaciones</th>
                 <th>Acciones</th>
@@ -89,6 +90,7 @@
                             N/A
                         @endif
                     </td>
+                    <td>{{ $visita->valor_galonaje }}</td>
                     <td>{{ $visita->valor_factura }}</td>
                     <td>{{ $visita->created_at }}</td>
                     <td>
@@ -116,7 +118,7 @@
     <table class="styled-table">
         <thead>
             <tr>
-                <th>IDDDD</th>
+                <th>ID</th>
                 <th>Usuario</th>
                 <th>Telefono</th>
                 <th>PDV Inscrito</th>
