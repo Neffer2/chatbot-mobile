@@ -116,7 +116,7 @@
     <table class="styled-table">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>IDDDD</th>
                 <th>Usuario</th>
                 <th>Telefono</th>
                 <th>PDV Inscrito</th>
