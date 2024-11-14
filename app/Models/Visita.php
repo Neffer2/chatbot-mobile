@@ -38,7 +38,10 @@ class Visita extends Model
     public function estado(){
         return $this->belongsTo(Estado::class, 'estado_id', 'id');
     }
-    
+
+    public function registroVisitas(){
+        return $this->hasMany(RegistroVisita::class, 'visita_id');
+    }
 
 
 }
