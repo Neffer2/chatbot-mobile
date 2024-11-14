@@ -43,7 +43,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Descripción del Punto de Venta</th>
-                    <th>N&uacute;mero de visitas</th>
+                    {{-- <th>N&uacute;mero de visitas</th> --}}
                     <th>N&uacute;mero de ventas</th>
                     <th>Galonaje acumulado</th>
                 </tr>
@@ -53,7 +53,7 @@
                     <tr>
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $punto->descripcion }}</td>
-                        <td>{{ $punto->visitas->where('estado_id_agente', 1)->count() }}</td>
+                        {{-- <td>{{ $punto->visitas->where('estado_id_agente', 1)->count() }}</td> --}}
                         <td>{{ $punto->visitas->where('estado_id_agente', 1)->whereNotNull('foto_factura')->count() }}</td>
                         <td>{{ $punto->visitas->where('estado_id_agente', 1)->sum('valor_factura') }}</td>
 
