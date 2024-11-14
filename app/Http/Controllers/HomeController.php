@@ -195,7 +195,11 @@ class HomeController extends Controller
             ->where('estado_id_agente', 1)
             ->get();
 
-        return view('asesor.historico-ventas', compact('visitas'));
+        $puntos = PuntoVenta::where('asesor_id', Auth::id())->whereHas('visitas', function ($query) {
+            $query->whereNotNull('foto_factura')->where('estado_id', 1)->where('estado_id_agente', 1);
+        })->get();
+
+        return view('asesor.historico-ventas', compact('puntos', 'visitas'));
     }
 
     //Historico de registros

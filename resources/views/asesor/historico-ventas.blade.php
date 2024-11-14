@@ -35,4 +35,31 @@
             </tbody>
         </table>
     </div>
+
+    <div class="main-historico-ventas-container">
+        <h2>Histórico de Galonaje</h2>
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Descripción del Punto de Venta</th>
+                    <th>N&uacute;mero de visitas</th>
+                    <th>N&uacute;mero de ventas</th>
+                    <th>Galonaje acumulado</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($puntos as $index => $punto)
+                    <tr>
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ $punto->descripcion }}</td>
+                        <td>{{ $punto->visitas->where('estado_id_agente', 1)->count() }}</td>
+                        <td>{{ $punto->visitas->where('estado_id_agente', 1)->whereNotNull('foto_factura')->count() }}</td>
+                        <td>{{ $punto->visitas->where('estado_id_agente', 1)->sum('valor_factura') }}</td>
+
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 @endsection
