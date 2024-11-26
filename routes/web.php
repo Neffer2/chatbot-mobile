@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PuntosVentaController;
+use App\Http\Controllers\PuntosVentaMobilController;
 use Illuminate\Support\Facades\Hash;
 
 /*
@@ -42,5 +43,6 @@ Route::get('/terminos-condiciones', function () {
 })->middleware(['auth', 'verified'])->name('terminos-condiciones');
 
 Route::get('/puntos-venta', [PuntosVentaController::class, 'index'])->name('puntos-venta');
+Route::get('/puntos-venta-mobil', [PuntosVentaMobilController::class, 'index'])->name('puntos-venta-mobil');
 
 require __DIR__ . '/auth.php';
