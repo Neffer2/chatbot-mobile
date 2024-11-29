@@ -143,16 +143,37 @@ class InfoController extends Controller
     public function redimirPremio($user_id, $premio_id, $direccion, $fecha_entrega)
     {
         $user = User::find($user_id);
+
+        $user_puntos = $user->puntos;
+
+        $user_empresa = $user->empresa_id;
+
+        $pdv_x_user = PuntoVenta::where('asesor_id', $user_id)->count(); // Puntos de venta asignados
+
+        $total_puntos_venta = PuntoVenta::count();
+        $total_asesores = User::where('rol_id', 3)->count();
+        $promedio_pdv = $total_puntos_venta / $total_asesores;
+
+        // $promedio_pdv_user = PuntoVenta::where('agente_id', $user_empresa)->get();
+
+        $ajuste_puntos = $user_puntos * ($promedio_pdv / $pdv_x_user);
+
         $premio = Premio::where([
             ['premio_id', $premio_id],
             ['empresa_id', $user->empresa_id]
         ])->first();
 
+
+        $puntos_premio = $premio->puntos;
+
+        $ajuste_valor_premio = $puntos_premio * ($promedio_pdv / $pdv_x_user);
+
+        return; 
         if (!$user || !$premio) {
             return response()->json(['Usuario o premio no encontrado'], 404);
         }
 
-        if ($user->puntos < $premio->puntos) {
+        if ($ajuste_puntos < $ajuste_valor_premio) {
             return response()->json(['Puntos insuficientes'], 400);
         }
 
