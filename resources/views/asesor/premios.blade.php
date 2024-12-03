@@ -13,9 +13,9 @@
                         if ($key == 0) {
                             $foto_premio = 'assets/premios/premio_cartagena.png';
                         }elseif ($key == 1) {
-                            $foto_premio = 'assets/premios/premio_smarttv.png';
-                        }elseif ($key == 2) {
                             $foto_premio = 'assets/premios/premio_scooter.png';
+                        }elseif ($key == 2) {
+                            $foto_premio = 'assets/premios/premio_smarttv.png';
                         }elseif ($key == 3) {
                             $foto_premio = 'assets/premios/premio_morral.png';
                         }
