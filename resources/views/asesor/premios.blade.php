@@ -7,54 +7,52 @@
         </div>
         <div class="premios-container">
             <div class="premios-left">
-                <div class="premio-item">
-                    <h2>Viaje para 2 todo incluído a Cartagena</h2>
-                    <div class="premio-image-container">
-                        <img src="{{ asset('assets/premios/premio_cartagena.png') }}"
-                            alt="Viaje para 2 todo incluído a Cartagena" class="premio-image">
+                @foreach ($premios as $key => $premio)
+                    @php
+                        $foto_premio = "";
+                        if ($key == 0) {
+                            $foto_premio = 'assets/premios/premio_cartagena.png';
+                        }elseif ($key == 1) {
+                            $foto_premio = 'assets/premios/premio_smarttv.png';
+                        }elseif ($key == 2) {
+                            $foto_premio = 'assets/premios/premio_scooter.png';
+                        }elseif ($key == 3) {
+                            $foto_premio = 'assets/premios/premio_morral.png';
+                        }
+                    @endphp
+                    <div class="premio-item">
+                        <h2>{{ $premio->nombre }}</h2>
+                        <div class="premio-image-container">
+                            <img src="{{ asset($foto_premio) }}"
+                                alt="Viaje para 2 todo incluído a Cartagena" class="premio-image">
+                        </div>
+                        <p>{{ number_format(floor($premio->puntos), 0) }} Puntos</p>
                     </div>
-                    <p>XXX Puntos</p>
-                </div>
-                <div class="premio-item">
-                    <h2>Smart TV 55''</h2>
-                    <div class="premio-image-container">
-                        <img src="{{ asset('assets/premios/premio_smarttv.png') }}" alt="Smart TV 55''"
-                            class="premio-image">
-                    </div>
-                    <p>XXX Puntos</p>
-                </div>
-                <div class="premio-item">
-                    <h2>Scooter</h2>
-                    <div class="premio-image-container">
-                        <img src="{{ asset('assets/premios/premio_scooter.png') }}" alt="Scooter" class="premio-image">
-                    </div>
-                    <p>XXX Puntos</p>
-                </div>
+                    @if ($key == 3) @break @endif
+                @endforeach
             </div>
             <div class="premios-right">
-                <div class="premio-item">
-                    <h2>Morral</h2>
-                    <div class="premio-image-container">
-                        <img src="{{ asset('assets/premios/premio_morral.png') }}" alt="Morral" class="premio-image">
-                    </div>
-                    <p>XXX Puntos</p>
-                </div>
-                <div class="premio-item">
-                    <h2>Parlante bluetooth</h2>
-                    <div class="premio-image-container">
-                        <img src="{{ asset('assets/premios/premio_parlante.png') }}" alt="Parlante bluetooth"
-                            class="premio-image">
-                    </div>
-                    <p>XXX Puntos</p>
-                </div>
-                <div class="premio-item">
-                    <h2>Tarjetas de regalo</h2>
-                    <div class="premio-image-container">
-                        <img src="{{ asset('assets/premios/premio_bonos_ns.png') }}" alt="Tarjetas de regalo"
-                            class="premio-image">
-                    </div>
-                    <p>XXX Puntos</p>
-                </div>
+                @foreach ($premios as $key => $premio)
+                    @if ($key > 3)
+                        @php
+                            if ($key == 3) {
+                                $foto_premio = 'assets/premios/premio_morral.png';
+                            }elseif ($key == 4) {
+                                $foto_premio = 'assets/premios/premio_parlante.png';
+                            }elseif ($key == 5) {
+                                $foto_premio = 'assets/premios/premio_bonos_ns.png';
+                            }
+                        @endphp
+                        <div class="premio-item">
+                            <h2>{{ $premio->nombre }}</h2>
+                            <div class="premio-image-container">
+                                <img src="{{ asset($foto_premio) }}"
+                                    alt="Viaje para 2 todo incluído a Cartagena" class="premio-image">
+                            </div>
+                            <p>{{ number_format(floor($premio->puntos), 0) }} Puntos</p>
+                        </div>
+                    @endif
+                @endforeach
             </div>
         </div>
         <div class="instrucciones-container">

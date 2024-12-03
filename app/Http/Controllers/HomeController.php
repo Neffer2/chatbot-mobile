@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Visita;
 use App\Models\VisitaMobil;
+use App\Models\Premio;
 use App\Models\RegistroVisita;
 use App\Models\PuntoVenta;
 use App\Models\PuntoVentaMobil;
@@ -101,13 +102,24 @@ class HomeController extends Controller
     public function premios()
     {
         $user = Auth::user();
+        $premios = Premio::take(7)->get();
 
         if ($user->rol_id != 3) {
             return redirect('/');
         }
 
+        $pdv_x_user = PuntoVenta::where('asesor_id', $user->id)->count(); // Puntos de venta asignados
+        $total_puntos_venta = PuntoVenta::count();
+        $total_asesores = User::where('rol_id', 3)->count();
+        $promedio_pdv = $total_puntos_venta / $total_asesores;
+
+        $premios->map(function ($premio) use ($promedio_pdv, $pdv_x_user) {
+            $ajuste_valor_premio = $premio->puntos * ( $pdv_x_user / $promedio_pdv);
+            return $premio->puntos = $ajuste_valor_premio;
+        });
+
         // Pasar la vista de premios
-        return view('asesor.premios');
+        return view('asesor.premios', ['premios' => $premios]);
     }
 
     public function catalogos()

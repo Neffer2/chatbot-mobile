@@ -154,8 +154,6 @@ class InfoController extends Controller
         $total_asesores = User::where('rol_id', 3)->count();
         $promedio_pdv = $total_puntos_venta / $total_asesores;
 
-        // $promedio_pdv_user = PuntoVenta::where('agente_id', $user_empresa)->get();
-
         $ajuste_puntos = $user_puntos * ($promedio_pdv / $pdv_x_user);
 
         $premio = Premio::where([
@@ -163,12 +161,9 @@ class InfoController extends Controller
             ['empresa_id', $user->empresa_id]
         ])->first();
 
-
         $puntos_premio = $premio->puntos;
+        $ajuste_valor_premio = $premio->puntos * ( $pdv_x_user / $promedio_pdv);
 
-        $ajuste_valor_premio = $puntos_premio * ($promedio_pdv / $pdv_x_user);
-
-        return; 
         if (!$user || !$premio) {
             return response()->json(['Usuario o premio no encontrado'], 404);
         }
