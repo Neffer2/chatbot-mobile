@@ -80,6 +80,7 @@
                             aprobar Terpel</a></li>
                     <li class="{{ request()->is('visitas') ? 'active' : '' }}"><a href="/ventas-aprobar-mobil">Ventas por
                             aprobar Mobil</a></li>
+                    <li class="{{ request()->is('premios-gente') ? 'active' : '' }}"><a href="{{ route('premios-agente') }}">Premios</a></li>
                 @endif
             @elseif(Auth::user()->rol_id == 3)
                 <!-- Rol Asesor -->

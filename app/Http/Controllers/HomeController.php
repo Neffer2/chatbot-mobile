@@ -214,6 +214,35 @@ class HomeController extends Controller
         return view('asesor.historico-ventas', compact('puntos', 'visitas'));
     }
 
+    public function premiosAgente()
+    {
+        //Middleware para verificar que el usuario autenticado sea un agente u org terpel
+        if (Auth::user()->rol_id != 2) {
+            return redirect('/');
+        }
+
+        $asesores = User::select('id', 'name', 'puntos')->where([
+            ['empresa_id', Auth::user()->empresa_id],
+            ['rol_id', 3]
+        ])->get();
+
+        $premios = Premio::take(7)->get();
+
+        $asesores->map(function ($asesor) use ($premios) {
+            foreach ($premios as $key => $premio) {
+                $pdv_x_user = PuntoVenta::where('asesor_id', $asesor->id)->count(); // Puntos de venta asignados
+                $total_puntos_venta = PuntoVenta::count();
+                $total_asesores = User::where('rol_id', 3)->count();
+                $promedio_pdv = $total_puntos_venta / $total_asesores;
+                $ajuste_valor_premio = $premio->puntos * ( $pdv_x_user / $promedio_pdv);
+
+                $asesor->{"premio_".$premio->premio_id} = $ajuste_valor_premio;
+            }
+        });
+
+        return view('agente.premios-agente', compact('asesores', 'premios'));
+    }
+
     //Historico de registros
     public function historicoRegistros()
     {
@@ -227,4 +256,6 @@ class HomeController extends Controller
 
         return view('asesor.historico-registros', compact('registros'));
     }
+
+    /* /terminos/terminos-condiciones-fuerza-ventas.pdf */
 }
