@@ -174,9 +174,13 @@ class HomeController extends Controller
         $precio = $registro_visita->where('item_meta_id', 5)->sum('puntos');
 
         $meta_cobertura = ($pdv_x_user->count() * 10);
+
         $meta_frecuencia = ($pdv_x_user->count() * 12) * 25;
+
         $meta_visibilidad = ($pdv_x_user->count() * 20);
+
         $meta_volumen = (($pdv_x_user->sum('vol_prom_mes') + ($pdv_x_user->count() * 4)));
+
         $meta_precio = ($pdv_x_user->count() * 4) * 30;
 
         return [
