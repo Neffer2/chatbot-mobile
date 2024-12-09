@@ -9,6 +9,7 @@ use App\Models\Premio;
 use App\Models\RegistroVisita;
 use App\Models\PuntoVenta;
 use App\Models\PuntoVentaMobil;
+use App\Models\Implementacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -162,26 +163,29 @@ class HomeController extends Controller
         if ($user_id) {
             $registro_visita = RegistroVisita::where('user_id', $user_id)->get();
             $pdv_x_user = PuntoVenta::where('asesor_id', $user_id)->get();
+            $visitas = Visita::where([
+                ['user_id', $user_id],
+                ['estado_id', 1],
+                ['estado_id_agente', 1]
+                ])->get();
         } else {
             $registro_visita = RegistroVisita::all();
             $pdv_x_user = PuntoVenta::all();
         }
 
-        $cobertura = $registro_visita->where('item_meta_id', 4)->sum('puntos');
-        $frecuencia = $registro_visita->where('item_meta_id', 1)->sum('puntos');
-        $visibilidad = $registro_visita->where('item_meta_id', 2)->sum('puntos');
-        $volumen = $registro_visita->where('item_meta_id', 3)->sum('puntos');
-        $precio = $registro_visita->where('item_meta_id', 5)->sum('puntos');
+        $cobertura = $registro_visita->where('item_meta_id', 4)->count();
+        $volumen = $visitas->sum('valor_factura');
 
-        $meta_cobertura = ($pdv_x_user->count() * 10);
+        $frecuencia = $registro_visita->where('item_meta_id', 1)->count();
+        $visibilidad = $registro_visita->where('item_meta_id', 2)->count();
+        $precio = $registro_visita->where('item_meta_id', 5)->count();
 
-        $meta_frecuencia = ($pdv_x_user->count() * 12) * 25;
+        $meta_cobertura = ($pdv_x_user->count());
+        $meta_volumen = ($pdv_x_user->sum('vol_prom_mes'));
 
-        $meta_visibilidad = ($pdv_x_user->count() * 20);
-
-        $meta_volumen = (($pdv_x_user->sum('vol_prom_mes') + ($pdv_x_user->count() * 4)));
-
-        $meta_precio = ($pdv_x_user->count() * 4) * 30;
+        $meta_frecuencia = ($pdv_x_user->count() * 6);
+        $meta_visibilidad = ($pdv_x_user->count() * 6);
+        $meta_precio = ($pdv_x_user->count() * 6);
 
         return [
             'frecuencia' => $frecuencia,
@@ -255,10 +259,21 @@ class HomeController extends Controller
             return redirect('/');
         }
 
+        $pdvs = PuntoVenta::where('asesor_id', Auth::id())->get();
+        $pdvs->map(function ($pdv){
+            $acumVol = Visita::where('pdv_id', $pdv->id)->sum('valor_factura');
+            return $pdv->volAcum = $acumVol;
+        });
+
+        $pdvs->map(function ($pdv){
+            $implementaciones = Implementacion::where('num_pdv', 'LIKE', "%".$pdv->num_pdv."%")->get();
+
+            return $pdv->implementaciones = $implementaciones;
+        });
+
         // Obtener los registros de visita del usuario autenticado con los datos de la visita
         $registros = Visita::where('user_id', Auth::id())->get();
-
-        return view('asesor.historico-registros', compact('registros'));
+        return view('asesor.historico-registros', compact('registros', 'pdvs'));
     }
 
     /* /terminos/terminos-condiciones-fuerza-ventas.pdf */

@@ -3,6 +3,48 @@
 @section('content')
     <div class="main-historico-registros-container">
 
+        <h2>Implementaciones</h2>
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Punto</th>
+                    <th>Meta Volumen</th>
+                    <th>Volumen Acumulado</th>
+                    <th>% Cumplimiento</th>
+                    <th>Impl. 1</th>
+                    <th>Impl. 2</th>
+                    <th>Impl. 3</th>
+                    <th>Impl. 4</th>
+                    <th>Impl. 5</th>
+                    <th>Impl. 6</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($pdvs as $key => $pdv)
+                    <tr>
+                        <td>{{ $key+= 1 }}</td>
+                        <td>{{ $pdv->descripcion }}</td>
+                        <td>{{ $pdv->vol_prom_mes }}</td>
+                        <td>{{ $pdv->volAcum }}</td>
+                        <td>{{ number_format(floor(($pdv->volAcum/$pdv->vol_prom_mes) * 100), 0) }} %</td>
+                        @foreach ($pdv->implementaciones as $keyImp => $implementacion)
+                            <td class="implementaciones">
+                                <a href="{{ $implementacion->foto_kit }}" class="no-style-link" target="_blank">X</a>
+                            </td>
+                        @endforeach
+
+                        @for ($i = 0; $i < 6 - count($pdv->implementaciones); $i++)
+                            <td class="implementaciones"></td>
+                        @endfor
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="main-historico-registros-container">
         <h2>Histórico de Registros</h2>
         <table class="styled-table">
             <thead>

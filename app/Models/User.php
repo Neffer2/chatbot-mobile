@@ -73,8 +73,12 @@ class User extends Authenticatable
     }
 
     public function getVolumen(){
-        $registro_visita = RegistroVisita::where('user_id', $this->id)->get();
-        $volumen = $registro_visita->where('item_meta_id', 3)->count();
+        $visitas = $visitas = Visita::where([
+            ['user_id', $this->id],
+            ['estado_id', 1],
+            ['estado_id_agente', 1]
+        ])->get();
+        $volumen = $visitas->sum('valor_factura');
         return $volumen;
     }
 

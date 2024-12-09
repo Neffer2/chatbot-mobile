@@ -95,6 +95,22 @@
     transform: scale(1.05);
 }
 
+.no-style-link {
+    text-decoration: none;
+    color: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
+.implementaciones {
+    text-align: center;
+    font-weight: bold;
+}
+
 @media (max-width: 768px) {
     .main-asesor-container {
         margin-left: 0;
