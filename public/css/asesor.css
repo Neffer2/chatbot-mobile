@@ -91,6 +91,12 @@
     transition: transform 0.3s;
 }
 
+.main-asesor-container iframe {
+    width: 100%;
+    height: 500px;
+    border: none;
+}
+
 .ranking-link-image:hover {
     transform: scale(1.05);
 }

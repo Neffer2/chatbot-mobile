@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('content')
     <div class="main-asesor-container">
-        <div class="table-container">
+        {{-- <div class="table-container">
             <a href="{{ route('historico-registros') }}" target="_blank" class="no-style-link">
                 <div class="table-header">Mis Metas</div>
                     <div class="table-grid">
@@ -81,6 +81,8 @@
                     </div>
                 </div>
             </a>
+        </div> --}}
+        {!! Auth::user()->BI !!}
         <div class="ranking-link-container">
             <a href="{{ url('/ranking') }}">
                 <img src="{{ asset('assets/ranking-asesores.png') }}" alt="Ranking Asesores" class="ranking-link-image">
@@ -91,3 +93,4 @@
         </div>
     </div>
 @endsection
+ 

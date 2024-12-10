@@ -26,6 +26,7 @@ return new class extends Migration
             $table->foreignId('rol_id');
             $table->integer('puntos')->default(0);
             $table->integer('meta_pdv');
+            $table->text('BI')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
