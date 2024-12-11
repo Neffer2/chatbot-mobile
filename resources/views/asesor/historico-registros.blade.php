@@ -27,7 +27,12 @@
                         <td>{{ $pdv->descripcion }}</td>
                         <td>{{ $pdv->vol_prom_mes }}</td>
                         <td>{{ $pdv->volAcum }}</td>
-                        <td>{{ number_format(floor(($pdv->volAcum/$pdv->vol_prom_mes) * 100), 0) }} %</td>
+                        @if($pdv->vol_prom_mes)
+                            <td>{{ number_format(floor(($pdv->volAcum/$pdv->vol_prom_mes) * 100), 0) }} %</td>
+                        @else
+                            <td></td>
+                        @endif
+
                         @foreach ($pdv->implementaciones as $keyImp => $implementacion)
                             <td class="implementaciones">
                                 <a href="{{ $implementacion->foto_kit }}" class="no-style-link" target="_blank">X</a>
