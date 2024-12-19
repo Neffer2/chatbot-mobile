@@ -3,7 +3,7 @@
 @section('content')
     <div class="main-catalogos-container">
         <div class="catalogos-title-bar">
-            <h1>Catálogos</h1>
+            <h1>Catálogos Terpel</h1>
         </div>
         <div class="catalogos-container">
             <div class="catalogo-item">
@@ -41,6 +41,23 @@
                     <img src="{{ asset('assets/catalogo_refrigerantes.png') }}" alt="Cátalogo Refrigerantes" class="catalogo-image">
                 </div>
                 <a href="{{ asset('assets/cat_refrigerantes.pdf') }}" class="catalogo-button" download>Descargar</a>
+            </div>
+        </div>
+
+        
+    </div>
+    <div class="main-catalogos-container">
+        <div class="catalogos-title-bar">
+            <h1>Catálogos Mobil</h1>
+        </div>
+        <div class="catalogos-container">
+            <div class="catalogo-item">
+                <h2>Cátalogo de productos</h2>
+                {{-- Plan PDV PDF --}}
+                <div class="catalogo-image-container">
+                    <img src="{{ asset('assets/catalogo_productos_mobil.png') }}" alt="Cátalogo plan PDV" class="catalogo-image">
+                </div>
+                <a href="{{ asset('assets/cat_productos_mobil.pdf') }}" class="catalogo-button" download>Descargar</a>
             </div>
         </div>
 
