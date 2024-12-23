@@ -78,7 +78,7 @@ class InfoController extends Controller
             'descripcion' => $pdv->descripcion,
             'visita' => $visitas->count() + 1,
             'num_venta' => $valor_factura_count,
-            'punto_revision' => $punto_revision
+            'punto_revision' => 0
         ]);
     }
 
@@ -122,7 +122,7 @@ class InfoController extends Controller
             'descripcion' => $pdvMobil->descripcion,
             'visita' => $visitasMobil->count() + 1,
             'num_venta' => $valor_factura_count,
-            'punto_revision' => $punto_revision
+            'punto_revision' => 0
         ]);
     }
 
