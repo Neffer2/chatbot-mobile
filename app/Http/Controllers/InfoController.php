@@ -148,9 +148,6 @@ class InfoController extends Controller
         $total_asesores = User::where('rol_id', 3)->count();
         $promedio_pdv = $total_puntos_venta / $total_asesores;
 
-        return response()->json([$promedio_pdv]);
-
-
         $premio = Premio::where([
             ['premio_id', $premio_id],
             ['empresa_id', $user->empresa_id]
@@ -194,6 +191,8 @@ class InfoController extends Controller
         $total_puntos_venta = PuntoVenta::count();
         $total_asesores = User::where('rol_id', 3)->count();
         $promedio_pdv = $total_puntos_venta / $total_asesores;
+
+        return response()->json([$promedio_pdv]);
 
         $premio = Premio::where([
             ['premio_id', $premio_id],
