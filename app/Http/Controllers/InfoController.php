@@ -155,7 +155,7 @@ class InfoController extends Controller
 
         $ajuste_valor_premio = $premio->puntos * ( $pdv_x_user / $promedio_pdv);
 
-        dd($user->puntos." ".$ajuste_valor_premio);
+        return response()->json([$user->puntos, $ajuste_valor_premio]);
         if (!$user || !$premio) {
             return response()->json(['Usuario o premio no encontrado'], 404);
         }
@@ -200,7 +200,7 @@ class InfoController extends Controller
 
         $ajuste_valor_premio = $premio->puntos * ( $pdv_x_user / $promedio_pdv);
 
-        dd($user->puntos." ".$ajuste_valor_premio);
+        return response()->json([$user->puntos, $ajuste_valor_premio]);
 
         if (!$user || !$premio) {
             return response()->json(['Usuario o premio no encontrado'], 404);
