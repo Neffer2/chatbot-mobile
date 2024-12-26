@@ -204,7 +204,7 @@ class InfoController extends Controller
 
         $promedio_pdv = $total_puntos_venta / $total_asesores;
 
-        return response()->json([$total_puntos_venta]);
+        return response()->json([$promedio_pdv]);
 
         $premio = Premio::where([
             ['premio_id', $premio_id],
