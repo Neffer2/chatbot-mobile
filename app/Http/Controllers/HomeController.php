@@ -110,8 +110,21 @@ class HomeController extends Controller
         }
 
         $pdv_x_user = PuntoVenta::where('asesor_id', $user->id)->count(); // Puntos de venta asignados
-        $total_puntos_venta = PuntoVenta::count();
-        $total_asesores = User::where('rol_id', 3)->count();
+        $pdv_x_user += PuntoVentaMobil::where('asesor_id', $user->id)->count(); // Puntos de venta asignados
+
+        $total_puntos_venta = PuntoVenta::where([
+            ['agente', $user->empresa_id]
+        ])->count();
+
+        $total_puntos_venta += PuntoVentaMobil::where([
+            ['agente', $user->empresa_id]
+        ])->count();
+
+        $total_asesores = User::where([
+            ['rol_id', 3],
+            ['empresa_id', $user->empresa_id]
+        ])->count();
+
         $promedio_pdv = $total_puntos_venta / $total_asesores;
 
         $premios->map(function ($premio) use ($promedio_pdv, $pdv_x_user) {

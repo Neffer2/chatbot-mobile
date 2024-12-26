@@ -142,11 +142,23 @@ class InfoController extends Controller
 
     public function redimirPremio($user_id, $premio_id, $direccion, $fecha_entrega)
     {
-        return;
         $user = User::find($user_id);
         $pdv_x_user = PuntoVenta::where('asesor_id', $user_id)->count(); // Puntos de venta asignados
-        $total_puntos_venta = PuntoVenta::count();
-        $total_asesores = User::where('rol_id', 3)->count();
+        $pdv_x_user += PuntoVentaMobil::where('asesor_id', $user_id)->count(); // Puntos de venta asignados
+
+        $total_puntos_venta = PuntoVenta::where([
+            ['agente', $user->empresa_id]
+        ])->count();
+
+        $total_puntos_venta += PuntoVentaMobil::where([
+            ['agente', $user->empresa_id]
+        ])->count();
+
+        $total_asesores = User::where([
+            ['rol_id', 3],
+            ['empresa_id', $user->empresa_id]
+        ])->count();
+
         $promedio_pdv = $total_puntos_venta / $total_asesores;
 
         $premio = Premio::where([
@@ -156,7 +168,6 @@ class InfoController extends Controller
 
         $ajuste_valor_premio = $premio->puntos * ( $pdv_x_user / $promedio_pdv);
 
-        return response()->json([$user->puntos, $ajuste_valor_premio]);
         if (!$user || !$premio) {
             return response()->json(['Usuario o premio no encontrado'], 404);
         }
@@ -211,10 +222,7 @@ class InfoController extends Controller
             ['empresa_id', $user->empresa_id]
         ])->first();
 
-
         $ajuste_valor_premio = $premio->puntos * ( $pdv_x_user / $promedio_pdv);
-
-        return response()->json([$ajuste_valor_premio]);
 
         if (!$user || !$premio) {
             return response()->json(['Usuario o premio no encontrado'], 404);
