@@ -189,6 +189,8 @@ class InfoController extends Controller
     public function getPremios($user_id, $premio_id) {
         $user = User::find($user_id);
         $pdv_x_user = PuntoVenta::where('asesor_id', $user_id)->count(); // Puntos de venta asignados
+        $pdv_x_user += PuntoVentaMobil::where('asesor_id', $user_id)->count(); // Puntos de venta asignados
+
         $total_puntos_venta = PuntoVenta::where([
             ['agente', $user->empresa_id]
         ])->count();
@@ -203,7 +205,6 @@ class InfoController extends Controller
         ])->count();
 
         $promedio_pdv = $total_puntos_venta / $total_asesores;
-
 
         $premio = Premio::where([
             ['premio_id', $premio_id],
