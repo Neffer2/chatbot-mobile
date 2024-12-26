@@ -142,6 +142,7 @@ class InfoController extends Controller
 
     public function redimirPremio($user_id, $premio_id, $direccion, $fecha_entrega)
     {
+        return;
         $user = User::find($user_id);
         $pdv_x_user = PuntoVenta::where('asesor_id', $user_id)->count(); // Puntos de venta asignados
         $total_puntos_venta = PuntoVenta::count();
@@ -186,6 +187,7 @@ class InfoController extends Controller
     }
 
     public function getPremios($user_id, $premio_id) {
+        return;
         $user = User::find($user_id);
         $pdv_x_user = PuntoVenta::where('asesor_id', $user_id)->count(); // Puntos de venta asignados
         $total_puntos_venta = PuntoVenta::count();
