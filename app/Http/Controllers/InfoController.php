@@ -204,7 +204,6 @@ class InfoController extends Controller
 
         $promedio_pdv = $total_puntos_venta / $total_asesores;
 
-        return response()->json([$promedio_pdv]);
 
         $premio = Premio::where([
             ['premio_id', $premio_id],
@@ -214,7 +213,7 @@ class InfoController extends Controller
 
         $ajuste_valor_premio = $premio->puntos * ( $pdv_x_user / $promedio_pdv);
 
-        return response()->json([$user->puntos, $ajuste_valor_premio]);
+        return response()->json([$ajuste_valor_premio]);
 
         if (!$user || !$premio) {
             return response()->json(['Usuario o premio no encontrado'], 404);
