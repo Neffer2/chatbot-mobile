@@ -147,8 +147,8 @@ class InfoController extends Controller
             return response()->json(['Usuario no encontrado'], 404);
         }
 
-        $pdv_x_user = PuntoVenta::where('asesor_id', $request->user_id)->count(); // Puntos de venta asignados
-        $pdv_x_user += PuntoVentaMobil::where('asesor_id', $request->user_id)->count(); // Puntos de venta asignados
+        $pdv_x_user = PuntoVenta::where('asesor_id', $request->user->id)->count(); // Puntos de venta asignados
+        $pdv_x_user += PuntoVentaMobil::where('asesor_id', $request->user->id)->count(); // Puntos de venta asignados
 
         $total_puntos_venta = PuntoVenta::where([
             ['agente', $user->empresa_id]
@@ -166,7 +166,7 @@ class InfoController extends Controller
         $promedio_pdv = $total_puntos_venta / $total_asesores;
 
         $premio = Premio::where([
-            ['premio_id', $request->premio],
+            ['premio_id', $request->premio_id],
             ['empresa_id', $user->empresa_id]
         ])->first();
 
