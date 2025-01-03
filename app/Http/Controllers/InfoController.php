@@ -199,8 +199,8 @@ class InfoController extends Controller
 
     public function getPremios($user_id, $premio_id) {
         $user = User::find($user_id);
-        if (!$user) {
-            return response()->json(['Usuario o premio no encontrado'], 404);
+        if (is_null($user)) {
+            return response()->json(['error' => 'Usuario o premio no encontrado'], 404);
         }
 
         $pdv_x_user = PuntoVenta::where('asesor_id', $user_id)->count(); // Puntos de venta asignados
