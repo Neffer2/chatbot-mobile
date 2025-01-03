@@ -140,15 +140,15 @@ class InfoController extends Controller
         return response()->json($premios);
     }
 
-    public function redimirPremio($user_id, $premio_id, $direccion, $fecha_entrega)
+    public function redimirPremio(Request $request)
     {
-        $user = User::find($user_id);
+        $user = User::find($request->user_id);
         if (!$user) {
             return response()->json(['Usuario no encontrado'], 404);
         }
 
-        $pdv_x_user = PuntoVenta::where('asesor_id', $user_id)->count(); // Puntos de venta asignados
-        $pdv_x_user += PuntoVentaMobil::where('asesor_id', $user_id)->count(); // Puntos de venta asignados
+        $pdv_x_user = PuntoVenta::where('asesor_id', $request->user_id)->count(); // Puntos de venta asignados
+        $pdv_x_user += PuntoVentaMobil::where('asesor_id', $request->user_id)->count(); // Puntos de venta asignados
 
         $total_puntos_venta = PuntoVenta::where([
             ['agente', $user->empresa_id]
@@ -166,8 +166,8 @@ class InfoController extends Controller
         $promedio_pdv = $total_puntos_venta / $total_asesores;
 
         $premio = Premio::where([
-            ['premio_id', $premio_id],
-            ['empresa_id', $user->empresa_id]
+            ['premio_id', $request->premio_id],
+            ['empresa_id', $request->user->empresa_id]
         ])->first();
 
         if (!$premio) {
@@ -194,8 +194,8 @@ class InfoController extends Controller
         Redencion::create([
             'user_id' => $user->id,
             'premio_id' => $premio->id,
-            'direccion' => $direccion,
-            'fecha_entrega' => $fecha_entrega
+            'direccion' => $request->direccion,
+            'fecha_entrega' => $request->fecha_entrega
         ]);
 
         return response()->json(['Redención exitosa'], 200);
