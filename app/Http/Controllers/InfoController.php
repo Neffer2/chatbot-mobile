@@ -175,6 +175,7 @@ class InfoController extends Controller
         }
 
         $ajuste_valor_premio = $premio->puntos * ( $pdv_x_user / $promedio_pdv);
+        return response()->json(['premio' => $premio], 400);
 
         if ($user->puntos < $ajuste_valor_premio) {
             return response()->json(['Puntos insuficientes'], 400);
@@ -186,7 +187,6 @@ class InfoController extends Controller
 
         // Restar puntos del usuario y stock del premio
         $user->puntos -= $ajuste_valor_premio;
-        return response()->json(['valor premio' => $ajuste_valor_premio], 400);
         $premio->stock -= 1;
 
         $user->save();
