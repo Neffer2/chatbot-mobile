@@ -186,8 +186,6 @@ class InfoController extends Controller
 
         // Restar puntos del usuario y stock del premio
         $user->puntos -= $ajuste_valor_premio;
-        return response()->json(['Valor premio' => $ajuste_valor_premio], 400);
-
         $premio->stock -= 1;
 
         $user->save();
