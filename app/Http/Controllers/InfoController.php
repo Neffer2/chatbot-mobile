@@ -142,7 +142,6 @@ class InfoController extends Controller
 
     public function redimirPremio(Request $request)
     {
-        return response()->json(['user' => $request->all()], 200);
         $user = User::find($request->user_id);
         if (!$user) {
             return response()->json(['Usuario no encontrado'], 404);
@@ -167,7 +166,7 @@ class InfoController extends Controller
         $promedio_pdv = $total_puntos_venta / $total_asesores;
 
         $premio = Premio::where([
-            ['premio_id', $request->premio_id],
+            ['premio_id', $request->premio],
             ['empresa_id', $user->empresa_id]
         ])->first();
 
