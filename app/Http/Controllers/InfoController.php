@@ -140,6 +140,52 @@ class InfoController extends Controller
         return response()->json($premios);
     }
 
+    public function getPremios($user_id, $premio_id) {
+        $user = User::find($user_id);
+        if (!$user) {
+            return response()->json(['Usuario no encontrado'], 404);
+        }
+
+        $pdv_x_user = PuntoVenta::where('asesor_id', $user_id)->count(); // Puntos de venta asignados
+        $pdv_x_user += PuntoVentaMobil::where('asesor_id', $user_id)->count(); // Puntos de venta asignados
+
+        $total_puntos_venta = PuntoVenta::where([
+            ['agente', $user->empresa_id]
+        ])->count();
+
+        $total_puntos_venta += PuntoVentaMobil::where([
+            ['agente', $user->empresa_id]
+        ])->count();
+
+        $total_asesores = User::where([
+            ['rol_id', 3],
+            ['empresa_id', $user->empresa_id]
+        ])->count();
+
+        $promedio_pdv = $total_puntos_venta / $total_asesores;
+
+        $premio = Premio::where([
+            ['premio_id', $premio_id],
+            ['empresa_id', $user->empresa_id]
+        ])->first();
+
+        if (!$premio) {
+            return response()->json(['Premio no encontrado'], 404);
+        }
+
+        $ajuste_valor_premio = $premio->puntos * ( $pdv_x_user / $promedio_pdv);
+
+        if ($user->puntos < $ajuste_valor_premio) {
+            return response()->json(['Puntos insuficientes'], 400);
+        }
+
+        if ($premio->stock <= 0) {
+            return response()->json(['Stock insuficiente'], 400);
+        }
+
+        return response()->json(['Ok'], 200);
+    }
+
     public function redimirPremio(Request $request)
     {
         $user = User::find($request->user_id);
@@ -175,7 +221,6 @@ class InfoController extends Controller
         }
 
         $ajuste_valor_premio = $premio->puntos * ( $pdv_x_user / $promedio_pdv);
-        return response()->json(['premio puntos' => $premio->puntos, 'pdv_x_user' => $pdv_x_user, 'promedio_pdv' => $promedio_pdv], 400);
 
         if ($user->puntos < $ajuste_valor_premio) {
             return response()->json(['Puntos insuficientes'], 400);
@@ -200,53 +245,6 @@ class InfoController extends Controller
         ]);
 
         return response()->json(['Redención exitosa'], 200);
-    }
-
-    public function getPremios($user_id, $premio_id) {
-        $user = User::find($user_id);
-        if (!$user) {
-            return response()->json(['Usuario no encontrado'], 404);
-        }
-
-        $pdv_x_user = PuntoVenta::where('asesor_id', $user_id)->count(); // Puntos de venta asignados
-        $pdv_x_user += PuntoVentaMobil::where('asesor_id', $user_id)->count(); // Puntos de venta asignados
-
-        $total_puntos_venta = PuntoVenta::where([
-            ['agente', $user->empresa_id]
-        ])->count();
-
-        $total_puntos_venta += PuntoVentaMobil::where([
-            ['agente', $user->empresa_id]
-        ])->count();
-
-        $total_asesores = User::where([
-            ['rol_id', 3],
-            ['empresa_id', $user->empresa_id]
-        ])->count();
-
-        $promedio_pdv = $total_puntos_venta / $total_asesores;
-
-        $premio = Premio::where([
-            ['premio_id', $premio_id],
-            ['empresa_id', $user->empresa_id]
-        ])->first();
-
-        if (!$premio) {
-            return response()->json(['Premio no encontrado'], 404);
-        }
-
-        $ajuste_valor_premio = $premio->puntos * ( $pdv_x_user / $promedio_pdv);
-        return response()->json(['premio puntos' => $premio->puntos, 'pdv_x_user' => $pdv_x_user, 'promedio_pdv' => $promedio_pdv], 400);
-
-        if ($user->puntos < $ajuste_valor_premio) {
-            return response()->json(['Puntos insuficientes'], 400);
-        }
-
-        if ($premio->stock <= 0) {
-            return response()->json(['Stock insuficiente'], 400);
-        }
-
-        return response()->json(['Ok'], 200);
     }
 
     public function registrarVisita(Request $request)
