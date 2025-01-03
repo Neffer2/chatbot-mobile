@@ -167,7 +167,7 @@ class InfoController extends Controller
 
         $premio = Premio::where([
             ['premio_id', $request->premio_id],
-            ['empresa_id', $request->user->empresa_id]
+            ['empresa_id', $user->empresa_id]
         ])->first();
 
         if (!$premio) {
