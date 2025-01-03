@@ -199,7 +199,7 @@ class InfoController extends Controller
 
     public function getPremios($user_id, $premio_id) {
         $user = User::find($user_id);
-        return response()->json(['user' => $user]);
+        return response()->json(['user' => $user->id]);
 
         if (!$user) {
             return response()->json(['Usuario o premio no encontrado'], 404);
