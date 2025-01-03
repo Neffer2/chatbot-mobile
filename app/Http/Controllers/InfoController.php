@@ -143,8 +143,6 @@ class InfoController extends Controller
     public function redimirPremio(Request $request)
     {
         $user = User::find($request->user_id);
-        return response()->json(['user' => $user], 200);
-
         if (!$user) {
             return response()->json(['Usuario no encontrado'], 404);
         }
