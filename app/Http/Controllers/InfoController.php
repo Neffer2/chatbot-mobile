@@ -166,7 +166,7 @@ class InfoController extends Controller
         $promedio_pdv = $total_puntos_venta / $total_asesores;
 
         $premio = Premio::where([
-            ['premio_id', $request->premio_id],
+            ['premio_id', $request->premio],
             ['empresa_id', $user->empresa_id]
         ])->first();
 
