@@ -51,7 +51,7 @@ class Visitas extends Component
         $visita->estado_id = $estado;
         $visita->observaciones = $this->observaciones[$visita_id];
         $visita->update();
-        
+
         $this->observaciones[$visita_id] = '';
         if ($visita->estado_id == 1) {
             $this->establecerPuntos($visita);
