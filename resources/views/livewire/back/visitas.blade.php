@@ -106,6 +106,8 @@
         </tbody>
     </table>
 
+    {{ $visitas->links() }}
+
     <!-- New Search Table -->
     <h2>Buscar Visitas</h2>
     <form wire:submit.prevent="buscar">
