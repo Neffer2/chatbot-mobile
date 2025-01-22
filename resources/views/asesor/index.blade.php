@@ -82,7 +82,7 @@
                 </div>
             </a>
         </div> --}}
-        {!! Auth::user()->BI !!}
+        {{-- {!! Auth::user()->BI !!} --}}
         <div class="ranking-link-container">
             <a href="{{ url('/ranking') }}">
                 <img src="{{ asset('assets/ranking-asesores.png') }}" alt="Ranking Asesores" class="ranking-link-image">
@@ -93,4 +93,3 @@
         </div>
     </div>
 @endsection
- 
