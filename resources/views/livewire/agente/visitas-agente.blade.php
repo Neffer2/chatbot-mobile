@@ -9,6 +9,7 @@
                     <th>Punto</th>
                     <th>Foto Punto</th>
                     <th>Foto Factura</th>
+                    <th>Galonaje reportado</th>
                     <th>Fecha</th>
                     <th>Acciones</th>
                 </tr>
@@ -46,6 +47,7 @@
                                 N/A
                             @endif
                         </td>
+                        <td>{{ $visita->valor_factura }}</td>
                         <td>{{ $visita->created_at }}</td>
                         <td>
                             <button class="btn-approve" wire:click="cambioEstado({{ $visita->id }}, 1)"
@@ -73,6 +75,7 @@
                     <th>Foto factura</th>
                     <th>Foto Punto</th>
                     <th>Foto precios</th>
+                    <th>Galonaje reportado</th>
                     <th>Fecha</th>
                     <th>Estado</th>
                 </tr>
@@ -109,6 +112,7 @@
                                 N/A
                             @endif
                         </td>
+                        <td>{{ $visita->valor_factura }}</td>
                         <td>{{ $visita_user->created_at }}</td>
                         <td>{{ $visita_user->estado->descripcion }}</td>
                     </tr>
