@@ -44,7 +44,7 @@
             </div>
         </div>
 
-        
+
     </div>
     <div class="main-catalogos-container">
         <div class="catalogos-title-bar">
@@ -52,7 +52,7 @@
         </div>
         <div class="catalogos-container">
             <div class="catalogo-item">
-                <h2>Cátalogo de productos</h2>
+                <h2>Plan de incentivos</h2>
                 {{-- Plan PDV PDF --}}
                 <div class="catalogo-image-container">
                     <img src="{{ asset('assets/catalogo_productos_mobil.png') }}" alt="Cátalogo plan PDV" class="catalogo-image">
@@ -61,6 +61,6 @@
             </div>
         </div>
 
-        
+
     </div>
 @endsection
