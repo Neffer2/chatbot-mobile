@@ -82,9 +82,7 @@
                 </div>
             </a>
         </div> --}}
-        @if (Auth::user()->empresa_id == 2)
-            {!! Auth::user()->BI !!}
-        @endif
+        {!! Auth::user()->BI !!}
         <div class="ranking-link-container">
             <a href="{{ url('/ranking') }}">
                 <img src="{{ asset('assets/ranking-asesores.png') }}" alt="Ranking Asesores" class="ranking-link-image">
