@@ -18,36 +18,665 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($asesores as $key => $asesor)
+                    @if ($empresa_id == 1)
+                    {{-- RYR --}}
                         <tr>
-                           <td>{{ $key+=1 }}</td>
-                           <td style="font-weight: bold;">
-                                {{ $asesor->name }} <br>
-                                {{ $asesor->puntos }}
-                           </td>
-                           <td>
-                                {{ number_format(floor($asesor->premio_1), 0) }}
-                           </td>
-                           <td>
-                                {{ number_format(floor($asesor->premio_2), 0) }}
-                           </td>
-                           <td>
-                                {{ number_format(floor($asesor->premio_3), 0) }}
-                           </td>
-                           <td>
-                                {{ number_format(floor($asesor->premio_4), 0) }}
-                           </td>
-                           <td>
-                                {{ number_format(floor($asesor->premio_5), 0) }}
-                           </td>
-                           <td>
-                                {{ number_format(floor($asesor->premio_6), 0) }}
-                           </td>
-                           <td>
-                                {{ number_format(floor($asesor->premio_7), 0) }}
-                           </td>
+                            <td>1</td>
+                            <td style="font-weight: bold;">
+                                Angela Patricia
+                            </td>
+                            <td>
+                                21000
+                            </td>
+                            <td>
+                                16000
+                            </td>
+                            <td>
+                                18500
+                            </td>
+                            <td>
+                                6192
+                            </td>
+                            <td>
+                                11057
+                            </td>
+                            <td>
+                                1700
+                            </td>
+                            <td>
+                                1700
+                            </td>
                         </tr>
-                    @endforeach
+                        <tr>
+                            <td>2</td>
+                            <td style="font-weight: bold;">
+                                Johjana León
+                            </td>
+                            <td>
+                                28000
+                            </td>
+                            <td>
+                                20000
+                            </td>
+                            <td>
+                                23500
+                            </td>
+                            <td>
+                                7988
+                            </td>
+                            <td>
+                                14265
+                            </td>
+                            <td>
+                                2000
+                            </td>
+                            <td>
+                                2000
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td style="font-weight: bold;">
+                                Yesica Andrea
+                            </td>
+                            <td>
+                                21500
+                            </td>
+                            <td>
+                                16500
+                            </td>
+                            <td>
+                                19000
+                            </td>
+                            <td>
+                                6051
+                            </td>
+                            <td>
+                                10805
+                            </td>
+                            <td>
+                                1750
+                            </td>
+                            <td>
+                                1750
+                            </td>
+                        </tr>
+                    @endif
+                    @if ($empresa_id == 2)
+                    {{-- CIA --}}
+                        <tr>
+                            <td>1</td>
+                            <td style="font-weight: bold;">
+                                Angelica Marcela
+                            </td>
+                            <td>
+                                13943
+                            </td>
+                            <td>
+                                11016
+                            </td>
+                            <td>
+                                12436
+                            </td>
+                            <td>
+                                3615
+                            </td>
+                            <td>
+                                6455
+                            </td>
+                            <td>
+                                1119
+                            </td>
+                            <td>
+                                1119
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td style="font-weight: bold;">
+                                Freddy
+                            </td>
+                            <td>
+                                35313
+                            </td>
+                            <td>
+                                27901
+                            </td>
+                            <td>
+                                31498
+                            </td>
+                            <td>
+                                9155
+                            </td>
+                            <td>
+                                16349
+                            </td>
+                            <td>
+                                2834
+                            </td>
+                            <td>
+                                2834
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td style="font-weight: bold;">
+                                Johanny
+                            </td>
+                            <td>
+                                21489
+                            </td>
+                            <td>
+                                16979
+                            </td>
+                            <td>
+                                19168
+                            </td>
+                            <td>
+                                5571
+                            </td>
+                            <td>
+                                9949
+                            </td>
+                            <td>
+                                1724
+                            </td>
+                            <td>
+                                1724
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td style="font-weight: bold;">
+                                Jorge Wilson
+                            </td>
+                            <td>
+                                23837
+                            </td>
+                            <td>
+                                18834
+                            </td>
+                            <td>
+                                21262
+                            </td>
+                            <td>
+                                6180
+                            </td>
+                            <td>
+                                11036
+                            </td>
+                            <td>
+                                1913
+                            </td>
+                            <td>
+                                1913
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td style="font-weight: bold;">
+                                Juan Gabriel
+                            </td>
+                            <td>
+                                21274
+                            </td>
+                            <td>
+                                16809
+                            </td>
+                            <td>
+                                18976
+                            </td>
+                            <td>
+                                5515
+                            </td>
+                            <td>
+                                9849
+                            </td>
+                            <td>
+                                1707
+                            </td>
+                            <td>
+                                1707
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td style="font-weight: bold;">
+                                Julio Cesar
+                            </td>
+                            <td>
+                                19681
+                            </td>
+                            <td>
+                                15550
+                            </td>
+                            <td>
+                                17555
+                            </td>
+                            <td>
+                                5102
+                            </td>
+                            <td>
+                                9111
+                            </td>
+                            <td>
+                                1579
+                            </td>
+                            <td>
+                                1579
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td style="font-weight: bold;">
+                                Luis Ricardo
+                            </td>
+                            <td>
+                                18830
+                            </td>
+                            <td>
+                                14878
+                            </td>
+                            <td>
+                                16796
+                            </td>
+                            <td>
+                                4882
+                            </td>
+                            <td>
+                                8718
+                            </td>
+                            <td>
+                                1511
+                            </td>
+                            <td>
+                                1511
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td style="font-weight: bold;">
+                                Miguel Angel
+                            </td>
+                            <td>
+                                24999
+                            </td>
+                            <td>
+                                19752
+                            </td>
+                            <td>
+                                22299
+                            </td>
+                            <td>
+                                6481
+                            </td>
+                            <td>
+                                11574
+                            </td>
+                            <td>
+                                2006
+                            </td>
+                            <td>
+                                2006
+                            </td>
+                        </tr>
+                    @endif
+                    @if ($empresa_id == 3)
+                    {{-- Ludelpa --}}
+                        <tr>
+                            <td>1</td>
+                            <td style="font-weight: bold;">
+                                Alfredo
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td style="font-weight: bold;">
+                                Ana Maria
+                            </td>
+                            <td>
+                                4791
+                            </td>
+                            <td>
+                                3786
+                            </td>
+                            <td>
+                                4274
+                            </td>
+                            <td>
+                                1242
+                            </td>
+                            <td>
+                                2218
+                            </td>
+                            <td>
+                                384
+                            </td>
+                            <td>
+                                384
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td style="font-weight: bold;">
+                                David Felipe
+                            </td>
+                            <td>
+                                17237
+                            </td>
+                            <td>
+                                13619
+                            </td>
+                            <td>
+                                15375
+                            </td>
+                            <td>
+                                4469
+                            </td>
+                            <td>
+                                7980
+                            </td>
+                            <td>
+                                1383
+                            </td>
+                            <td>
+                                1383
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td style="font-weight: bold;">
+                                Gabriel Alberto
+                            </td>
+                            <td>
+                                21070
+                            </td>
+                            <td>
+                                16648
+                            </td>
+                            <td>
+                                18794
+                            </td>
+                            <td>
+                                5463
+                            </td>
+                            <td>
+                                9755
+                            </td>
+                            <td>
+                                1691
+                            </td>
+                            <td>
+                                1691
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td style="font-weight: bold;">
+                                Garcia Rondon
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td style="font-weight: bold;">
+                                Jaime Orlando
+                            </td>
+                            <td>
+                                958
+                            </td>
+                            <td>
+                                757
+                            </td>
+                            <td>
+                                855
+                            </td>
+                            <td>
+                                248
+                            </td>
+                            <td>
+                                444
+                            </td>
+                            <td>
+                                77
+                            </td>
+                            <td>
+                                77
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td style="font-weight: bold;">
+                                Karen
+                            </td>
+                            <td>
+                                15428
+                            </td>
+                            <td>
+                                12190
+                            </td>
+                            <td>
+                                13761
+                            </td>
+                            <td>
+                                4000
+                            </td>
+                            <td>
+                                7143
+                            </td>
+                            <td>
+                                1238
+                            </td>
+                            <td>
+                                1238
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td style="font-weight: bold;">
+                                Kristopher Andryk
+                            </td>
+                            <td>
+                                22986
+                            </td>
+                            <td>
+                                18162
+                            </td>
+                            <td>
+                                20503
+                            </td>
+                            <td>
+                                5959
+                            </td>
+                            <td>
+                                10642
+                            </td>
+                            <td>
+                                1845
+                            </td>
+                            <td>
+                                1845
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td style="font-weight: bold;">
+                                Leidy johana
+                            </td>
+                            <td>
+                                19261
+                            </td>
+                            <td>
+                                15219
+                            </td>
+                            <td>
+                                17180
+                            </td>
+                            <td>
+                                4994
+                            </td>
+                            <td>
+                                8917
+                            </td>
+                            <td>
+                                1546
+                            </td>
+                            <td>
+                                1546
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td style="font-weight: bold;">
+                                Luis Alfonso
+                            </td>
+                            <td>
+                                17129
+                            </td>
+                            <td>
+                                13534
+                            </td>
+                            <td>
+                                15279
+                            </td>
+                            <td>
+                                4441
+                            </td>
+                            <td>
+                                7930
+                            </td>
+                            <td>
+                                1375
+                            </td>
+                            <td>
+                                1375
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td style="font-weight: bold;">
+                                Martha Isabel
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td style="font-weight: bold;">
+                                Roa Ariza
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td style="font-weight: bold;">
+                                Yenny Patricia
+                            </td>
+                            <td>
+                                18195
+                            </td>
+                            <td>
+                                14376
+                            </td>
+                            <td>
+                                16230
+                            </td>
+                            <td>
+                                4717
+                            </td>
+                            <td>
+                                8424
+                            </td>
+                            <td>
+                                1460
+                            </td>
+                            <td>
+                                1460
+                            </td>
+                        </tr>
+                        
+                        
+                    @endif
                 </tbody>
             </table>
         </div>

@@ -261,7 +261,10 @@ class HomeController extends Controller
             }
         });
 
-        return view('agente.premios-agente', compact('asesores', 'premios'));
+        // Traer empresa_id
+        $empresa_id = Auth::user()->empresa_id;
+
+        return view('agente.premios-agente', compact('asesores', 'premios', 'empresa_id'));
     }
 
     //Historico de registros
