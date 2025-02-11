@@ -26,7 +26,6 @@
                             <img src="{{ asset($foto_premio) }}"
                                 alt="Viaje para 2 todo incluído a Cartagena" class="premio-image">
                         </div>
-                        <p>{{ number_format(floor($premio->puntos), 0) }} Puntos</p>
                     </div>
                     @if ($key == 3) @break @endif
                 @endforeach
@@ -49,7 +48,7 @@
                                 <img src="{{ asset($foto_premio) }}"
                                     alt="Viaje para 2 todo incluído a Cartagena" class="premio-image">
                             </div>
-                            <p>{{ number_format(floor($premio->puntos), 0) }} Puntos</p>
+                            {{-- <p>{{ number_format(floor($premio->puntos), 0) }} Puntos</p> --}}
                         </div>
                     @endif
                 @endforeach
