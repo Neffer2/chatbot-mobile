@@ -49,7 +49,7 @@
                     </td>
                     <td>- {{ $visita->puntoVenta->descripcion }}
                         <br>
-                        - {{ $visita ->puntoVenta->num_pdv }}
+                        - {{ $visita->puntoVenta->num_pdv }}
                     </td>
                     <td>{{ $visita->referencias }}</td>
                     <td>{{ $visita->presentaciones }}</td>
@@ -108,7 +108,7 @@
         </tbody>
     </table>
 
-    {{ $visitas->links() }}
+    {{ $visitas->links('vendor.pagination.bootstrap-4') }}
 
     <!-- New Search Table -->
     <h2>Buscar Visitas</h2>
@@ -209,6 +209,68 @@
                         @endif
                     </td>
                     <td>{{ $visita->created_at }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+    <br>
+    <h2>Tabla de Usuario y Puntos</h2>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Puntos</th>
+                <th>Agente</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($users as $user)
+                <tr>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->puntos }}</td>
+                    <td>
+                        @if ($user->empresa_id == 1)
+                            RYR
+                        @elseif($user->empresa_id == 2)
+                            Cia Lubricantes
+                        @elseif($user->empresa_id == 3)
+                            Ludelpa
+                        @else
+                            Desconocido
+                        @endif
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+    {{ $users->links('vendor.pagination.bootstrap-4') }}
+
+    <br>
+    <h2> Tabla de Stock de Premios</h2>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Stock</th>
+                <th>Empresa</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($premios as $premio)
+                <tr>
+                    <td>{{ $premio->nombre }}</td>
+                    <td>{{ $premio->stock }}</td>
+                    <td>
+                        @if ($premio->empresa_id == 1)
+                            RYR
+                        @elseif($premio->empresa_id == 2)
+                            Cia Lubricantes
+                        @elseif($premio->empresa_id == 3)
+                            Ludelpa
+                        @else
+                            Desconocido
+                        @endif
+                    </td>
                 </tr>
             @endforeach
         </tbody>

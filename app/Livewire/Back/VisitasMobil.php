@@ -7,6 +7,7 @@ use Livewire\WithPagination;
 use App\Models\VisitaMobil;
 use App\Models\User;
 use App\Models\ItemMeta;
+use App\Models\Premio;
 use App\Models\RegistroVisitaMobil;
 
 class VisitasMobil extends Component
@@ -32,10 +33,18 @@ class VisitasMobil extends Component
 
     public function render()
     {
+
+        //Puntos por usuario con paginación por 10
+        $users = User::where('rol_id', 3)->orderBy('puntos', 'desc')->paginate(10);
+
+        // Stock de premios
+
+        $premios = Premio::all();
+
         $visitas = VisitaMobil::where('estado_id', 2)
             ->orderBy('created_at', 'asc')
             ->paginate(15);
-        return view('livewire.back.visitas-mobil', ['visitas' => $visitas]);
+        return view('livewire.back.visitas-mobil', ['visitas' => $visitas, 'users' => $users], ['premios' => $premios]);
     }
 
     public function buscar()
