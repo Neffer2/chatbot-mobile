@@ -78,9 +78,11 @@
                 @if (Auth::user()->rol_id == 2)
                     <li class="{{ request()->is('visitas') ? 'active' : '' }}"><a href="/ventas-aprobar">Ventas por
                             aprobar Terpel</a></li>
-                    <li class="{{ request()->is('visitas') ? 'active' : '' }}"><a href="/ventas-aprobar-mobil">Ventas por
+                    <li class="{{ request()->is('visitas') ? 'active' : '' }}"><a href="/ventas-aprobar-mobil">Ventas
+                            por
                             aprobar Mobil</a></li>
-                    <li class="{{ request()->is('premios-gente') ? 'active' : '' }}"><a href="{{ route('premios-agente') }}">Premios</a></li>
+                    <li class="{{ request()->is('premios-gente') ? 'active' : '' }}"><a
+                            href="{{ route('premios-agente') }}">Premios</a></li>
                 @endif
             @elseif(Auth::user()->rol_id == 3)
                 <!-- Rol Asesor -->
@@ -94,9 +96,15 @@
                         href="/historico-ventas">Historico de Ventas</a></li>
             @endif
             {{-- Terminos y Condiciones --}}
+
             <li class="tyc-link {{ request()->is('assets/legal/tyc-plan-incentivos-terpel.pdf') ? 'active' : '' }}">
-                <a class="terminos-nav" href="{{ asset('') }}" target="_blank">Términos y
-                    condiciones</a>
+                <a class="terminos-nav" href="{{ asset('assets/legal/tyc-puntos-venta.pdf') }}"
+                    target="_blank">Términos y
+                    condiciones - puntos de venta</a>
+                <a class="terminos-nav" href="{{ asset('assets/legal/tyc-plan-incentivos-mobil.pdf') }}"
+                    target="_blank">Términos y
+                    condiciones - plan incentivos</a>
+
             </li>
         </ul>
     </nav>

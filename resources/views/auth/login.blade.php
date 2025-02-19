@@ -36,10 +36,18 @@
                 <!-- Remember Me -->
                 <div class="remember-me-login-cont">
                     <label for="remember_me" class="inline-flex items-center">
-                        <input id="remember_me" type="checkbox" class="custom-checkbox" name="remember">
-                        <span class="custom-checkbox-text">{{ __('TRATAMIENTO DE DATOS') }}</span>
+                        <input id="remember_me" type="checkbox" class="custom-checkbox" name="remember" required>
+                        <a target="_blank" href="{{ asset('assets/legal/tyc-puntos-venta.pdf') }}" class="custom-checkbox-text">{{ __('ACEPTO TÉRMINOS Y CONDICIONES DE PUNTOS DE VENTA') }}</a>
                     </label>
                 </div>
+                <br>
+                <div class="remember-me-login-cont">
+                    <label for="remember_me" class="inline-flex items-center">
+                        <input id="remember_me" type="checkbox" class="custom-checkbox" name="remember" required>
+                        <a target="_blank" href="{{ asset('assets/legal/tyc-plan-incentivos-mobil.pdf') }}" class="custom-checkbox-text">{{ __('ACEPTO TÉRMINOS Y CONDICIONES DE PLAN DE INCENTIVOS') }}</a>
+                    </label>
+                </div>
+
 
                 <div class="">
                     {{-- @if (Route::has('password.request'))
