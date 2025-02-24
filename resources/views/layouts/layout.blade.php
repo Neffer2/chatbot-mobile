@@ -98,9 +98,9 @@
             {{-- Terminos y Condiciones --}}
 
             <li class="tyc-link {{ request()->is('assets/legal/tyc-plan-incentivos-terpel.pdf') ? 'active' : '' }}">
-                <a class="terminos-nav" href="{{ asset('assets/legal/tyc-puntos-venta.pdf') }}"
+                {{-- <a class="terminos-nav" href="{{ asset('assets/legal/tyc-puntos-venta.pdf') }}"
                     target="_blank">Términos y
-                    condiciones - puntos de venta</a>
+                    condiciones - puntos de venta</a> --}}
                 <a class="terminos-nav" href="{{ asset('assets/legal/tyc-plan-incentivos-mobil.pdf') }}"
                     target="_blank">Términos y
                     condiciones - plan incentivos</a>
