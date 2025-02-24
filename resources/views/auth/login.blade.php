@@ -41,12 +41,12 @@
                     </label> --}}
                 </div>
                 <br>
-                <div class="remember-me-login-cont">
+                {{-- <div class="remember-me-login-cont">
                     <label for="remember_me" class="inline-flex items-center">
                         <input id="remember_me" type="checkbox" class="custom-checkbox" name="remember" required>
                         <a target="_blank" href="{{ asset('assets/legal/tyc-plan-incentivos-mobil.pdf') }}" class="custom-checkbox-text">{{ __('ACEPTO TÉRMINOS Y CONDICIONES DE PLAN DE INCENTIVOS') }}</a>
                     </label>
-                </div>
+                </div> --}}
 
 
                 <div class="">
