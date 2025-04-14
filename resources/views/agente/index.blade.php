@@ -4,7 +4,7 @@
         @if (Auth::user()->rol_id == 1)
             {{-- OT --}}
             <iframe title="Visionarios"
-                src="https://app.powerbi.com/view?r=eyJrIjoiMWQ0ZTRjYjctMTJkMi00MGJjLTk1NGQtOGZkNmU0NmFkMjgzIiwidCI6Ijk2OWUxYWZhLTM2YWItNGQ5ZS1iYmM2LWU5Y2U3ZWE0N2U5OSIsImMiOjR9"
+                src="https://app.powerbi.com/view?r=eyJrIjoiM2ZjMWIxNzgtM2I4MS00YWViLWIxYzUtZDBmMjViY2U2Y2QzIiwidCI6Ijk2OWUxYWZhLTM2YWItNGQ5ZS1iYmM2LWU5Y2U3ZWE0N2U5OSIsImMiOjR9"
                 frameborder="0" allowFullScreen="true"></iframe>
         @elseif (Auth::user()->empresa_id == 2)
             {{-- Cia Lubricantes --}}
